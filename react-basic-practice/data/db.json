@@ -21,7 +21,7 @@
     {
       "id": 2,
       "name": "Hal Earrings",
-      "price": 20,
+      "price": 25,
       "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     }
   ],
@@ -31,10 +31,14 @@
       "products":[
         {
           "idProduct": 1,
+          "name": "Lira Earrings",
+          "price": 20,
           "quantity": 2
         },
         {
           "idProduct": 2,
+          "name": "Hal Earrings",
+          "price": 25,
           "quantity": 1
         }
       ]
