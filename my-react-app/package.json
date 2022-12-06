@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
-    "fix": "eslint --fix --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
+    "lint:eslint": "eslint --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
+    "fix:eslint": "eslint --fix --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -26,6 +26,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "vite": "^3.2.3"
+    "eslint-plugin-prettier": "^4.2.1",
+    "vite": "^3.2.3",
+    "prettier": "2.7.1"
   }
 }
