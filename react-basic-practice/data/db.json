@@ -3,13 +3,13 @@
     {
       "id": 1,
       "userName": "Minh Nguyen",
-      "mail": "minh@gmail.com",
+      "email": "minh@gmail.com",
       "password": "1234abcd"
     },
     {
       "id": 2,
       "userName": "Huong Nguyen",
-      "mail": "huong@gmail.com",
+      "email": "huong@gmail.com",
       "password": "1234abcd"
     }
   ],
