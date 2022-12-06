@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "mail": "minh@gmail.com",
+      "password": "1234abcd"
+    },
+    {
+      "id": 2,
+      "mail": "huong@gmail.com",
+      "password": "1234abcd"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "name": "Hal Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ],
+  "cart": [
+    {
+      "idUser": 1,
+      "products":[
+        {
+          "idProduct": 1,
+          "quantity": 2
+        },
+        {
+          "idProduct": 2,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "idUser": 2,
+      "products":[
+        {
+          "idProduct": 1,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
