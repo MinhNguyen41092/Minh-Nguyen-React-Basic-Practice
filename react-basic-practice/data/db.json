@@ -2,11 +2,13 @@
   "users": [
     {
       "id": 1,
+      "userName": "Minh Nguyen",
       "mail": "minh@gmail.com",
       "password": "1234abcd"
     },
     {
       "id": 2,
+      "userName": "Huong Nguyen",
       "mail": "huong@gmail.com",
       "password": "1234abcd"
     }
@@ -27,27 +29,23 @@
   ],
   "cart": [
     {
-      "idUser": 1,
+      "userId": 1,
       "products":[
         {
-          "idProduct": 1,
-          "name": "Lira Earrings",
-          "price": 20,
+          "productId": 1,
           "quantity": 2
         },
         {
-          "idProduct": 2,
-          "name": "Hal Earrings",
-          "price": 25,
+          "productId": 2,
           "quantity": 1
         }
       ]
     },
     {
-      "idUser": 2,
+      "userId": 2,
       "products":[
         {
-          "idProduct": 1,
+          "productId": 1,
           "quantity": 1
         }
       ]
