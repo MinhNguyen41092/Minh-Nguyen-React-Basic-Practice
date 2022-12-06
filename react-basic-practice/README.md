@@ -2,7 +2,6 @@
 
 ## Overview:
 - This document provides information about React basic practice.
-- This is a sales website: [Shoppe Web Application](https://shoppe-app-nextjs.vercel.app/).
 - [Design](https://www.figma.com/file/hzs1lkW5TzXMYaYb0L9AG4/Shoppe-(Community)?node-id=0%3A1)
 
 ## Targets:
