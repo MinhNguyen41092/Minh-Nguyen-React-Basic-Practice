@@ -25,12 +25,36 @@
         "name": "Hal Earrings",
         "price": 25,
         "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "id": 3,
+        "name": "Lira Earrings",
+        "price": 20,
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "id": 4,
+        "name": "Lira Earrings",
+        "price": 20,
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "id": 5,
+        "name": "Lira Earrings",
+        "price": 20,
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "id": 6,
+        "name": "Lira Earrings",
+        "price": 20,
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       }
     ],
     "cart": [
       {
         "userId": 1,
-        "products":[
+        "listProducts":[
           {
             "productId": 1,
             "quantity": 2
@@ -43,7 +67,7 @@
       },
       {
         "userId": 2,
-        "products":[
+        "listProducts":[
           {
             "productId": 1,
             "quantity": 1
