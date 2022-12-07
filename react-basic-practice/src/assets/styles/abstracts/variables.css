@@ -1,0 +1,15 @@
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-black: #222222;
+
+  /* Font weight */
+  --fw-regular: 300;
+  --fw-bold: 700;
+
+  /* Font size */
+  --fs-regular: 16px;
+  --fs-small: 14px;
+  --fs-large: 20px;
+  --fs-exLarge: 40px;
+}
