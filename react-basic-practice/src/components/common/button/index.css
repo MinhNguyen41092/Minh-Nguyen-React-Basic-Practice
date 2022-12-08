@@ -4,7 +4,7 @@
   text-decoration: none;
   font-weight: var(--fw-bold);
   line-height: 20.83px;
-  border-radius: 2px;
+  border-radius: 4px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.3s;
@@ -29,4 +29,12 @@
 .btn-secondary:hover {
   background-color: var(--color-white);
   color: var(--color-black);
+}
+
+.btn-small {
+  padding: 5px 10px;
+}
+
+.btn-large {
+  padding: 16px 100px;
 }
