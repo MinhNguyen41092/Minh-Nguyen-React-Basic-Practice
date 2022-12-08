@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { PRODUCTS_API } from '../constants/api';
 
 /**
@@ -7,10 +8,9 @@ import { PRODUCTS_API } from '../constants/api';
  * @returns {object} product
  */
 export const getProductById = async (productId) => {
-  const response = await fetch(`${PRODUCTS_API}?id=${productId}`);
-  const data = await response.json();
+  const res = await axios.get(`${PRODUCTS_API}?id=${productId}`);
 
-  return data;
+  return res.data;
 };
 
 /**
@@ -20,10 +20,9 @@ export const getProductById = async (productId) => {
  * @returns {object} product
  */
 export const getProductByName = async (name) => {
-  const response = await fetch(`${PRODUCTS_API}?name=${name}`);
-  const data = await response.json();
+  const res = await axios.get(`${PRODUCTS_API}?name=${name}`);
 
-  return data;
+  return res.data;
 };
 
 /**
@@ -31,10 +30,9 @@ export const getProductByName = async (name) => {
  * @returns {object} list products
  */
 export const getListProducts = async () => {
-  const response = await fetch(`${PRODUCTS_API}`);
-  const data = await response.json();
+  const res = await axios.get(`${PRODUCTS_API}`);
 
-  return data;
+  return res.data;
 };
 
 /**
@@ -44,8 +42,7 @@ export const getListProducts = async () => {
  * @returns {object} list 6 products
  */
 export const getListProductsLimit = async (pageNumber) => {
-  const response = await fetch(`${PRODUCTS_API}_limit=6&_page=${pageNumber}`);
-  const data = await response.json();
+  const res = await axios.get(`${PRODUCTS_API}_limit=6&_page=${pageNumber}`);
 
-  return data;
+  return res.data;
 };

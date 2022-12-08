@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { USERS_API } from '../constants/api';
 
 /**
@@ -7,10 +8,9 @@ import { USERS_API } from '../constants/api';
  * @returns {object} user
  */
 export const getUserById = async (id) => {
-  const response = await fetch(`${USERS_API}?id=${id}`);
-  const data = await response.json();
+  const res = await axios.get(`${USERS_API}?id=${id}`);
 
-  return data;
+  return res.data;
 };
 
 /**
@@ -20,10 +20,9 @@ export const getUserById = async (id) => {
  * @returns {object} user
  */
 export const getUserByMail = async (mail) => {
-  const response = await fetch(`${USERS_API}?mail=${mail}`);
-  const data = await response.json();
+  const res = await axios.get(`${USERS_API}?mail=${mail}`);
 
-  return data;
+  return res.data;
 };
 
 /**
@@ -31,11 +30,7 @@ export const getUserByMail = async (mail) => {
  * @param {object} data user's information (user name, email, password)
  */
 export const createUser = async (data) => {
-  await fetch(USERS_API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await axios.post(USERS_API, data);
+
+  return res.data;
 };
