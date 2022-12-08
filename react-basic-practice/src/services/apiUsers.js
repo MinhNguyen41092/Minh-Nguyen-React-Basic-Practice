@@ -1,4 +1,4 @@
-import { USERS_URL } from '../constants/api';
+import { USERS_API } from '../constants/api';
 
 /**
  * Get data of user by userId
@@ -6,16 +6,11 @@ import { USERS_URL } from '../constants/api';
  *
  * @returns {object} user
  */
-
 export const getUserById = async (id) => {
-  try {
-    const response = await fetch(`${USERS_URL}?id=${id}`);
+  const response = await fetch(`${USERS_API}?id=${id}`);
+  const data = await response.json();
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return data;
 };
 
 /**
@@ -24,34 +19,23 @@ export const getUserById = async (id) => {
  *
  * @returns {object} user
  */
-
 export const getUserByMail = async (mail) => {
-  try {
-    const response = await fetch(`${USERS_URL}?mail=${mail}`);
+  const response = await fetch(`${USERS_API}?mail=${mail}`);
+  const data = await response.json();
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return data;
 };
 
 /**
  * Add new user
- * @param {object} data
+ * @param {object} data user's information (user name, email, password)
  */
-
 export const createUser = async (data) => {
-  try {
-    await fetch(USERS_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  await fetch(USERS_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 };
