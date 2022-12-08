@@ -1,7 +1,5 @@
 import React from 'react';
-import './App.css';
-import Button from './components/common/button/button';
-import IconButton from './components/common/button/iconButton';
+import { Button, IconButton } from './components/common/Button';
 
 function App() {
   return (

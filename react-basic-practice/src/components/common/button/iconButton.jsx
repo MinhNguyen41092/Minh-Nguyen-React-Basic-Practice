@@ -1,6 +1,6 @@
 import React from 'react';
 
-function IconButton(props) {
+const IconButton = (props) => {
   const {
     onClick, className, icon, iconName,
   } = props;
@@ -16,6 +16,6 @@ function IconButton(props) {
       </figure>
     </button>
   );
-}
+};
 
-export default IconButton;
+export { IconButton };

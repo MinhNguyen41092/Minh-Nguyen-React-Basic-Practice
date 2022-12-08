@@ -1,8 +1,7 @@
+import './index.css';
 import React from 'react';
 
-import './index.css';
-
-function Button(props) {
+const Button = (props) => {
   const { onClick, className, text } = props;
 
   return (
@@ -16,4 +15,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export { Button };
