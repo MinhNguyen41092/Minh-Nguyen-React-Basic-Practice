@@ -9,12 +9,11 @@
 - Understand about how React hooks + Contexts work
 - Apply
   - Props & states
-  - Life cycles
+  - Lifecycles
   - Reusable components
   - Client & server
   - Analyze design
   - Code style
-  - Better client-server structure
 
 ## Information:
 
@@ -27,7 +26,7 @@
   - [React Hook](https://reactjs.org/docs/hooks-intro.html): a new addition in React 16.8. They let you use state and other React features without writing a class.
   - [React Router](https://v5.reactrouter.com/web/guides/quick-start): is a standard library for routing in React.
   - [JSON server](https://www.digitalocean.com/community/tutorials/json-server):  is a Node Module that you can use to create demo rest json web service in less than a minute. All you need is a JSON file for sample data.
-  - [Vite](https://www.npmjs.com/package/parcel): is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+  - [Vite](https://vitejs.dev/guide): is a build tool that aims to provide a faster and leaner development experience for modern web projects.
 - Editor: Visual Studio Code.
 
 ### Development environment:

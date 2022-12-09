@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { PRODUCTS_API } from '../constants/api';
 
 /**
@@ -6,16 +7,10 @@ import { PRODUCTS_API } from '../constants/api';
  *
  * @returns {object} product
  */
-
 export const getProductById = async (productId) => {
-  try {
-    const response = await fetch(`${PRODUCTS_API}?id=${productId}`);
+  const res = await axios.get(`${PRODUCTS_API}?id=${productId}`);
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return res.data;
 };
 
 /**
@@ -24,32 +19,20 @@ export const getProductById = async (productId) => {
  *
  * @returns {object} product
  */
-
 export const getProductByName = async (name) => {
-  try {
-    const response = await fetch(`${PRODUCTS_API}?name=${name}`);
+  const res = await axios.get(`${PRODUCTS_API}?name=${name}`);
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return res.data;
 };
 
 /**
  * Get all data of product
  * @returns {object} list products
  */
-
 export const getListProducts = async () => {
-  try {
-    const response = await fetch(`${PRODUCTS_API}`);
+  const res = await axios.get(`${PRODUCTS_API}`);
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return res.data;
 };
 
 /**
@@ -58,14 +41,8 @@ export const getListProducts = async () => {
  *
  * @returns {object} list 6 products
  */
-
 export const getListProductsLimit = async (pageNumber) => {
-  try {
-    const response = await fetch(`${PRODUCTS_API}_limit=6&_page=${pageNumber}`);
+  const res = await axios.get(`${PRODUCTS_API}_limit=6&_page=${pageNumber}`);
 
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return res.data;
 };
