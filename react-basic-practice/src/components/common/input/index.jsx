@@ -5,7 +5,8 @@ const Input = (props) => {
   const {
     label,
     htmlFor,
-    idInput,
+    inputType,
+    inputId,
     cssClasses,
     value,
     onChange,
@@ -19,8 +20,8 @@ const Input = (props) => {
         {label}
       </label>
       <input
-        type="text"
-        id={idInput}
+        type={inputType}
+        id={inputId}
         className={`input-text ${cssClasses} input-${size}`}
         onChange={onChange}
         placeholder={placeholder}
