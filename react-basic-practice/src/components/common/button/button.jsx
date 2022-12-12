@@ -8,7 +8,7 @@ const Button = (props) => {
     <button
       type="button"
       onClick={onClick}
-      className={className}
+      className={`btn ${className}`}
     >
       {text}
     </button>

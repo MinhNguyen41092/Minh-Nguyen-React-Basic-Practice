@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from '../common/Button';
-// alias path
+import { Button } from '../common/button';
 
 function Popup(props) {
   const {
