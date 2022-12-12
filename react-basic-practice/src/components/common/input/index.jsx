@@ -10,16 +10,18 @@ const Input = (props) => {
     value,
     onChange,
     placeholder,
+    size,
   } = props;
+
   return (
-    <div className="input-cover">
+    <div className="input-group">
       <label htmlFor={htmlFor}>
         {label}
       </label>
       <input
         type="text"
         id={idInput}
-        className={classNameInput}
+        className={`input-text ${classNameInput} input-${size}`}
         onChange={onChange}
         placeholder={placeholder}
         value={value}
