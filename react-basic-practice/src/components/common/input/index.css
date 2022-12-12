@@ -1,0 +1,21 @@
+.input-cover {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+}
+
+.input-text {
+  box-sizing: border-box;
+  line-height: 1.4em;
+  margin: 0px 5px;
+}
+
+.input-login {
+  width: 100%;
+  padding: 12px 10px;
+  box-shadow: none;
+  color: var(--dorado);
+  background-color: var(--grey-light);
+  border: none;
+  border-radius: 4px;
+}
