@@ -26,4 +26,4 @@ const Quantity = () => {
   );
 };
 
-export { Quantity };
+export default Quantity;
