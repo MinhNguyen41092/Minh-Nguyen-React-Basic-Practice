@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '../common/button/index';
+import Button from '../common/button';
 import './index.css';
 
 const Quantity = () => {

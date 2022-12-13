@@ -12,7 +12,7 @@ function Popup(props) {
         className="btn btn-close"
         text="X"
       />
-      <div className="notification-icon">
+      <div className={className}>
         <img src={icon} alt="" />
       </div>
       <div>
