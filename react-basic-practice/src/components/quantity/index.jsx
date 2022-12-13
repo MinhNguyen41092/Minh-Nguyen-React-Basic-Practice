@@ -4,14 +4,17 @@ import './index.css';
 
 const Quantity = () => {
   const [counter, setCounter] = useState(0);
+
   const incrementCount = () => {
     // Update state with incremented value
     setCounter(counter + 1);
   };
 
   const decrementCount = () => {
-    // Update state with incremented value
-    setCounter((count) => Math.max(count - 1, 0));
+    // Update state with decremented value
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
   };
 
   return (
