@@ -2,18 +2,20 @@ import './index.css';
 import React from 'react';
 
 const Button = (props) => {
-  const { onClick, className, text, icon } = props;
+  const {
+    onClick, className, text, icon, size,
+  } = props;
 
   return (
     <button
       type="button"
       onClick={onClick}
-      className={className}
+      className={`btn btn-${size} ${className}`}
       value="button"
     >
-      { text ? text : <img className="icon" src={icon} alt="icon" />}
+      { text || <img className="icon" src={icon} alt="icon" />}
     </button>
   );
-}
+};
 
-export { Button };
+export default Button;

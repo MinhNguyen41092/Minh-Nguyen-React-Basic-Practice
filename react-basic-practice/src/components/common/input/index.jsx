@@ -7,6 +7,7 @@ const Input = (props) => {
     htmlFor,
     inputType,
     inputId,
+    inputRef,
     cssClasses,
     value,
     onChange,
@@ -26,6 +27,7 @@ const Input = (props) => {
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        ref={inputRef}
       />
     </div>
   );
