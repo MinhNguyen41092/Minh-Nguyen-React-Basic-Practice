@@ -1,7 +1,10 @@
 :root {
   /* Color */
+  --color-primary: #707070;
   --color-white: #ffffff;
   --color-black: #222222;
+
+  --color-quantity-button: #EFEFEF;
 
   /* Font weight */
   --fw-regular: 300;
