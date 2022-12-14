@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quantity } from './components/quantity/index';
+import Quantity from './components/Quantity';
 
 function App() {
   return (
