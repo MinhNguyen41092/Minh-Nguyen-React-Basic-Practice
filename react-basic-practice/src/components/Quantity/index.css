@@ -1,0 +1,14 @@
+.quantity-group {
+  background-color: var(--color-quantity-button);
+  color: var(--color-primary);
+  max-width: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 4px;
+}
+
+.quantity-group .btn {
+  padding: 14px;
+  color: var(--color-primary);
+}
