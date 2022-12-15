@@ -9,6 +9,7 @@ function Popup(props) {
   return (
     <div className="notification toast">
       <Button
+        type="button"
         className="btn btn-close"
         text="X"
       />
