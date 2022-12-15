@@ -9,9 +9,11 @@ const Input = (props) => {
     inputId,
     cssClasses,
     value,
+    refer,
     onChange,
     placeholder,
-    size,
+    pattern,
+    defaultValue,
   } = props;
 
   return (
@@ -22,10 +24,13 @@ const Input = (props) => {
       <input
         type={inputType}
         id={inputId}
-        className={`input-text ${cssClasses} input-${size}`}
+        className={`input-text ${cssClasses}`}
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        pattern={pattern}
+        defaultValue={defaultValue}
+        ref={refer}
       />
     </div>
   );
