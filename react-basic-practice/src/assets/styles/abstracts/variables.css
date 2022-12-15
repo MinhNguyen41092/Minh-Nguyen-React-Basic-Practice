@@ -1,10 +1,14 @@
 :root {
   /* Color */
   --color-primary: #707070;
+  --color-secondary: #c00000;
+  --color-tertiary: #e6e2e2;
+
   --color-white: #ffffff;
   --color-black: #222222;
 
   --color-quantity-button: #EFEFEF;
+  --color-loading: #0aa2d4;
 
   /* Font weight */
   --fw-regular: 300;

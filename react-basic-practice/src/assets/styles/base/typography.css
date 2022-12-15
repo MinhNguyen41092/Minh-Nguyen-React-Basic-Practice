@@ -19,10 +19,7 @@
   src: url('../../fonts/DMSans/DMSans-Bold.ttf') format('truetype');
 }
 
-:root {
-  font-size: 16px;
-}
-
 body {
   font-family: 'DMSans', sans-serif;
+  font-size: var(--fs-regular);
 }
