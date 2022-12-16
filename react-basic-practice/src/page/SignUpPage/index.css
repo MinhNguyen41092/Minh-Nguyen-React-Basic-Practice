@@ -29,11 +29,10 @@
 
 .form-sign-up-error-message {
   width: 100%;
-  font-size: var(--fs-regular);
   font-weight: var(--fw-bold);
-  color: var(--color-primary);
+  color: var(--color-secondary);
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .btn-sign-up {
