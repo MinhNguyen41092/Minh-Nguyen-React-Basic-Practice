@@ -11,11 +11,16 @@ import Logo from '../../components/common/Logo';
 import './index.css';
 
 const SignUpPage = () => {
+  const initialErrorMsgs = {
+    inputEmpty: '',
+    inputValid: '',
+  };
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState({});
-  const inputUsername = useRef(null);
-  const inputPassword = useRef(null);
-  const inputEmail = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
+
+  const handleSignUp = async (e) => {
+
+  };
 
   return (
     <>
@@ -34,8 +39,6 @@ const SignUpPage = () => {
             inputId="email"
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
-            refer={inputEmail}
-            // pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
           />
 
           <Input
@@ -44,8 +47,7 @@ const SignUpPage = () => {
             inputId="username"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
-            message="Invalid username"
-            refer={inputUsername}
+            messageErr="Invalid username"
             // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
           />
 
@@ -55,8 +57,7 @@ const SignUpPage = () => {
             inputId="password"
             cssClasses="input-form input-password"
             placeholder="Password at least 6 characters"
-            message="Invalid password"
-            refer={inputPassword}
+            messageErr="Invalid password"
             // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />
 

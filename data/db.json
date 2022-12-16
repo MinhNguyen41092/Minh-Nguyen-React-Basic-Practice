@@ -1,78 +1,90 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "userName": "Minh Nguyen",
-        "email": "minh@gmail.com",
-        "password": "1234abcd"
-      },
-      {
-        "id": 2,
-        "userName": "Huong Nguyen",
-        "email": "huong@gmail.com",
-        "password": "1234abcd"
-      }
-    ],
-    "products": [
-      {
-        "id": 1,
-        "name": "Lira Earrings",
-        "price": 20,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "id": 2,
-        "name": "Hal Earrings",
-        "price": 25,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "id": 3,
-        "name": "Lira Earrings",
-        "price": 20,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "id": 4,
-        "name": "Lira Earrings",
-        "price": 20,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "id": 5,
-        "name": "Lira Earrings",
-        "price": 20,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "id": 6,
-        "name": "Lira Earrings",
-        "price": 20,
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      }
-    ],
-    "cart": [
-      {
-        "userId": 1,
-        "listProducts":[
-          {
-            "productId": 1,
-            "quantity": 2
-          },
-          {
-            "productId": 2,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "userId": 2,
-        "listProducts":[
-          {
-            "productId": 1,
-            "quantity": 1
-          }
-        ]
-      }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "userName": "Minh Nguyen",
+      "email": "minh@gmail.com",
+      "password": "1234abcd"
+    },
+    {
+      "id": 2,
+      "userName": "Huong Nguyen",
+      "email": "huong@gmail.com",
+      "password": "1234abcd"
+    },
+    {
+      "id": "a8d0e751-f64b-19ca-68e9-939dc5430174",
+      "userName": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "24167bba-09dc-a091-08af-d6705111d641",
+      "userName": "as                    ",
+      "email": "minhng271@gmail.com",
+      "password": "1267sahdxjãbnc sad"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "name": "Hal Earrings",
+      "price": 25,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 3,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 4,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 5,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 6,
+      "name": "Lira Earrings",
+      "price": 20,
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ],
+  "cart": [
+    {
+      "userId": 1,
+      "listProducts": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "userId": 2,
+      "listProducts": [
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
 }
