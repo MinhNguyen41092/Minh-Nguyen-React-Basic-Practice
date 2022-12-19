@@ -12,18 +12,34 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 const SignUpPage = () => {
-  const initialErrorMsgs = {
-    inputEmpty: '',
-    inputValid: '',
+  // const initialErrorMsgs = {
+  //   inputEmpty: 'This field is required',
+  //   inputValid: '',
+  // };
+  const initialInput = {
+    inputEmail: '',
+    inputUserName: '',
+    inputPassword: '',
   };
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState({});
-  const inputUsername = useRef(null);
-  const inputPassword = useRef(null);
-  const inputEmail = useRef(null);
+  // const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
+  const [inputValue, setInputValue] = useState(initialInput);
 
-  const handleSignUp = () => {
+  const handleInputValue = (value) => {
+    setInputValue({ ...inputValue, ...value });
+  };
 
+  const handleSignUp = (e) => {
+    try {
+      e.preventDefault();
+
+      setIsSignUpLoading(true);
+
+      
+    } catch (error) {
+      alert(`Registration Fail. Please try again ${error}`);
+      setIsSignUpLoading(false);
+    }
   };
 
   return (
@@ -35,36 +51,41 @@ const SignUpPage = () => {
         <h2 className="form-sign-up-heading">Register</h2>
         <FormGroup
           className="form-sign-up"
-          handleSubmit={handleSignUp  }
+          handleSubmit={handleSignUp}
         >
           <Input
             label="Email:"
             inputType="text"
-            inputId="email"
+            name="inputEmail"
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
-            refer={inputEmail}
+            handleInput={handleInputValue}
           />
 
           <Input
             label="Username:"
             inputType="text"
-            inputId="username"
+            name="inputUserName"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
-            messageErr="Invalid username"
+            // messageErr="Invalid username"
+            handleInput={handleInputValue}
             // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
           />
 
           <Input
             label="Password:"
             inputType="password"
-            inputId="password"
+            name="inputPassword"
             cssClasses="input-form input-password"
             placeholder="Password at least 6 characters"
-            messageErr="Invalid password"
+            // messageErr="Invalid password"
+            handleInput={handleInputValue}
             // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />
+
+          {/* {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>} */}
+
           {
             isSignUpLoading
               ? (
