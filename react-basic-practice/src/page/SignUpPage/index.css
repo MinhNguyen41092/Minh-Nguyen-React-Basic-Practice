@@ -13,14 +13,6 @@
   background-color: var( --color-tertiary);
 }
 
-.form.form-sign-up {
-  display: flex;
-  flex-direction: column;
-  width: 610px;
-  height: max-content;
-  padding: 30px 20px;
-}
-
 .form-sign-up-heading {
   margin-inline: auto;
   font-size: var(--fs-exLarge);
