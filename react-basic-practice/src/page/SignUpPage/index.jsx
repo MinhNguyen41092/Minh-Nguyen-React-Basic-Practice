@@ -1,21 +1,26 @@
 import React, { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import uuid from 'react-uuid';
+// import { Link, useNavigate } from 'react-router-dom';
+// import uuid from 'react-uuid';
 
-import { createUser, getUserByMail } from '../../services/apiUsers';
-import { createUserCart } from '../../services/apiCart';
+// import { createUser, getUserByMail } from '../../services/apiUsers';
+// import { createUserCart } from '../../services/apiCart';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 import Logo from '../../components/common/Logo';
+import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 const SignUpPage = () => {
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState({});
+  // const [errorMessage, setErrorMessage] = useState({});
   const inputUsername = useRef(null);
   const inputPassword = useRef(null);
   const inputEmail = useRef(null);
+
+  const handleSignUp = () => {
+
+  };
 
   return (
     <>
@@ -24,9 +29,9 @@ const SignUpPage = () => {
       </header>
       <main className="sign-up main">
         <h2 className="form-sign-up-heading">Register</h2>
-        <form
-          className="form form-sign-up"
-          onSubmit={handleSignUp}
+        <FormGroup
+          className="form-sign-up"
+          handleSubmit={handleSignUp  }
         >
           <Input
             label="Email:"
@@ -35,7 +40,6 @@ const SignUpPage = () => {
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             refer={inputEmail}
-            // pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
           />
 
           <Input
@@ -59,9 +63,6 @@ const SignUpPage = () => {
             refer={inputPassword}
             // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />
-
-          {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>}
-
           {
             isSignUpLoading
               ? (
@@ -80,14 +81,15 @@ const SignUpPage = () => {
                 />
               )
             }
-          <span className="form-message">
-            Already have an account?
-            {' '}
-            {/* <Link to="/login">
+        </FormGroup>
+
+        <span className="form-message">
+          Already have an account?
+          {' '}
+          {/* <Link to="/login">
               Login
             </Link> */}
-          </span>
-        </form>
+        </span>
       </main>
     </>
   );
