@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 // import uuid from 'react-uuid';
 
@@ -13,9 +13,9 @@ import './index.css';
 
 const SignUpPage = () => {
   const initialErrorMsgs = {
-    errMsgEmail: '',
-    errMsgUserName: '',
-    errMsgPassword: '',
+    inputEmail: '',
+    inputUserName: '',
+    inputPassword: '',
   };
   const initialInput = {
     inputEmail: '',
@@ -31,8 +31,26 @@ const SignUpPage = () => {
   };
 
   const checkEmpty = () => {
-    if (inputValue.inputEmail === '') {
-      setErrorMessage({ ...errorMessage.errMsgEmail = 'This input is required.' });
+    // switch (inputValue) {
+    //   case inputValue.inputEmail = '':
+    //     setErrorMessage({ ...errorMessage, errMsgEmail: 'This input is required.' });
+    //     console.log('email');
+    //     break;
+    //   case inputValue.inputUserName = '':
+    //     setErrorMessage({ ...errorMessage, errMsgUserName: 'This input is required.' });
+    //     console.log('name');
+    //     break;
+    //   default:
+    //     setErrorMessage({ ...errorMessage, errMsgPassword: 'This input is required.' });
+    //     console.log('pass');
+    //     break;
+    // }
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in inputValue) {
+      if (inputValue[key] === '') {
+        // setErrorMessage({ ...errorMessage, [key]: 'This input is required.' });
+        setErrorMessage((preState) => { ...preState, [key] : 'This input is required.'; });
+      }
     }
   };
 
@@ -45,8 +63,6 @@ const SignUpPage = () => {
       checkEmpty();
 
       setIsSignUpLoading(false);
-
-      console.log(errorMessage);
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
       setIsSignUpLoading(false);
@@ -71,7 +87,7 @@ const SignUpPage = () => {
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             handleInput={handleInputValue}
-            messageErr={errorMessage.errMsgEmail}
+            // messageErr={errorMessage.errMsgEmail}
           />
 
           <Input

@@ -25,25 +25,27 @@ const Input = (props) => {
   };
 
   return (
-    <div className="input-group">
-      <label htmlFor={htmlFor}>
-        {label}
-      </label>
-      <input
-        type={inputType}
-        name={name}
-        className={`input-text ${cssClasses}`}
-        onChange={handleChange}
-        placeholder={placeholder}
-        value={value}
-        pattern={pattern}
-        defaultValue={defaultValue}
-        ref={inputRef}
-      />
+    <div className="input-form">
+      <div className="input-group">
+        <label htmlFor={htmlFor}>
+          {label}
+        </label>
+        <input
+          type={inputType}
+          name={name}
+          className={`input-text ${cssClasses}`}
+          onChange={handleChange}
+          placeholder={placeholder}
+          value={value}
+          pattern={pattern}
+          defaultValue={defaultValue}
+          ref={inputRef}
+        />
+      </div>
       {messageErr && (
-        <span className="input-error">
-          {messageErr}
-        </span>
+      <span className="input-error">
+        {messageErr}
+      </span>
       )}
     </div>
   );
