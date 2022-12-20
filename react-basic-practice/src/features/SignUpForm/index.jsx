@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+import { REGEXP } from '../../constants/regexp';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -7,7 +9,7 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
-const SignUpPage = () => {
+const SignUpForm = () => {
   const initialErrorMsgs = {
     inputEmail: '',
     inputUserName: '',
@@ -27,25 +29,30 @@ const SignUpPage = () => {
   };
 
   const checkEmpty = () => {
-    // switch (inputValue) {
-    //   case inputValue.inputEmail = '':
-    //     setErrorMessage({ ...errorMessage, errMsgEmail: 'This input is required.' });
-    //     console.log('email');
-    //     break;
-    //   case inputValue.inputUserName = '':
-    //     setErrorMessage({ ...errorMessage, errMsgUserName: 'This input is required.' });
-    //     console.log('name');
-    //     break;
-    //   default:
-    //     setErrorMessage({ ...errorMessage, errMsgPassword: 'This input is required.' });
-    //     console.log('pass');
-    //     break;
-    // }
-    // eslint-disable-next-line no-restricted-syntax
     for (const key in inputValue) {
       if (inputValue[key] === '') {
-        // setErrorMessage({ ...errorMessage, [key]: 'This input is required.' });
-        setErrorMessage((preState) => { ...preState, [key] : 'This input is required.'; });
+        setErrorMessage((preMsg) => ({
+          ...preMsg, [key]: 'This input is required.',
+        }));
+      } else {
+        setErrorMessage((preMsg) => ({
+          ...preMsg, [key]: '',
+        }));
+      }
+    }
+  };
+
+  const checkValidate = () => {
+    if (inputValue.inputEmail !== '') {
+      if (inputValue.inputEmail !== REGEXP.REGEXP_MAIL) {
+        setErrorMessage((preMsg) => ({
+          ...preMsg, inputEmail: 'The email entered is not in the correct format, please try again',
+        }));
+      }
+      if (inputValue.inputPassword !== REGEXP.REGEXP_PASSWORD) {
+        setErrorMessage((preMsg) => ({
+          ...preMsg, inputPassword: 'The password entered is not in the correct format, please try again',
+        }));
       }
     }
   };
@@ -57,6 +64,7 @@ const SignUpPage = () => {
       setIsSignUpLoading(true);
 
       checkEmpty();
+      checkValidate();
 
       setIsSignUpLoading(false);
     } catch (error) {
@@ -83,7 +91,7 @@ const SignUpPage = () => {
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             handleInput={handleInputValue}
-            // messageErr={errorMessage.errMsgEmail}
+            messageErr={errorMessage.inputEmail}
           />
 
           <Input
@@ -93,7 +101,7 @@ const SignUpPage = () => {
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
             handleInput={handleInputValue}
-            // messageErr={errorMessage.errMsgUserName}
+            messageErr={errorMessage.inputUserName}
             // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
           />
 
@@ -103,7 +111,7 @@ const SignUpPage = () => {
             name="inputPassword"
             cssClasses="input-form input-password"
             placeholder="Password at least 6 characters"
-            // messageErr={errorMessage.errMsgPassword}
+            messageErr={errorMessage.inputPassword}
             handleInput={handleInputValue}
             // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />

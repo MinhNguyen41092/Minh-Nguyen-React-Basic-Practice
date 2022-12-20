@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'react/function-component-definition': 'off',
+    'no-restricted-syntax': 'off',
     'import/prefer-default-export': 'off',
   },
 };
