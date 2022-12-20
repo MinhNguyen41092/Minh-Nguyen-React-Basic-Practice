@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import uuid from 'react-uuid';
-
-// import { createUser, getUserByMail } from '../../services/apiUsers';
-// import { createUserCart } from '../../services/apiCart';
+import React, { useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -146,4 +142,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUpForm;
