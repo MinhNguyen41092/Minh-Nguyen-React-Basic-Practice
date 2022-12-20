@@ -1,17 +1,11 @@
 import React, { useRef, useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import uuid from 'react-uuid';
-
-// import { createUser, getUserByMail } from '../../services/apiUsers';
-// import { createUserCart } from '../../services/apiCart';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 import Logo from '../../components/common/Logo';
-import FormGroup from '../../components/FormGroup';
 import './index.css';
 
-const SignUpPage = () => {
+const SignUpForm = () => {
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
   // const [errorMessage, setErrorMessage] = useState({});
   const inputUsername = useRef(null);
@@ -29,9 +23,9 @@ const SignUpPage = () => {
       </header>
       <main className="sign-up main">
         <h2 className="form-sign-up-heading">Register</h2>
-        <FormGroup
-          className="form-sign-up"
-          handleSubmit={handleSignUp  }
+        <form
+          className="form form-sign-up"
+          onSubmit={handleSignUp}
         >
           <Input
             label="Email:"
@@ -81,7 +75,7 @@ const SignUpPage = () => {
                 />
               )
             }
-        </FormGroup>
+        </form>
 
         <span className="form-message">
           Already have an account?
@@ -95,4 +89,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUpForm;
