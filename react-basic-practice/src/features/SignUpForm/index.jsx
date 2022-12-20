@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 import Logo from '../../components/common/Logo';
+import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 const SignUpForm = () => {
@@ -23,9 +25,9 @@ const SignUpForm = () => {
       </header>
       <main className="sign-up main">
         <h2 className="form-sign-up-heading">Register</h2>
-        <form
-          className="form form-sign-up"
-          onSubmit={handleSignUp}
+        <FormGroup
+          className="form-sign-up"
+          handleSubmit={handleSignUp}
         >
           <Input
             label="Email:"
@@ -75,7 +77,7 @@ const SignUpForm = () => {
                 />
               )
             }
-        </form>
+        </FormGroup>
 
         <span className="form-message">
           Already have an account?
