@@ -12,21 +12,28 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 const SignUpPage = () => {
-  // const initialErrorMsgs = {
-  //   inputEmpty: 'This field is required',
-  //   inputValid: '',
-  // };
+  const initialErrorMsgs = {
+    errMsgEmail: '',
+    errMsgUserName: '',
+    errMsgPassword: '',
+  };
   const initialInput = {
     inputEmail: '',
     inputUserName: '',
     inputPassword: '',
   };
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
+  const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
+  };
+
+  const checkEmpty = () => {
+    if (inputValue.inputEmail === '') {
+      setErrorMessage({ ...errorMessage.errMsgEmail = 'This input is required.' });
+    }
   };
 
   const handleSignUp = (e) => {
@@ -35,7 +42,11 @@ const SignUpPage = () => {
 
       setIsSignUpLoading(true);
 
-      
+      checkEmpty();
+
+      setIsSignUpLoading(false);
+
+      console.log(errorMessage);
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
       setIsSignUpLoading(false);
@@ -60,6 +71,7 @@ const SignUpPage = () => {
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             handleInput={handleInputValue}
+            messageErr={errorMessage.errMsgEmail}
           />
 
           <Input
@@ -68,8 +80,8 @@ const SignUpPage = () => {
             name="inputUserName"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
-            // messageErr="Invalid username"
             handleInput={handleInputValue}
+            // messageErr={errorMessage.errMsgUserName}
             // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
           />
 
@@ -79,7 +91,7 @@ const SignUpPage = () => {
             name="inputPassword"
             cssClasses="input-form input-password"
             placeholder="Password at least 6 characters"
-            // messageErr="Invalid password"
+            // messageErr={errorMessage.errMsgPassword}
             handleInput={handleInputValue}
             // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />
