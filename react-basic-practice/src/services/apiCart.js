@@ -5,7 +5,7 @@ import { CART_API } from '../constants/api';
  * Add new cart for new user
  * @param {object} data userId and empty list item
  */
-export const createUser = async (data) => {
+export const createUserCart = async (data) => {
   const res = await axios.post(CART_API, data);
 
   return res.data;

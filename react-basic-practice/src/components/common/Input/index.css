@@ -1,20 +1,18 @@
-.input-cover {
+.input-group {
   display: flex;
   align-items: center;
-  max-width: 500px;
+  justify-content: space-between;
 }
 
 .input-text {
   box-sizing: border-box;
   line-height: 1.4em;
   margin: 0px 5px;
+  width: 70%;
 }
 
-.input-login {
-  width: 100%;
+.input-form {
   padding: 12px 10px;
-  box-shadow: none;
-  color: var(--dorado);
   background-color: var(--grey-light);
   border: none;
   border-radius: 4px;
