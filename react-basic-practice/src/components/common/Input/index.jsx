@@ -12,8 +12,8 @@ const Input = (props) => {
     placeholder,
     pattern,
     defaultValue,
-    handleInput,
-    messageErr,
+    handleInputChange,
+    errorMessage,
   } = props;
 
   const inputRef = useRef();
@@ -21,30 +21,28 @@ const Input = (props) => {
   const handleChange = (e) => {
     const inputValue = { [e.target.name]: inputRef.current.value };
 
-    handleInput(inputValue);
+    handleInputChange(inputValue);
   };
 
   return (
-    <div className="input-form">
-      <div className="input-group">
-        <label htmlFor={htmlFor}>
-          {label}
-        </label>
-        <input
-          type={inputType}
-          name={name}
-          className={`input-text ${cssClasses}`}
-          onChange={handleChange}
-          placeholder={placeholder}
-          value={value}
-          pattern={pattern}
-          defaultValue={defaultValue}
-          ref={inputRef}
-        />
-      </div>
-      {messageErr && (
+    <div className="input-group">
+      <label htmlFor={htmlFor}>
+        {label}
+      </label>
+      <input
+        type={inputType}
+        name={name}
+        className={`input-text ${cssClasses}`}
+        onChange={handleChange}
+        placeholder={placeholder}
+        value={value}
+        pattern={pattern}
+        defaultValue={defaultValue}
+        ref={inputRef}
+      />
+      {errorMessage && (
       <span className="input-error">
-        {messageErr}
+        {errorMessage}
       </span>
       )}
     </div>
