@@ -1,8 +1,11 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import SignUpForm from '../features/SignUpForm';
 
 const SignUpPage = () => (
-  <SignUpForm />
+  <BrowserRouter>
+    <SignUpForm />
+  </BrowserRouter>
 );
 
 export default SignUpPage;

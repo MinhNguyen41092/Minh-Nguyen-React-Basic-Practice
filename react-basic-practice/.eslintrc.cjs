@@ -21,5 +21,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-restricted-syntax': 'off',
     'import/prefer-default-export': 'off',
+    'no-unused-expressions': 'off',
   },
 };

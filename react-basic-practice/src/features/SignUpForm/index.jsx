@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import { REGEXP } from '../../constants/regexp';
@@ -32,28 +33,35 @@ const SignUpForm = () => {
     for (const key in inputValue) {
       if (inputValue[key] === '') {
         setErrorMessage((preMsg) => ({
-          ...preMsg, [key]: 'This input is required.',
+          ...preMsg,
+          [key]: 'This input is required.',
         }));
       } else {
         setErrorMessage((preMsg) => ({
-          ...preMsg, [key]: '',
+          ...preMsg,
+          [key]: '',
         }));
       }
     }
   };
 
   const checkValidate = () => {
+    if (inputValue.inputPassword !== '') {
+      REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: 'Invalid password' }));
+    }
+
     if (inputValue.inputEmail !== '') {
-      if (inputValue.inputEmail !== REGEXP.REGEXP_MAIL) {
-        setErrorMessage((preMsg) => ({
-          ...preMsg, inputEmail: 'The email entered is not in the correct format, please try again',
-        }));
-      }
-      if (inputValue.inputPassword !== REGEXP.REGEXP_PASSWORD) {
-        setErrorMessage((preMsg) => ({
-          ...preMsg, inputPassword: 'The password entered is not in the correct format, please try again',
-        }));
-      }
+      REGEXP.REGEXP_MAIL.test(inputValue.inputEmail)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: 'Invalid email' }));
+    }
+
+    if (inputValue.inputUserName !== '') {
+      REGEXP.REGEXP_USER_NAME.test(inputValue.inputUserName)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: 'Invalid user name' }));
     }
   };
 
@@ -102,7 +110,6 @@ const SignUpForm = () => {
             placeholder="Minh Nguyen"
             handleInput={handleInputValue}
             messageErr={errorMessage.inputUserName}
-            // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
           />
 
           <Input
@@ -113,7 +120,6 @@ const SignUpForm = () => {
             placeholder="Password at least 6 characters"
             messageErr={errorMessage.inputPassword}
             handleInput={handleInputValue}
-            // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
           />
 
           {/* {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>} */}
@@ -141,9 +147,9 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          {/* <Link to="/login">
-              Login
-            </Link> */}
+          <Link to="/login">
+            Login
+          </Link>
         </span>
       </main>
     </>
