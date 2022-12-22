@@ -1,5 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import REGEXP from '../../constants/regexp';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -7,15 +10,78 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
+const initialErrorMsgs = {
+  inputEmail: '',
+  inputUserName: '',
+  inputPassword: '',
+};
+
+const initialInput = {
+  inputEmail: '',
+  inputUserName: '',
+  inputPassword: '',
+};
+
+
 const SignUpForm = () => {
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState({});
-  const inputUsername = useRef(null);
-  const inputPassword = useRef(null);
-  const inputEmail = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
+  const [inputValue, setInputValue] = useState(initialInput);
 
-  const handleSignUp = () => {
+  const handleInputValue = (value) => {
+    setInputValue({ ...inputValue, ...value });
+  };
 
+  const validation = () => {
+    for (const key in inputValue) {
+      if (inputValue[key] === '') {
+        setErrorMessage((preMsg) => ({
+          ...preMsg,
+          [key]: 'This input is required.',
+        }));
+      } else {
+        setErrorMessage((preMsg) => ({
+          ...preMsg,
+          [key]: '',
+        }));
+      }
+    }
+  };
+
+  const validateInputs = () => {
+    if (inputValue.inputPassword !== '') {
+      REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: 'Invalid password' }));
+    }
+
+    if (inputValue.inputEmail !== '') {
+      REGEXP.REGEXP_MAIL.test(inputValue.inputEmail)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: 'Invalid email' }));
+    }
+
+    if (inputValue.inputUserName !== '') {
+      REGEXP.REGEXP_USER_NAME.test(inputValue.inputUserName)
+        ? setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: '' }))
+        : setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: 'Invalid user name' }));
+    }
+  };
+
+  const handleSignUp = (e) => {
+    try {
+      e.preventDefault();
+
+      setIsSignUpLoading(true);
+
+      validation();
+      validateInputs();
+
+      setIsSignUpLoading(false);
+    } catch (error) {
+      alert(`Registration Fail. Please try again ${error}`);
+      setIsSignUpLoading(false);
+    }
   };
 
   return (
@@ -32,33 +98,35 @@ const SignUpForm = () => {
           <Input
             label="Email:"
             inputType="text"
-            inputId="email"
+            name="inputEmail"
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
-            refer={inputEmail}
+            handleInputChange={handleInputValue}
+            errorMessage={errorMessage.inputEmail}
           />
 
           <Input
             label="Username:"
             inputType="text"
-            inputId="username"
+            name="inputUserName"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
-            message="Invalid username"
-            refer={inputUsername}
-            // pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
+            handleInputChange={handleInputValue}
+            errorMessage={errorMessage.inputUserName}
           />
 
           <Input
             label="Password:"
             inputType="password"
-            inputId="password"
+            name="inputPassword"
             cssClasses="input-form input-password"
-            placeholder="Password at least 6 characters"
-            message="Invalid password"
-            refer={inputPassword}
-            // pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$"
+            placeholder="Enter your password."
+            errorMessage={errorMessage.inputPassword}
+            handleInputChange={handleInputValue}
           />
+
+          {/* {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>} */}
+
           {
             isSignUpLoading
               ? (
@@ -82,9 +150,9 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          {/* <Link to="/login">
-              Login
-            </Link> */}
+          <Link to="/login">
+            Login
+          </Link>
         </span>
       </main>
     </>

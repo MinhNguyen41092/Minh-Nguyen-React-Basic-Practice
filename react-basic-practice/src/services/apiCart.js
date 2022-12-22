@@ -19,6 +19,7 @@ export const createUserCart = async (data) => {
  */
 export const getCartByUserId = async (userId) => {
   const res = await axios.get(`${CART_API}?userId=${userId}`);
+
   return res.data;
 };
 

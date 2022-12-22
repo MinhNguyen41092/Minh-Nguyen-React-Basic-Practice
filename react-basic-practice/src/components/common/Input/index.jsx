@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './index.css';
 
 const Input = (props) => {
@@ -6,15 +6,23 @@ const Input = (props) => {
     label,
     htmlFor,
     inputType,
-    inputId,
+    name,
     cssClasses,
     value,
-    refer,
-    onChange,
     placeholder,
     pattern,
     defaultValue,
+    handleInputChange,
+    errorMessage,
   } = props;
+
+  const inputRef = useRef();
+
+  const handleChange = (e) => {
+    const inputValue = { [e.target.name]: inputRef.current.value };
+
+    handleInputChange(inputValue);
+  };
 
   return (
     <div className="input-group">
@@ -23,15 +31,20 @@ const Input = (props) => {
       </label>
       <input
         type={inputType}
-        id={inputId}
+        name={name}
         className={`input-text ${cssClasses}`}
-        onChange={onChange}
+        onChange={handleChange}
         placeholder={placeholder}
         value={value}
         pattern={pattern}
         defaultValue={defaultValue}
-        ref={refer}
+        ref={inputRef}
       />
+      {errorMessage && (
+      <span className="input-error">
+        {errorMessage}
+      </span>
+      )}
     </div>
   );
 };
