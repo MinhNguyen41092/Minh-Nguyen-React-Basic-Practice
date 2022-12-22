@@ -1,10 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SignUpPage from './page/SignUpPage';
 
 function App() {
   return (
     <div className="App">
-      <SignUpPage />
+      <Router>
+        <SignUpPage />
+      </Router>
     </div>
   );
 }

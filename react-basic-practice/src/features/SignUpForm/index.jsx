@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import REGEXP from '../../constants/regexp';
@@ -10,10 +10,13 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
+import { createUser, getAllUsers } from '../../services/apiUsers';
+
 const initialErrorMsgs = {
   inputEmail: '',
   inputUserName: '',
   inputPassword: '',
+  form: '',
 };
 
 const initialInput = {
@@ -22,17 +25,19 @@ const initialInput = {
   inputPassword: '',
 };
 
-
 const SignUpForm = () => {
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
+  const [valueAvailable, setValueAvailable] = useState(false);
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
+  const navigate = useNavigate();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
   };
 
   const validation = () => {
+    console.log('empty');
     for (const key in inputValue) {
       if (inputValue[key] === '') {
         setErrorMessage((preMsg) => ({
@@ -49,6 +54,7 @@ const SignUpForm = () => {
   };
 
   const validateInputs = () => {
+    console.log('valid');
     if (inputValue.inputPassword !== '') {
       REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
         ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
@@ -68,7 +74,18 @@ const SignUpForm = () => {
     }
   };
 
-  const handleSignUp = (e) => {
+  // useEffect(() => {
+  //   console.log('end');
+  //   const errorMsgArr = Object.values(errorMessage);
+  //   const checkError = errorMsgArr.every((error) => error === '');
+  //   if (checkError) {
+  //     setValueAvailable(true);
+  //   } else {
+  //     setValueAvailable(false);
+  //   }
+  // });
+
+  const handleSignUp = async (e) => {
     try {
       e.preventDefault();
 
@@ -76,6 +93,28 @@ const SignUpForm = () => {
 
       validation();
       validateInputs();
+
+      const dataUser = await getAllUsers();
+      // Check email already exists.
+      const validate = dataUser.some((user) => user.email === inputValue.inputEmail);
+
+      if (validate) {
+        // Show error if email already exists.
+        setErrorMessage((preMsg) => ({
+          ...preMsg,
+          form: 'Email is already in use. Please try another one.',
+        }));
+      } else {
+        // Send data to API to create new users.
+        const newUser = {
+          id: uuidv4(),
+          username: inputValue.inputUserName || '',
+          password: inputValue.inputPassword || '',
+        };
+
+        await createUser(newUser);
+        navigate('/login');
+      }
 
       setIsSignUpLoading(false);
     } catch (error) {
@@ -150,7 +189,7 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          <Link to="/login">
+          <Link to="/login" className="open-login-page">
             Login
           </Link>
         </span>
