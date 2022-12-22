@@ -7,15 +7,9 @@
       "password": "1234abcd"
     },
     {
-      "id": 2,
-      "userName": "Huong Nguyen",
-      "email": "huong@gmail.com",
-      "password": "1234abcd"
-    },
-    {
-      "id": "8bbb796f-aeff-4f89-85d7-ba296cc8e9f9",
-      "username": "",
-      "password": ""
+      "id": "a3dd917c-4fff-4850-8b70-3dbfd9e7fce3",
+      "username": "minhng271@gmail.com",
+      "password": "minhng271@gmail.com"
     }
   ],
   "products": [

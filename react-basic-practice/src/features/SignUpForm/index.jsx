@@ -14,16 +14,16 @@ import { createUser, getAllUsers } from '../../services/Users';
 import Validate from '../../helpers/validate';
 
 const initialErrorMsgs = {
-  inputEmail: '',
-  inputUserName: '',
-  inputPassword: '',
+  email: '',
+  userName: '',
+  password: '',
   form: '',
 };
 
 const initialInput = {
-  inputEmail: '',
-  inputUserName: '',
-  inputPassword: '',
+  email: '',
+  userName: '',
+  password: '',
 };
 
 const SignUpForm = () => {
@@ -36,70 +36,39 @@ const SignUpForm = () => {
     setInputValue({ ...inputValue, ...value });
   };
 
-  const validateInputs = () => {
-    for (const key in inputValue) {
-      if (inputValue[key] === '') {
-        setErrorMessage((preMsg) => ({
-          ...preMsg,
-          [key]: 'This input is required.',
-        }));
-      } else {
-        setErrorMessage((preMsg) => ({
-          ...preMsg,
-          [key]: '',
-        }));
-      }
-    }
-
-    Validate(inputValue);
-
-    if (inputValue.inputPassword !== '') {
-      REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: 'Invalid password' }));
-    }
-
-    if (inputValue.inputEmail !== '') {
-      REGEXP.REGEXP_MAIL.test(inputValue.inputEmail)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: 'Invalid email' }));
-    }
-
-    if (inputValue.inputUserName !== '') {
-      REGEXP.REGEXP_USER_NAME.test(inputValue.inputUserName)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: 'Invalid user name' }));
-    }
-  };
-
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
 
       setIsSignUpLoading(true);
 
-      validateInputs();
+      // Check validation input
+      const validateInput = Validate(inputValue);
+      setErrorMessage(validateInput.validateError);
 
       const dataUser = await getAllUsers();
       // Check email already exists.
-      const validate = dataUser.some((user) => user.email === inputValue.inputEmail);
+      const validate = dataUser.some((user) => user.email === inputValue.email);
+      console.log(validateInput.error);
 
-      if (validate) {
-        // Show error if email already exists.
-        setErrorMessage((preMsg) => ({
-          ...preMsg,
-          form: 'Email is already in use. Please try another one.',
-        }));
-      } else {
-        // Send data to API to create new users.
-        const newUser = {
-          id: uuidv4(),
-          username: inputValue.inputUserName || '',
-          password: inputValue.inputPassword || '',
-        };
-
-        await createUser(newUser);
-        navigate('/login');
+      if (!validateInput.error) {
+        if (validate) {
+          // Show error if email already exists.
+          setErrorMessage((preMsg) => ({
+            ...preMsg,
+            form: 'Email is already in use. Please try another one.',
+          }));
+        } else {
+          // Send data to API to create new users.
+          const newUser = {
+            id: uuidv4(),
+            username: inputValue.userName || '',
+            password: inputValue.password || '',
+          };
+  
+          await createUser(newUser);
+          navigate('/login');
+        }
       }
 
       setIsSignUpLoading(false);
@@ -123,30 +92,30 @@ const SignUpForm = () => {
           <Input
             label="Email:"
             inputType="text"
-            name="inputEmail"
+            name="email"
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.inputEmail}
+            errorMessage={errorMessage.email}
           />
 
           <Input
             label="Username:"
             inputType="text"
-            name="inputUserName"
+            name="userName"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.inputUserName}
+            errorMessage={errorMessage.userName}
           />
 
           <Input
             label="Password:"
             inputType="password"
-            name="inputPassword"
+            name="password"
             cssClasses="input-form input-password"
             placeholder="Enter your password."
-            errorMessage={errorMessage.inputPassword}
+            errorMessage={errorMessage.password}
             handleInputChange={handleInputValue}
           />
 
