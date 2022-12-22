@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -10,7 +10,8 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
-import { createUser, getAllUsers } from '../../services/apiUsers';
+import { createUser, getAllUsers } from '../../services/Users';
+import Validate from '../../helpers/validate';
 
 const initialErrorMsgs = {
   inputEmail: '',
@@ -27,7 +28,6 @@ const initialInput = {
 
 const SignUpForm = () => {
   const [isSignUpLoading, setIsSignUpLoading] = useState(false);
-  const [valueAvailable, setValueAvailable] = useState(false);
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
@@ -36,8 +36,7 @@ const SignUpForm = () => {
     setInputValue({ ...inputValue, ...value });
   };
 
-  const validation = () => {
-    console.log('empty');
+  const validateInputs = () => {
     for (const key in inputValue) {
       if (inputValue[key] === '') {
         setErrorMessage((preMsg) => ({
@@ -51,10 +50,9 @@ const SignUpForm = () => {
         }));
       }
     }
-  };
 
-  const validateInputs = () => {
-    console.log('valid');
+    Validate(inputValue);
+
     if (inputValue.inputPassword !== '') {
       REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
         ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
@@ -74,24 +72,12 @@ const SignUpForm = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log('end');
-  //   const errorMsgArr = Object.values(errorMessage);
-  //   const checkError = errorMsgArr.every((error) => error === '');
-  //   if (checkError) {
-  //     setValueAvailable(true);
-  //   } else {
-  //     setValueAvailable(false);
-  //   }
-  // });
-
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
 
       setIsSignUpLoading(true);
 
-      validation();
       validateInputs();
 
       const dataUser = await getAllUsers();
@@ -164,7 +150,7 @@ const SignUpForm = () => {
             handleInputChange={handleInputValue}
           />
 
-          {/* {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>} */}
+          {errorMessage.form && <p className="form-sign-up-error-message">{errorMessage.form}</p>}
 
           {
             isSignUpLoading

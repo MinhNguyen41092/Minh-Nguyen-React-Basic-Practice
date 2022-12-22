@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USERS_API } from '../constants/api';
+import { USERS_API } from '../../constants/api';
 
 export const getAllUsers = async () => {
   const res = await axios.get(`${USERS_API}`);

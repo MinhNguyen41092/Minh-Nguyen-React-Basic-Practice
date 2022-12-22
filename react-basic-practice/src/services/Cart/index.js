@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CART_API } from '../constants/api';
+import { CART_API } from '../../constants/api';
 
 /**
  * Add new cart for new user

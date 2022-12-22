@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PRODUCTS_API } from '../constants/api';
+import { PRODUCTS_API } from '../../constants/api';
 
 /**
  * Get data product by productId
