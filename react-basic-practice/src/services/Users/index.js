@@ -36,7 +36,5 @@ export const getUserByMail = async (mail) => {
  * @param {object} data user's information (user name, email, password)
  */
 export const createUser = async (data) => {
-  const res = await axios.post(USERS_API, data);
-
-  return res.data;
+  await axios.post(USERS_API, data);
 };

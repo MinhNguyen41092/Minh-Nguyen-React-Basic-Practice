@@ -9,6 +9,7 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 import { createUser, getAllUsers } from '../../services/Users';
+import { createNewCart } from '../../services/Cart';
 import Validate from '../../helpers/validate';
 import { useLoading } from '../../contexts/loading';
 
@@ -61,10 +62,17 @@ const SignUpForm = () => {
           const newUser = {
             id: uuidv4(),
             username: inputValue.userName || '',
+            email: inputValue.email || '',
             password: inputValue.password || '',
           };
 
+          const newCart = {
+            id: newUser.id,
+            listProducts: [],
+          };
           await createUser(newUser);
+          await createNewCart(newCart);
+
           navigate('/login');
         }
       }

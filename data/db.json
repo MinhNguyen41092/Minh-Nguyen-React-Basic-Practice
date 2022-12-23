@@ -5,6 +5,12 @@
       "userName": "Minh Nguyen",
       "email": "minh@gmail.com",
       "password": "1234abcd"
+    },
+    {
+      "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
+      "username": "minhng8976",
+      "email": "minhng271@gmail.com",
+      "password": "minhng87654"
     }
   ],
   "products": [
@@ -47,26 +53,12 @@
   ],
   "cart": [
     {
-      "userId": 1,
-      "listProducts": [
-        {
-          "productId": 1,
-          "quantity": 2
-        },
-        {
-          "productId": 2,
-          "quantity": 1
-        }
-      ]
+      "id": 1,
+      "listProducts": []
     },
     {
-      "userId": 2,
-      "listProducts": [
-        {
-          "productId": 1,
-          "quantity": 1
-        }
-      ]
+      "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
+      "listProducts": []
     }
   ]
 }
