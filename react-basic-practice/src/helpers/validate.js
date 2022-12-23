@@ -1,6 +1,6 @@
 import REGEXP from '../constants/regexp';
 
-const Validate = (dataInput) => {
+const validateInput = (dataInput) => {
   let validateError = {};
   let error = false;
 
@@ -30,4 +30,4 @@ const Validate = (dataInput) => {
   };
 };
 
-export default Validate;
+export default validateInput;

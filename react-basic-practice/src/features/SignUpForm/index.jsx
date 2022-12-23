@@ -10,7 +10,7 @@ import './index.css';
 
 import { createUser, getAllUsers } from '../../services/Users';
 import { createNewCart } from '../../services/Cart';
-import Validate from '../../helpers/validate';
+import validateInput from '../../helpers/validate';
 import { useLoading } from '../../contexts/loading';
 
 const initialErrorMsgs = {
@@ -43,15 +43,15 @@ const SignUpForm = () => {
       show();
 
       // Check validation input
-      const validateInput = Validate(inputValue);
-      setErrorMessage(validateInput.validateError);
+      const errorValid = validateInput(inputValue);
+      setErrorMessage(errorValid.validateError);
 
       // Check email already exists.
       const dataUser = await getAllUsers();
-      const validate = dataUser.some((user) => user.email === inputValue.email);
+      const haveUser = dataUser.some((user) => user.email === inputValue.email);
 
       if (!validateInput.error) {
-        if (validate) {
+        if (haveUser) {
           // Show error if email already exists.
           setErrorMessage((preMsg) => ({
             ...preMsg,
