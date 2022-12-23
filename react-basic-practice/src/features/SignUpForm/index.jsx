@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-import REGEXP from '../../constants/regexp';
-
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 import Logo from '../../components/common/Logo';
@@ -12,6 +10,7 @@ import './index.css';
 
 import { createUser, getAllUsers } from '../../services/Users';
 import Validate from '../../helpers/validate';
+import { useLoading } from '../../contexts/loading';
 
 const initialErrorMsgs = {
   email: '',
@@ -27,10 +26,10 @@ const initialInput = {
 };
 
 const SignUpForm = () => {
-  const [isSignUpLoading, setIsSignUpLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
+  const { loading, show, hide } = useLoading();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
@@ -40,16 +39,15 @@ const SignUpForm = () => {
     try {
       e.preventDefault();
 
-      setIsSignUpLoading(true);
+      show();
 
       // Check validation input
       const validateInput = Validate(inputValue);
       setErrorMessage(validateInput.validateError);
 
-      const dataUser = await getAllUsers();
       // Check email already exists.
+      const dataUser = await getAllUsers();
       const validate = dataUser.some((user) => user.email === inputValue.email);
-      console.log(validateInput.error);
 
       if (!validateInput.error) {
         if (validate) {
@@ -65,16 +63,15 @@ const SignUpForm = () => {
             username: inputValue.userName || '',
             password: inputValue.password || '',
           };
-  
+
           await createUser(newUser);
           navigate('/login');
         }
       }
-
-      setIsSignUpLoading(false);
+      hide();
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
-      setIsSignUpLoading(false);
+      hide();
     }
   };
 
@@ -122,7 +119,7 @@ const SignUpForm = () => {
           {errorMessage.form && <p className="form-sign-up-error-message">{errorMessage.form}</p>}
 
           {
-            isSignUpLoading
+            loading
               ? (
                 <Button
                   type="submit"
