@@ -30,7 +30,7 @@ const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
-  const { loading, changeStatusLoading } = useLoading();
+  const { loading, setLoading } = useLoading();
   // const { loading, showLoading, hideLoading } = useLoading();
 
   const handleInputValue = (value) => {
@@ -41,7 +41,7 @@ const SignUpForm = () => {
     try {
       e.preventDefault();
 
-      changeStatusLoading();
+      setLoading(true);
 
       // Check validation input
       const errorValid = validateInput(inputValue);
@@ -78,10 +78,10 @@ const SignUpForm = () => {
       } else {
         e.target.reset();
       }
-      changeStatusLoading();
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
-      changeStatusLoading();
+    } finally {
+      setLoading(false);
     }
   };
 
