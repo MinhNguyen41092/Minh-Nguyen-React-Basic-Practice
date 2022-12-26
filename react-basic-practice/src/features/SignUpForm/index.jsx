@@ -31,7 +31,6 @@ const SignUpForm = () => {
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
   const { loading, setLoading } = useLoading();
-  // const { loading, showLoading, hideLoading } = useLoading();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
@@ -45,12 +44,12 @@ const SignUpForm = () => {
 
       // Check validation input
       const errorValid = validateInput(inputValue);
-      setErrorMessage(errorValid.validateError);
 
       if (!errorValid.error) {
         // Check email already exists.
         const dataUser = await getAllUsers();
         const haveUser = dataUser.some((user) => user.email === inputValue.email);
+
         if (haveUser) {
           // Show error if email already exists.
           setErrorMessage((preMsg) => ({
@@ -70,13 +69,16 @@ const SignUpForm = () => {
             id: newUser.id,
             listProducts: [],
           };
-          await createUser(newUser);
-          await createNewCart(newCart);
+
+          Promise.all([
+            await createUser(newUser),
+            await createNewCart(newCart),
+          ]);
 
           navigate('/login');
         }
       } else {
-        e.target.reset();
+        setErrorMessage(errorValid.validateError);
       }
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
