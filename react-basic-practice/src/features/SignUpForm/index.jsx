@@ -30,7 +30,7 @@ const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
-  const { loading, show, hide } = useLoading();
+  const { loading, showLoading, hideLoading } = useLoading();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
@@ -40,17 +40,16 @@ const SignUpForm = () => {
     try {
       e.preventDefault();
 
-      show();
+      showLoading();
 
       // Check validation input
       const errorValid = validateInput(inputValue);
       setErrorMessage(errorValid.validateError);
 
-      // Check email already exists.
-      const dataUser = await getAllUsers();
-      const haveUser = dataUser.some((user) => user.email === inputValue.email);
-
-      if (!validateInput.error) {
+      if (!errorValid.error) {
+        // Check email already exists.
+        const dataUser = await getAllUsers();
+        const haveUser = dataUser.some((user) => user.email === inputValue.email);
         if (haveUser) {
           // Show error if email already exists.
           setErrorMessage((preMsg) => ({
@@ -75,11 +74,13 @@ const SignUpForm = () => {
 
           navigate('/login');
         }
+      } else {
+        e.target.reset();
       }
-      hide();
+      hideLoading();
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
-      hide();
+      hideLoading();
     }
   };
 
