@@ -10,7 +10,7 @@ const LoadingProvider = (props) => {
 
   const valueContext = useMemo(() => ({
     loading,
-    setLoading: (isLoading) => setLoading(isLoading),
+    setLoading,
   }), [loading]);
 
   return (
