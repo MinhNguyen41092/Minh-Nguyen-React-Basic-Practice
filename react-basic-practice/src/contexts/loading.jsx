@@ -7,13 +7,17 @@ const useLoading = () => useContext(LoadingContext);
 const LoadingProvider = (props) => {
   const { children } = props;
   const [loading, setLoading] = useState(false);
-  const showLoading = () => setLoading(true);
-  const hideLoading = () => setLoading(false);
+  const changeStatusLoading = () => {
+    if (loading) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  };
   const valueContext = useMemo(() => ({
     loading,
-    showLoading,
-    hideLoading,
-  }), [loading, showLoading, hideLoading]);
+    changeStatusLoading,
+  }), [loading]);
 
   return (
     <LoadingContext.Provider
