@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-
-import REGEXP from '../../constants/regexp';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -10,77 +8,82 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
+import { createUser, getAllUsers } from '../../services/Users';
+import { createNewCart } from '../../services/Cart';
+import validateInput from '../../helpers/validate';
+import { useLoading } from '../../contexts/loading';
+
 const initialErrorMsgs = {
-  inputEmail: '',
-  inputUserName: '',
-  inputPassword: '',
+  email: '',
+  userName: '',
+  password: '',
+  form: '',
 };
 
 const initialInput = {
-  inputEmail: '',
-  inputUserName: '',
-  inputPassword: '',
+  email: '',
+  userName: '',
+  password: '',
 };
 
-
 const SignUpForm = () => {
-  const [isSignUpLoading, setIsSignUpLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
+  const navigate = useNavigate();
+  const { loading, setLoading } = useLoading();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
   };
 
-  const validation = () => {
-    for (const key in inputValue) {
-      if (inputValue[key] === '') {
-        setErrorMessage((preMsg) => ({
-          ...preMsg,
-          [key]: 'This input is required.',
-        }));
-      } else {
-        setErrorMessage((preMsg) => ({
-          ...preMsg,
-          [key]: '',
-        }));
-      }
-    }
-  };
-
-  const validateInputs = () => {
-    if (inputValue.inputPassword !== '') {
-      REGEXP.REGEXP_PASSWORD.test(inputValue.inputPassword)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputPassword: 'Invalid password' }));
-    }
-
-    if (inputValue.inputEmail !== '') {
-      REGEXP.REGEXP_MAIL.test(inputValue.inputEmail)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputEmail: 'Invalid email' }));
-    }
-
-    if (inputValue.inputUserName !== '') {
-      REGEXP.REGEXP_USER_NAME.test(inputValue.inputUserName)
-        ? setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: '' }))
-        : setErrorMessage((preMsg) => ({ ...preMsg, inputUserName: 'Invalid user name' }));
-    }
-  };
-
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     try {
       e.preventDefault();
 
-      setIsSignUpLoading(true);
+      setLoading(true);
 
-      validation();
-      validateInputs();
+      // Check validation input
+      const errorValid = validateInput(inputValue);
 
-      setIsSignUpLoading(false);
+      if (!errorValid.error) {
+        // Check email already exists.
+        const dataUser = await getAllUsers();
+        const haveUser = dataUser.some((user) => user.email === inputValue.email);
+
+        if (haveUser) {
+          // Show error if email already exists.
+          setErrorMessage((preMsg) => ({
+            ...preMsg,
+            form: 'Email is already in use. Please try another one.',
+          }));
+        } else {
+          // Send data to API to create new users.
+          const newUser = {
+            id: uuidv4(),
+            username: inputValue.userName || '',
+            email: inputValue.email || '',
+            password: inputValue.password || '',
+          };
+
+          const newCart = {
+            id: newUser.id,
+            listProducts: [],
+          };
+
+          Promise.all([
+            await createUser(newUser),
+            await createNewCart(newCart),
+          ]);
+
+          navigate('/login');
+        }
+      } else {
+        setErrorMessage(errorValid.validateError);
+      }
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
-      setIsSignUpLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,37 +101,37 @@ const SignUpForm = () => {
           <Input
             label="Email:"
             inputType="text"
-            name="inputEmail"
+            name="email"
             cssClasses="input-form input-email"
             placeholder="minhng@gmail.com"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.inputEmail}
+            errorMessage={errorMessage.email}
           />
 
           <Input
             label="Username:"
             inputType="text"
-            name="inputUserName"
+            name="userName"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.inputUserName}
+            errorMessage={errorMessage.userName}
           />
 
           <Input
             label="Password:"
             inputType="password"
-            name="inputPassword"
+            name="password"
             cssClasses="input-form input-password"
             placeholder="Enter your password."
-            errorMessage={errorMessage.inputPassword}
+            errorMessage={errorMessage.password}
             handleInputChange={handleInputValue}
           />
 
-          {/* {errorMessage && <span className="form-sign-up-error-message">{errorMessage}</span>} */}
+          {errorMessage.form && <p className="form-sign-up-error-message">{errorMessage.form}</p>}
 
           {
-            isSignUpLoading
+            loading
               ? (
                 <Button
                   type="submit"
@@ -150,7 +153,7 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          <Link to="/login">
+          <Link to="/login" className="open-login-page">
             Login
           </Link>
         </span>

@@ -1,10 +1,17 @@
 import React from 'react';
-import SignUpPage from './page/SignUpPage';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { LoadingProvider } from './contexts/loading';
+// import SignUpPage from './pages/SignUpPage';
+import Routing from './Routing';
 
 function App() {
   return (
     <div className="App">
-      <SignUpPage />
+      <Router>
+        <LoadingProvider>
+          <Routing />
+        </LoadingProvider>
+      </Router>
     </div>
   );
 }

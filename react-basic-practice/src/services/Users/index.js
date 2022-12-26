@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { USERS_API } from '../constants/api';
+import { USERS_API } from '../../constants/api';
+
+export const getAllUsers = async () => {
+  const res = await axios.get(`${USERS_API}`);
+
+  return res.data;
+};
 
 /**
  * Get data of user by userId
@@ -30,7 +36,5 @@ export const getUserByMail = async (mail) => {
  * @param {object} data user's information (user name, email, password)
  */
 export const createUser = async (data) => {
-  const res = await axios.post(USERS_API, data);
-
-  return res.data;
+  await axios.post(USERS_API, data);
 };

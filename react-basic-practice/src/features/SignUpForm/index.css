@@ -9,12 +9,12 @@
 
 .sign-up.main {
   text-align: center;
-  margin: 50px auto;
+  margin: 30px auto;
   padding: 40px 0px;
   max-width: fit-content;
   max-height: fit-content;
   border-radius: 4px;
-  background-color: var( --color-tertiary);
+  background-color: var(--color-tertiary);
 }
 
 .form-sign-up-heading {
@@ -42,4 +42,14 @@
   width: 100%;
   color: var(--color-primary);
   margin-top: 20px;
+}
+
+.open-login-page {
+  text-decoration: none;
+  color: initial;
+  font-weight: var(--fw-bold);
+}
+
+.open-login-page:hover{
+  text-decoration: underline;
 }
