@@ -26,7 +26,7 @@ export const getUserById = async (id) => {
  * @returns {object} user
  */
 export const getUserByMail = async (mail) => {
-  const res = await axios.get(`${USERS_API}?mail=${mail}`);
+  const res = await axios.get(`${USERS_API}?email=${mail}`);
 
   return res.data;
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -8,30 +8,60 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 import { useLoading } from '../../contexts/loading';
+import { getUserByMail } from '../../services/Users';
+import validateInput from '../../helpers/validate';
 
 const initialErrorMsgs = {
   email: '',
-  userName: '',
   password: '',
   form: '',
 };
 
 const initialInput = {
   email: '',
-  userName: '',
   password: '',
 };
 
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
+  // const [empty, setEmpty] = useState(false);
   const { loading, setLoading } = useLoading();
+  const navigate = useNavigate();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
   };
 
-  const handleSignUp = async () => {
+  const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+
+      setLoading(true);
+
+      // Check validation input
+      const errorValid = validateInput(inputValue);
+
+      // Check data user
+      if (!errorValid.error) {
+        let haveUser = false;
+        const dataUser = await getUserByMail(inputValue.email);
+        dataUser.find((user) => {
+          if (user.password === inputValue.password) {
+            haveUser = true;
+          }
+          return haveUser;
+        });
+
+        haveUser ? navigate('/homepage') : setErrorMessage({ ...errorMessage, form: 'Incorrect username or password.' });
+      } else {
+        setErrorMessage(errorValid.validateError);
+      }
+    } catch (error) {
+      alert(`Login Fail. Please try again ${error}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +73,7 @@ const LoginForm = () => {
         <h2 className="form-login-heading">Login</h2>
         <FormGroup
           className="form-login"
-          handleSubmit={handleSignUp}
+          handleSubmit={handleLogin}
         >
           <Input
             label="Email:"
