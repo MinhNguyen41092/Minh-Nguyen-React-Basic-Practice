@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { LoadingProvider } from './contexts/loading';
-// import SignUpPage from './pages/SignUpPage';
 import Routing from './Routing';
+import Navigation from './components/Navigation';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <LoadingProvider>
+        {/* <LoadingProvider>
           <Routing />
-        </LoadingProvider>
+        </LoadingProvider> */}
+        <Navigation />
       </Router>
     </div>
   );
