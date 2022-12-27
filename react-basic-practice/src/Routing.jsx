@@ -7,11 +7,11 @@ const Routing = () => (
   <Routes>
     <Route
       path="/"
-      element={<SignUpPage />}
+      element={<LoginPage />}
     />
     <Route
-      path="/login"
-      element={<LoginPage />}
+      path="/signup"
+      element={<SignUpPage />}
     />
   </Routes>
 );
