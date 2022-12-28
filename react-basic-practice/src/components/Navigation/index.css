@@ -1,0 +1,17 @@
+.nav-list {
+  display: flex;
+}
+
+.nav-item a{
+  font-size: var(--fs-regular);
+  line-height: 27px;
+  color: var(--color-primary);
+}
+
+.nav-item a:hover {
+  text-decoration: underline;
+}
+
+.nav-item:nth-child(2) {
+  margin: 0px 30px;
+}
