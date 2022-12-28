@@ -10,7 +10,7 @@ import './index.css';
 import { useLoading } from '../../contexts/loading';
 import { getUserByEmail } from '../../services/Users';
 import validateInput from '../../helpers/validate';
-import checkData from '../../helpers/checkData';
+import hasData from '../../helpers/data';
 
 const initialErrorMsgs = {
   email: '',
@@ -45,7 +45,7 @@ const LoginForm = () => {
       // Check data user
       if (!errorValid.error) {
         const dataUser = await getUserByEmail(inputValue.email);
-        const haveUser = checkData(dataUser, 'password', inputValue.password);
+        const haveUser = hasData(dataUser, 'password', inputValue.password);
 
         haveUser ? navigate('/homepage') : setErrorMessage({ form: 'Incorrect email or password.' });
       } else {
