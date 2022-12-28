@@ -2,10 +2,10 @@
   display: flex;
 }
 
-.nav-item {
-  color: var(--color-primary);
+.nav-item a{
   font-size: var(--fs-regular);
   line-height: 27px;
+  color: var(--color-primary);
 }
 
 .nav-item a:hover {
