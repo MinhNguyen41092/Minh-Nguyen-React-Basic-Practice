@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
@@ -8,17 +8,18 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 import { useLoading } from '../../contexts/loading';
+import { getUserByEmail } from '../../services/Users';
+import validateInput from '../../helpers/validate';
+import hasData from '../../helpers/data';
 
 const initialErrorMsgs = {
   email: '',
-  userName: '',
   password: '',
   form: '',
 };
 
 const initialInput = {
   email: '',
-  userName: '',
   password: '',
 };
 
@@ -26,12 +27,35 @@ const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const { loading, setLoading } = useLoading();
+  const navigate = useNavigate();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
   };
 
-  const handleSignUp = async () => {
+  const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+
+      setLoading(true);
+
+      // Check validation input
+      const errorValid = validateInput(inputValue);
+
+      // Check data user
+      if (!errorValid.error) {
+        const dataUser = await getUserByEmail(inputValue.email);
+        const haveUser = hasData(dataUser, 'password', inputValue.password);
+
+        haveUser ? navigate('/homepage') : setErrorMessage({ form: 'Incorrect email or password.' });
+      } else {
+        setErrorMessage(errorValid.validateError);
+      }
+    } catch (error) {
+      alert(`Login Fail. Please try again ${error}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +67,7 @@ const LoginForm = () => {
         <h2 className="form-login-heading">Login</h2>
         <FormGroup
           className="form-login"
-          handleSubmit={handleSignUp}
+          handleSubmit={handleLogin}
         >
           <Input
             label="Email:"
