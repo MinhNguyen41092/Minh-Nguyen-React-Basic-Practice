@@ -8,8 +8,9 @@ import FormGroup from '../../components/FormGroup';
 import './index.css';
 
 import { useLoading } from '../../contexts/loading';
-import { getUserByMail } from '../../services/Users';
+import { getUserByEmail } from '../../services/Users';
 import validateInput from '../../helpers/validate';
+import checkData from '../../helpers/checkData';
 
 const initialErrorMsgs = {
   email: '',
@@ -25,7 +26,6 @@ const initialInput = {
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
-  // const [empty, setEmpty] = useState(false);
   const { loading, setLoading } = useLoading();
   const navigate = useNavigate();
 
@@ -44,16 +44,10 @@ const LoginForm = () => {
 
       // Check data user
       if (!errorValid.error) {
-        let haveUser = false;
-        const dataUser = await getUserByMail(inputValue.email);
-        dataUser.find((user) => {
-          if (user.password === inputValue.password) {
-            haveUser = true;
-          }
-          return haveUser;
-        });
+        const dataUser = await getUserByEmail(inputValue.email);
+        const haveUser = checkData(dataUser, 'password', inputValue.password);
 
-        haveUser ? navigate('/homepage') : setErrorMessage({ ...errorMessage, form: 'Incorrect username or password.' });
+        haveUser ? navigate('/homepage') : setErrorMessage({ form: 'Incorrect email or password.' });
       } else {
         setErrorMessage(errorValid.validateError);
       }
