@@ -53,7 +53,7 @@ const LoginForm = () => {
           return haveUser;
         });
 
-        haveUser ? navigate('/homepage') : setErrorMessage({ ...errorMessage, form: 'Incorrect username or password.' });
+        haveUser ? navigate('/homepage') : setErrorMessage({ ...errorMessage, form: 'Incorrect email or password.' });
       } else {
         setErrorMessage(errorValid.validateError);
       }
