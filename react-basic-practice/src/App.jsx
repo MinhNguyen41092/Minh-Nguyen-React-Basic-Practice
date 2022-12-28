@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { LoadingProvider } from './contexts/loading';
 import Routing from './Routing';
-import Navigation from './components/Navigation';
+import ProductCard from './components/ProductCard';
 
 function App() {
   return (
@@ -11,7 +11,11 @@ function App() {
         {/* <LoadingProvider>
           <Routing />
         </LoadingProvider> */}
-        <Navigation />
+        <ProductCard
+          product = {
+            id: 
+          }
+        />
       </Router>
     </div>
   );
