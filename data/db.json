@@ -10,7 +10,7 @@
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
       "username": "minhng8976",
       "email": "minhng271@gmail.com",
-      "password": "minhng87654"
+      "password": "1"
     }
   ],
   "products": [
@@ -18,37 +18,43 @@
       "id": 1,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     },
     {
       "id": 2,
       "name": "Hal Earrings",
       "price": 25,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     },
     {
       "id": 3,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     },
     {
       "id": 4,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     },
     {
       "id": 5,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     },
     {
       "id": 6,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png"
     }
   ],
   "cart": [

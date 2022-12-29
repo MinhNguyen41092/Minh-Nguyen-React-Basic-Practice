@@ -1,3 +1,31 @@
-.item.img {
-  
+.product-card {
+  position: relative;
+  margin: 10px;
+}
+
+.product-label {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  display: inline-block;
+  color: var(--color-white);
+  padding: 2px 8px;
+  background-color: var(--color-price);
+  border-radius: 4px;
+  font-size: var(--fs-super-small);
+}
+
+.product-detail span{
+  display: block;
+  font-size: var(--fs-large);
+  line-height: 26px;
+}
+
+.product-detail.name {
+  margin: 16px 0px;
+  color: var(--color-black);
+}
+
+.product-detail.price {
+  color: var(--color-price);
 }

@@ -9,6 +9,8 @@
 
   --color-quantity-button: #EFEFEF;
   --color-loading: #0aa2d4;
+  --color-price: #A18A68;
+
 
   /* Font weight */
   --fw-regular: 300;
@@ -16,6 +18,7 @@
 
   /* Font size */
   --fs-regular: 16px;
+  --fs-super-small: 12px;
   --fs-small: 14px;
   --fs-large: 20px;
   --fs-exLarge: 40px;

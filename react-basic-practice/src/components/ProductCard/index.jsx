@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 const ProductCard = (props) => {
   const { product } = props;
   return (
-    <div className="product-card item">
+    <div className={`product-card ${product.id}`}>
+      {
+        product.label && <span className="product-label">{product.label}</span>
+      }
       <Link
-        // to={`/post/${product.id}`}
         to="/"
         className="product-detail"
       >
-        <img className="product img" src={product.img} alt="" />
-        <span className="product name">{product.price}</span>
-        <span className="product price">{`$ ${product.detail},00`}</span>
+        <img className="product-detail img" src={product.img} alt="" />
+        <span className="product-detail name">{product.name}</span>
+        <span className="product-detail price">{`$ ${product.price},00`}</span>
       </Link>
     </div>
   );
