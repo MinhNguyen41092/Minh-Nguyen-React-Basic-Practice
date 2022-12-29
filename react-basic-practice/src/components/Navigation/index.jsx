@@ -7,17 +7,17 @@ const Navigation = () => (
   <nav className="navigation">
     <ul className="nav-list">
       <li className="nav-item">
-        <Link href="/">
+        <Link to="/">
           CONTACT
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/">
+        <Link to="/">
           TERMS OF SERVICES
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/">
+        <Link to="/">
           SHIPPING AND RETURNS
         </Link>
       </li>

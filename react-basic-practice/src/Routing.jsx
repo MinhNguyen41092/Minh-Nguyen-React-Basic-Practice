@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import DetailProductPage from './pages/DetailProductPage';
 
 const Routing = () => (
   <Routes>
@@ -18,6 +19,7 @@ const Routing = () => (
       path="/homepage"
       element={<HomePage />}
     />
+    <Route path="post/:id" element={<DetailProductPage />} />
   </Routes>
 );
 
