@@ -5,7 +5,7 @@ import './index.css';
 const ProductCard = (props) => {
   const { product } = props;
   return (
-    <div className={`product-card ${product.id}`}>
+    <article className={`product-card ${product.id}`}>
       {
         product.label && <span className="product-label">{product.label}</span>
       }
@@ -15,9 +15,9 @@ const ProductCard = (props) => {
       >
         <img className="product-detail img" src={product.img} alt="" />
         <span className="product-detail name">{product.name}</span>
-        <span className="product-detail price">{`$ ${product.price},00`}</span>
+        <span className="product-detail price">{`$ ${product.price}`}</span>
       </Link>
-    </div>
+    </article>
   );
 };
 
