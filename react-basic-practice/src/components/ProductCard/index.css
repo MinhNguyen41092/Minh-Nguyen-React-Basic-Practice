@@ -3,10 +3,10 @@
   margin: 10px;
 }
 
-.product-label {
+.product-detail .product-label {
   position: absolute;
-  top: 18px;
-  left: 24px;
+  top: 16px;
+  left: 16px;
   display: inline-block;
   color: var(--color-white);
   padding: 2px 8px;
