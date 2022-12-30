@@ -17,29 +17,32 @@ const Footer = () => (
     </div>
     <div className="footer-social">
       <div className="footer-social email">
-        <Input />
-        <Button />
+        <Input placeholder="Give an email, get the newsletter." />
+        <Button
+          className="btn-arrow"
+          icon=""
+        />
       </div>
       <div className="footer-social icon">
-        <ul>
-          <li>
+        <ul className="footer-social list">
+          <li className="footer-social item">
             <Link href="/">
-              <img src="" alt="" />
+              <img src="../../assets/images/socialLogo/linkedin-logo.jpg" alt="" />
             </Link>
           </li>
-          <li>
+          <li className="footer-social item">
             <Link href="/">
-              <img src="" alt="" />
+              <img src="../../assets/images/socialLogo/facebook-logo.png" alt="" />
             </Link>
           </li>
-          <li>
+          <li className="footer-social item">
             <Link href="/">
-              <img src="" alt="" />
+              <img src="../../assets/images/socialLogo/instagram-logo.png" alt="" />
             </Link>
           </li>
-          <li>
+          <li className="footer-social item">
             <Link href="/">
-              <img src="" alt="" />
+              <img src="../../assets/images/socialLogo/twitter-logo.png" alt="" />
             </Link>
           </li>
         </ul>
