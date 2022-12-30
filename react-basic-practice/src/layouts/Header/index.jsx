@@ -8,7 +8,7 @@ const Header = () => {
     <Button
       type="button"
       className="btn-cart"
-      icon={}
+      icon="../../"
     />
   </header>
 };
