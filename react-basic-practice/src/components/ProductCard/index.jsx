@@ -8,7 +8,7 @@ const ProductCard = (props) => {
     <article className={`product-card ${product.id}`}>
       <Link
         to="/"
-        className="product-detail"
+        className=""
       >
         {
           product.label && <span className="product-label">{product.label}</span>

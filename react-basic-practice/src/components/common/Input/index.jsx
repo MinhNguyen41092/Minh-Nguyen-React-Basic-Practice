@@ -7,7 +7,7 @@ const Input = (props) => {
     htmlFor,
     inputType,
     name,
-    cssClasses,
+    className,
     value,
     placeholder,
     pattern,
@@ -32,7 +32,7 @@ const Input = (props) => {
       <input
         type={inputType}
         name={name}
-        className={`input-text ${cssClasses}`}
+        className={`input-text ${className}`}
         onChange={handleChange}
         placeholder={placeholder}
         value={value}
