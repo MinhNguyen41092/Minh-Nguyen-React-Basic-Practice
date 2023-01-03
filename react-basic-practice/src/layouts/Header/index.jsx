@@ -7,11 +7,17 @@ import './index.css';
 const Header = () => (
   <header className="header-wrapper">
     <Logo />
-    <Button
-      type="button"
-      className="btn-cart"
-      icon="./src/assets/images/iconButton/cart.png"
-    />
+    <div className="user">
+      <div className="user-information">
+        <img className="user-icon" src="./src/assets/images/user-icon.png" alt="" />
+        <span className="user-name">Minh nguyen</span>
+      </div>
+      <Button
+        type="button"
+        className="btn-cart"
+        icon="./src/assets/images/iconButton/cart.png"
+      />
+    </div>
   </header>
 );
 

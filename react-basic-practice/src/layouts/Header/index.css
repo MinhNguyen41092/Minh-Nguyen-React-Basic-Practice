@@ -1,6 +1,7 @@
 .header-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--color-line);
   margin: 37px 96px;
 }
@@ -8,4 +9,21 @@
 .btn-cart {
   background-color: var(--color-white);
   border: none;
+  padding: 10px 0px;
+}
+
+.user {
+  text-align: end;
+}
+
+.user-information {
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-super-small);
+}
+
+.user-icon {
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 5px;
 }
