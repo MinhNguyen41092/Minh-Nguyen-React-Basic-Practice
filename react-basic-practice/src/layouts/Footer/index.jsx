@@ -28,6 +28,7 @@ const Footer = () => (
           className="btn-arrow"
           type="button"
           icon="./src/assets/images/iconButton/btn-arrow.png"
+
         />
       </div>
       <div className="footer-social icon">
