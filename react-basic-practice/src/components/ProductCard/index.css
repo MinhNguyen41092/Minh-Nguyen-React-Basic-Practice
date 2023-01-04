@@ -3,7 +3,7 @@
   margin: 10px;
 }
 
-.product-detail .product-label {
+.product-card .product-label {
   position: absolute;
   top: 16px;
   left: 16px;
@@ -15,7 +15,7 @@
   font-size: var(--fs-super-small);
 }
 
-.product-detail span{
+.product-card span {
   display: block;
   font-size: var(--fs-large);
   line-height: 26px;
