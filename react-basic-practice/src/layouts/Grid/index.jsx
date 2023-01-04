@@ -6,10 +6,10 @@ const Grid = (props) => {
     columns, columnGap, rowGap, children,
   } = props;
   const className = `
-  grid-container 
-  grid-columns-${columns} 
-  grid-columns-gap-${columnGap} 
-  grid-rows-gap-${rowGap}
+    grid-container 
+    grid-columns-${columns} 
+    grid-columns-gap-${columnGap} 
+    grid-rows-gap-${rowGap}
   `;
 
   return (
