@@ -8,6 +8,12 @@
       "@/assets/*": [ 
         "assets/*",
       ],
+      "@/features/*": [ 
+        "features/*",
+      ],
+      "@/layouts/*": [ 
+        "layouts/*",
+      ],
     },
     "incremental": true,
   },
