@@ -1,19 +1,19 @@
 import React from 'react';
 import './index.css';
 
-const Grid = (props) => {
-  const {
-    columns, columnGap, rowGap, children,
-  } = props;
-  const className = `
-  grid-container 
+const buildGridClassNames = (columns, columnGap, rowGap) => `grid-container 
   grid-columns-${columns} 
   grid-columns-gap-${columnGap} 
   grid-rows-gap-${rowGap}
   `;
 
+const Grid = (props) => {
+  const {
+    columns, columnGap, rowGap, children,
+  } = props;
+
   return (
-    <div className={className}>
+    <div className={buildGridClassNames(columns, columnGap, rowGap)}>
       {children}
     </div>
   );
