@@ -1,39 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Grid from './layouts/Grid';
-import ProductCard from './components/ProductCard';
+import { getListProductsLimit } from './services/Products';
+import ListProducts from './components/ListProducts';
 // import { LoadingProvider } from './contexts/loading';
 // import Routing from './Routing';
 
-function App() {
-  const product1 = {
-    id: 1,
-    name: 'Lira Earrings',
-    img: 'https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png',
-    price: 25,
-    label: '- %21',
-  };
+const App = async () => {
+  const data = await getListProductsLimit(1);
+  // console.log(data);
   return (
     <div className="App">
       <Router>
         {/* <LoadingProvider> */}
         {/* <Routing /> */}
         {/* </LoadingProvider> */}
-        <Grid
-          columns="3"
-          columnGap="large"
-          rowGap="large"
-        >
-          <ProductCard product={product1} />
-          <ProductCard product={product1} />
-          <ProductCard product={product1} />
-          <ProductCard product={product1} />
-          <ProductCard product={product1} />
-          <ProductCard product={product1} />
-        </Grid>
+        <ListProducts data={data} />
       </Router>
     </div>
   );
-}
+};
 
 export default App;

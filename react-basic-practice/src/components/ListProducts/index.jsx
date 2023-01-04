@@ -3,6 +3,7 @@ import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 
 const ListProducts = (props) => {
+  console.log(props);
   const { data } = props;
   return (
     <div className="list-products">
