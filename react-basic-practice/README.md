@@ -19,6 +19,7 @@
 
 ### Timeline:
   - Estimate time: 14 days.
+  - Actual time: 
 
 ### Technical:
   - [HTML5](https://en.wikipedia.org/wiki/HTML5): is a markup language used for structuring and presenting content on the World Wide Web
@@ -30,13 +31,12 @@
 - Editor: Visual Studio Code.
 
 ### Development environment:
-
 - Node: version 16.16.0
-- pnpm: 
-- Vite: 
+- pnpm: version 7.22.0
+- Vite: version 2.2.0
+- json-server: version 0.17.1
 
 ### Document:
-
 - [React basic practice requirements](https://docs.google.com/document/d/1sKtSpHCBjVG41UQbgr7-rTqtBuEr6zGupDaYoB1Fh4k/edit#heading=h.ar0k1bmftkqn)
 - [React basic practice plan](https://docs.google.com/document/d/1A4l00R8XSeN0HboQ228BYB-QL25dogINWC3cTlu-2B4/edit#heading=h.hns12qy2rutr)
 
@@ -57,7 +57,7 @@
 
 
 ## Getting started
-- Clone repo
+- Step 1: Cloning the repo
     - HTTPS: 
       ```
       $ git clone https://github.com/MinhNguyen41092/Minh-Nguyen-React-Basic-Practice.git
@@ -66,3 +66,9 @@
       ```
       $ git clone git@github.com:MinhNguyen41092/Minh-Nguyen-React-Basic-Practice.git
       ```
+- Step 2: Checkout to branch develop `git checkout develop`
+- Step 3: Go to the folder react practice `cd react-basic-practice`
+- Step 4: Install package `npm install` or `yarn install`
+- Step 5: Run server `pnpm run start-db`
+- Step 6: Run project `pnpm run dev` or `yarn run dev`
+- Step 7: Open `http://127.0.0.1:5173/` in your browser to see the Web application.
