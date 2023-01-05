@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
+import { getListProductsLimit } from '../../services/Products';
 
-const ListProducts = (props) => {
-  console.log(props);
-  const { data } = props;
+const ListProducts = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getListProductsLimit(1);
+      setProducts(data);
+    };
+    getData();
+  }, []);
+
   return (
     <div className="list-products">
-      {data.length ? (
+      {products.length ? (
         <Grid columns="3" rowGap="large" columnGap="large">
-          {data.map((item) => (
+          {products.map((item) => (
             <ProductCard
               product={item}
             />
