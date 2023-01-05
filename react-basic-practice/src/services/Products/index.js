@@ -42,7 +42,7 @@ export const getListProducts = async () => {
  * @returns {object} list 6 products
  */
 export const getListProductsLimit = async (pageNumber) => {
-  const res = await axios.get(`${PRODUCTS_API}_limit=6&_page=${pageNumber}`);
+  const res = await axios.get(`${PRODUCTS_API}?_page=${pageNumber}&_limit=6`);
 
   return res.data;
 };
