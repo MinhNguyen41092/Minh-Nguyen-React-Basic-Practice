@@ -21,5 +21,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-restricted-syntax': 'off',
     'no-unused-expressions': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
   },
 };

@@ -1,7 +1,12 @@
 import React from 'react';
+import DefaultLayout from '@/layouts/DefaultLayout';
+import ListProducts from '@/components/ListProducts';
+import './index.css';
 
 const HomePage = () => (
-  <h1>Home</h1>
+  <DefaultLayout>
+    <ListProducts />
+  </DefaultLayout>
 );
 
 export default HomePage;
