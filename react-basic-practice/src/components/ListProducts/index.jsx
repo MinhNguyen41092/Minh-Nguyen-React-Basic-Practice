@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 import { getListProductsLimit } from '../../services/Products';
-import './index.css';
 
 const ListProducts = () => {
   const [products, setProducts] = useState([]);

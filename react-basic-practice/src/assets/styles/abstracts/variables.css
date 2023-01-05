@@ -15,6 +15,7 @@
   /* Font weight */
   --fw-regular: 300;
   --fw-normal: 400;
+  --fw-medium:500;
   --fw-bold: 700;
 
   /* Font size */
@@ -22,5 +23,6 @@
   --fs-super-small: 12px;
   --fs-small: 14px;
   --fs-large: 20px;
+  --fs-large-plus: 33px;
   --fs-exLarge: 40px;
 }
