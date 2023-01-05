@@ -16,8 +16,15 @@ const HomePage = () => (
           className="btn-search"
           icon="./src/assets/images/iconButton/btn-search.png"
         />
-        <select />
       </div>
+      <select
+        placeholder="Sort by"
+        // onChange={handleAddrTypeChange}
+        className="browser-default custom-select"
+      >
+        <option value="1">Name</option>
+        <option value="2">Price</option>
+      </select>
     </div>
     <ListProducts />
   </DefaultLayout>
