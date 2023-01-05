@@ -6,23 +6,26 @@ import ProductCard from '../ProductCard';
 import { getListProductsLimit } from '../../services/Products';
 import { useLoading } from '@/contexts/loading';
 
+import './index.css';
+
 const ListProducts = () => {
   const [products, setProducts] = useState([]);
   const { loading, setLoading } = useLoading();
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getListProductsLimit(1);
-      setProducts(data);
+      try {
+        setLoading(true);
+        const data = await getListProductsLimit(1);
+        data ? setProducts(data) : setProducts([]);
+      } catch {
+        alert('Error loading data, please reload the page');
+      } finally {
+        setLoading(false);
+      }
     };
-    try {
-      setLoading(true);
-      getData();
-    } catch {
-      alert('Error loading data, please reload the page');
-    } finally {
-      setLoading(false);
-    }
+
+    getData();
   }, []);
 
   return (
@@ -36,6 +39,7 @@ const ListProducts = () => {
             <Grid columns="3" rowGap="large" columnGap="large">
               {products.map((item) => (
                 <ProductCard
+                  key={item.id}
                   product={item}
                 />
               ))}
