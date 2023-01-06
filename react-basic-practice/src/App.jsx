@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ListProducts from './components/ListProducts';
+import HomePage from './pages/HomePage';
 import { LoadingProvider } from './contexts/loading';
 // import Routing from './Routing';
 
@@ -9,7 +9,7 @@ const App = () => (
     <Router>
       <LoadingProvider>
         {/* <Routing /> */}
-        <ListProducts />
+        <HomePage />
       </LoadingProvider>
     </Router>
   </div>
