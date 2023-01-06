@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 import { LoadingProvider } from './contexts/loading';
+import DetailProductPage from './pages/DetailProductPage';
 // import Routing from './Routing';
 
 const App = () => (
@@ -9,7 +9,7 @@ const App = () => (
     <Router>
       <LoadingProvider>
         {/* <Routing /> */}
-        <HomePage />
+        <DetailProductPage id="1" />
       </LoadingProvider>
     </Router>
   </div>
