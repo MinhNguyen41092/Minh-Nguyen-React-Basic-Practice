@@ -3,11 +3,11 @@ import './index.css';
 
 const SelectGroup = (props) => {
   const { options } = props;
-  const handleChangeOption = (e) => { console.log(e); };
+  const handleChangeOption = () => {};
 
   return (
     <select
-      onChange={(e) => handleChangeOption(e)}
+      onChange={handleChangeOption}
       className="select-group"
     >
       <option value="" disabled selected hidden>Sort by</option>
