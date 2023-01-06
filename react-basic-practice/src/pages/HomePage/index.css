@@ -30,7 +30,12 @@
 }
 
 .input-search {
+  border: none;
   padding: 0px;
+}
+
+.input-search:focus {
+  outline: none;
 }
 
 .btn-search {
