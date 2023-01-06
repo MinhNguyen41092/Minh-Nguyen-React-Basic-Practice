@@ -3,7 +3,13 @@ import DefaultLayout from '@/layouts/DefaultLayout';
 import ListProducts from '@/components/ListProducts';
 import Input from '@/components/common/Input';
 import Button from '@/components/common/Button';
+import SelectGroup from '@/components/SelectGroup';
 import './index.css';
+
+const options = [
+  'Name',
+  'Price',
+];
 
 const HomePage = () => (
   <DefaultLayout>
@@ -17,14 +23,7 @@ const HomePage = () => (
           icon="./src/assets/images/iconButton/btn-search.png"
         />
       </div>
-      <select
-        placeholder="Sort by"
-        // onChange={handleAddrTypeChange}
-        className="browser-default custom-select"
-      >
-        <option value="1">Name</option>
-        <option value="2">Price</option>
-      </select>
+      <SelectGroup options={options} />
     </div>
     <ListProducts />
   </DefaultLayout>
