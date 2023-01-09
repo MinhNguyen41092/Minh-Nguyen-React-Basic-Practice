@@ -1,3 +1,7 @@
+:focus {
+  outline: none;
+}
+
 .main-content {
   padding-top: 96px;
   padding-bottom: 252px;
@@ -6,6 +10,7 @@
 }
 
 .list-products {
+  margin-left: 36px;
   padding-top: 80px;
   width: 75%;
 }
@@ -32,10 +37,6 @@
 .input-search {
   border: none;
   padding: 0px;
-}
-
-.input-search:focus {
-  outline: none;
 }
 
 .btn-search {

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import Navigation from '../../components/Navigation';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
+import arrowButton from '@/assets/images/iconButton/btn-arrow.png';
+import linkedinLogo from '@/assets/images/socialLogo/linkedin-logo.jpg';
+import facebookLogo from '@/assets/images/socialLogo/facebook-logo.png';
+import instagramLogo from '@/assets/images/socialLogo/instagram-logo.png';
+import twitterLogo from '@/assets/images/socialLogo/twitter-logo.png';
 
 import './index.css';
 
@@ -26,7 +31,7 @@ const Footer = () => (
         <Button
           className="btn-arrow"
           type="button"
-          icon="./src/assets/images/iconButton/btn-arrow.png"
+          icon={arrowButton}
 
         />
       </div>
@@ -34,22 +39,22 @@ const Footer = () => (
         <ul className="footer-social list">
           <li className="footer-social item">
             <Link href="/">
-              <img src="./src/assets/images/socialLogo/linkedin-logo.jpg" alt="" />
+              <img src={linkedinLogo} alt="linkedin" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src="./src/assets/images/socialLogo/facbook-logo.png" alt="" />
+              <img src={facebookLogo} alt="facebook" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src="./src/assets/images/socialLogo/instagram-logo.png" alt="" />
+              <img src={instagramLogo} alt="instagram" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src="./src/assets/images/socialLogo/twitter-logo.png" alt="" />
+              <img src={twitterLogo} alt="twitter" />
             </Link>
           </li>
         </ul>

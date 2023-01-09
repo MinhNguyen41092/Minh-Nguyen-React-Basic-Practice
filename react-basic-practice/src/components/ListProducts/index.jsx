@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
@@ -38,10 +39,9 @@ const ListProducts = () => {
           : (
             <Grid columns="3" rowGap="large" columnGap="large">
               {products.map((item) => (
-                <ProductCard
-                  key={item.id}
-                  product={item}
-                />
+                <Link to={`/products/${item.id}`}>
+                  <ProductCard key={item.id} product={item} />
+                </Link>
               ))}
             </Grid>
           )

@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../../components/common/Logo';
 import Button from '../../components/common/Button';
+import userIcon from '@/assets/images/user-icon.png';
+import cartButton from '@/assets/images/iconButton/cart.png';
 
 import './index.css';
 
@@ -9,13 +11,13 @@ const Header = () => (
     <Logo />
     <div className="user">
       <div className="user-information">
-        <img className="user-icon" src="./src/assets/images/user-icon.png" alt="" />
+        <img className="user-icon" src={userIcon} alt="user" />
         <span className="user-name">Minh nguyen</span>
       </div>
       <Button
         type="button"
         className="btn-cart"
-        icon="./src/assets/images/iconButton/cart.png"
+        icon={cartButton}
       />
     </div>
   </header>

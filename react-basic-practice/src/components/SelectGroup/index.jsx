@@ -12,7 +12,7 @@ const SelectGroup = (props) => {
     >
       <option value="" disabled selected hidden>Sort by</option>
       {
-        options.map((option, key) => <option value={key}>{option}</option>)
+        options.map((option, key) => <option key={option} value={key}>{option}</option>)
       }
     </select>
   );
