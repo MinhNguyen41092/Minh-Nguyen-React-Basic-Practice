@@ -12,3 +12,7 @@
     padding: 14px;
     color: var(--color-primary);
 }
+
+.quantity {
+  padding: 0px 20px;
+}

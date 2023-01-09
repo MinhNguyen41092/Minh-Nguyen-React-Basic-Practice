@@ -17,6 +17,9 @@
       "@/contexts/*": [ 
         "contexts/*",
       ],
+      "@/services/*": [ 
+        "services/*",
+      ],
     },
     "incremental": true,
   },

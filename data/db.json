@@ -18,7 +18,7 @@
       "id": 1,
       "name": "Lira Earrings",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": "- %21"
     },
@@ -26,7 +26,7 @@
       "id": 2,
       "name": "Hal Earrings",
       "price": 25,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": ""
     },
@@ -34,7 +34,7 @@
       "id": 3,
       "name": "Kaede Hair Pin Set Of 3",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": ""
     },
@@ -42,7 +42,7 @@
       "id": 4,
       "name": "Hair Pin Set of 3",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": "Sold out"
     },
@@ -50,7 +50,7 @@
       "id": 5,
       "name": "Plaine Necklace",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": ""
     },
@@ -58,7 +58,7 @@
       "id": 6,
       "name": "Yuki Hair Pin Set of 3",
       "price": 20,
-      "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
       "label": ""
     }
