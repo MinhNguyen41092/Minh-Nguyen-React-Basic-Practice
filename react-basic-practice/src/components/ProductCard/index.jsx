@@ -8,9 +8,9 @@ const ProductCard = (props) => {
       {
         product.label && <span className="product-label">{product.label}</span>
       }
-      <img className="product-card img" src={product.image} alt="" />
-      <span className="product-card name">{product.name}</span>
-      <span className="product-card price">{`$ ${product.price}`}</span>
+      <img className="img" src={product.image} alt="product" />
+      <h4 className="name">{product.name}</h4>
+      <span className="price">{`$ ${product.price}`}</span>
     </article>
   );
 };

@@ -45,11 +45,11 @@ const ProductDetail = () => {
                 product.map((field) => (
                   <div className="product-main">
                     <div className="product">
-                      <img className="product-image" src={field.image} alt="" />
-                      <div className="product-information">
-                        <span className="product-detail name">{field.name}</span>
-                        <span className="product-detail price">{`$ ${field.price}`}</span>
-                        <p className="product-detail description">{field.description}</p>
+                      <img className="image" src={field.image} alt={field.name} />
+                      <div className="information">
+                        <span className="name">{field.name}</span>
+                        <span className="price">{`$ ${field.price}`}</span>
+                        <p className="description">{field.description}</p>
                         <div className="add-cart">
                           <Quantity />
                           <Button
@@ -62,10 +62,10 @@ const ProductDetail = () => {
                       </div>
                     </div>
                     <div className="product-description">
-                      <div className="product-detail title">
+                      <div className="title">
                         Description
                       </div>
-                      <div className="product-detail description">
+                      <div className="description">
                         {field.description}
                       </div>
                     </div>

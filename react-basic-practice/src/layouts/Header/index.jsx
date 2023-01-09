@@ -11,7 +11,7 @@ const Header = () => (
     <Logo />
     <div className="user">
       <div className="user-information">
-        <img className="user-icon" src={userIcon} alt="" />
+        <img className="user-icon" src={userIcon} alt="user" />
         <span className="user-name">Minh nguyen</span>
       </div>
       <Button

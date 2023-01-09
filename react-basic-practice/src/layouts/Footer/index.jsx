@@ -39,22 +39,22 @@ const Footer = () => (
         <ul className="footer-social list">
           <li className="footer-social item">
             <Link href="/">
-              <img src={linkedinLogo} alt="" />
+              <img src={linkedinLogo} alt="linkedin" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src={facebookLogo} alt="" />
+              <img src={facebookLogo} alt="facebook" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src={instagramLogo} alt="" />
+              <img src={instagramLogo} alt="instagram" />
             </Link>
           </li>
           <li className="footer-social item">
             <Link href="/">
-              <img src={twitterLogo} alt="" />
+              <img src={twitterLogo} alt="twitter" />
             </Link>
           </li>
         </ul>

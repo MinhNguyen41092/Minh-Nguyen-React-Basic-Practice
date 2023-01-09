@@ -14,7 +14,7 @@ function Popup(props) {
         text="X"
       />
       <div className={className}>
-        <img src={icon} alt="" />
+        <img src={icon} alt="icon" />
       </div>
       <div>
         <p className="notification-title">{status}</p>

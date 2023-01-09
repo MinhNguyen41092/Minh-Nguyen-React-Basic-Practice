@@ -14,17 +14,17 @@
   font-size: var(--fs-super-small);
 }
 
-.product-card span {
+.product-card span,.product-card h4 {
   display: block;
   font-size: var(--fs-large);
   line-height: 26px;
 }
 
-.product-card.name {
+.product-card .name {
   margin: 16px 0px;
   color: var(--color-black);
 }
 
-.product-card.price {
+.product-card .price {
   color: var(--color-price);
 }
