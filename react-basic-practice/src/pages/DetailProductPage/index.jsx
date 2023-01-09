@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getProductById } from '@/services/Products';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
@@ -8,8 +9,8 @@ import { useLoading } from '@/contexts/loading';
 
 import './index.css';
 
-const ProductDetail = (props) => {
-  const { id } = props;
+const ProductDetail = () => {
+  const { productId } = useParams();
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState([]);
 
@@ -17,7 +18,7 @@ const ProductDetail = (props) => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getProductById(id);
+        const data = await getProductById(productId);
         data ? setProduct(data) : setProduct([]);
       } catch {
         alert('Error loading data, please reload the page');
