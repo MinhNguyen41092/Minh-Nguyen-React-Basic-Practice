@@ -37,19 +37,22 @@ const ProductDetail = () => {
   };
 
   const handleAddCart = () => {
-    const productAddCart = {
-      idProduct: product.id,
-      quantity: quantityProduct,
-      name: product.name,
-      price: product.price,
+    let productAddCart = {};
+    product.forEach((field) => {
+      productAddCart = {
+        idProduct: field.id,
+        quantity: quantityProduct,
+        name: field.name,
+        price: field.price,
+      };
+    });
+
+    const cartUser = {
+      id: 1,
+      listProducts: [{ productAddCart }],
     };
 
-    // const cartUser = {
-    //   id: 1,
-    //   listProducts: [productAddCart],
-    // };
-
-    updateCart(1, productAddCart);
+    updateCart(1, cartUser);
   };
 
   return (

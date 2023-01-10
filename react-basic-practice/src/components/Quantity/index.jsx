@@ -8,17 +8,17 @@ const Quantity = (props) => {
 
   const incrementCount = () => {
     // Update state with incremented value
-    setCounter(counter + 1);
-    quantity(counter);
+    setCounter((preCounter) => preCounter + 1);
   };
 
   const decrementCount = () => {
     // Update state with decremented value
     if (counter > 0) {
-      setCounter(counter - 1);
+      setCounter((preCounter) => preCounter - 1);
     }
-    quantity(counter);
   };
+
+  quantity(counter);
 
   return (
     <div className="quantity-group">
