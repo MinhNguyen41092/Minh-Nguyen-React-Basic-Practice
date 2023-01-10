@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 
-import { getListProductsLimit } from '../../services/Products';
+import { getListProducts } from '../../services/Products';
 import { useLoading } from '@/contexts/loading';
 
 import './index.css';
 
-const ListProducts = () => {
+const ListProducts = (props) => {
+  const { keyword } = props;
   const [products, setProducts] = useState([]);
   const { loading, setLoading } = useLoading();
 
@@ -17,7 +18,7 @@ const ListProducts = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getListProductsLimit(1);
+        const data = await getListProducts(1, keyword);
         data ? setProducts(data) : setProducts([]);
       } catch {
         alert('Error loading data, please reload the page');
@@ -27,7 +28,7 @@ const ListProducts = () => {
     };
 
     getData();
-  }, []);
+  }, [keyword]);
 
   return (
     <div className="list-products">

@@ -23,6 +23,7 @@
 .product-card .name {
   margin: 16px 0px;
   color: var(--color-black);
+  text-transform: capitalize;
 }
 
 .product-card .price {
