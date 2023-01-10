@@ -6,14 +6,23 @@ import './index.css';
 
 const HomePage = () => {
   const [keyword, setKeyword] = useState('');
+  // const [order, setOrder] = useState('');
+  // const [fieldSort, setFieldSort] = useState('');
 
   const handleSearch = (value) => {
     setKeyword(value);
   };
 
+  const handleSort = (value) => {
+    console.log(value);
+  };
+
   return (
     <DefaultLayout>
-      <Sidebar onSearch={handleSearch} />
+      <Sidebar
+        onSearch={handleSearch}
+        onSort={handleSort}
+      />
       <ListProducts keyword={keyword} />
     </DefaultLayout>
   );

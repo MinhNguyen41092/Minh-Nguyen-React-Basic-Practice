@@ -2,8 +2,10 @@ import React from 'react';
 import './index.css';
 
 const SelectGroup = (props) => {
-  const { options } = props;
-  const handleChangeOption = () => {};
+  const { options, handleSelectOptionChange } = props;
+  const handleChangeOption = (e) => {
+    handleSelectOptionChange(e.target.value);
+  };
 
   return (
     <select
@@ -12,7 +14,7 @@ const SelectGroup = (props) => {
     >
       <option value="" disabled selected hidden>Sort by</option>
       {
-        options.map((option, key) => <option key={option} value={key}>{option}</option>)
+        options.map((option) => <option key={option} value={option}>{option}</option>)
       }
     </select>
   );
