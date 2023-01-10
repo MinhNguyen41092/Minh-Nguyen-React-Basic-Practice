@@ -11,15 +11,20 @@ const options = [
 
 const Sidebar = (props) => {
   const { onSearch } = props;
-  const handleSearch = (e) => {
-    onSearch(e.target.value);
+  const handleSearch = (value) => {
+    onSearch(value.keyword);
   };
 
   return (
     <div className="sidebar">
       <h2 className="sidebar title">Shop The Latest</h2>
       <div className="search">
-        <Input className="input-search" placeholder="Search..." onChange={handleSearch} />
+        <Input
+          className="input-search"
+          placeholder="Search..."
+          handleInputChange={handleSearch}
+          name="keyword"
+        />
         <Button
           type="button"
           className="btn-search"
