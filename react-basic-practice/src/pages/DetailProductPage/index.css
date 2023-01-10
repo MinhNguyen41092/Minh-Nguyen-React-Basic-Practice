@@ -28,6 +28,7 @@
 .product .information .name {
   font-size: var(--fs-large-more);
   color: var(--color-black);
+  text-transform: capitalize;
 }
 
 .product .information .price {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '@/services/Products';
+import { updateCart, getCartByUserId } from '@/services/Cart';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
@@ -13,6 +14,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState([]);
+  const [quantityProduct, setQuantity] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -30,7 +32,25 @@ const ProductDetail = () => {
     getData();
   }, []);
 
-  const handleAddCart = () => {};
+  const handleSetQuantity = (value) => {
+    setQuantity(value);
+  };
+
+  const handleAddCart = () => {
+    const productAddCart = {
+      idProduct: product.id,
+      quantity: quantityProduct,
+      name: product.name,
+      price: product.price,
+    };
+
+    // const cartUser = {
+    //   id: 1,
+    //   listProducts: [productAddCart],
+    // };
+
+    updateCart(1, productAddCart);
+  };
 
   return (
     <DefaultLayout>
@@ -50,15 +70,32 @@ const ProductDetail = () => {
                         <span className="name">{field.name}</span>
                         <span className="price">{`$ ${field.price}`}</span>
                         <p className="description">{field.description}</p>
-                        <div className="add-cart">
-                          <Quantity />
-                          <Button
-                            type="button"
-                            onClick={handleAddCart}
-                            className="btn-primary btn-large"
-                            text="add to cart"
-                          />
-                        </div>
+                        {
+                          (field.label === 'Sold out')
+                            ? (
+                              <div className="add-cart">
+                                <Quantity status />
+                                <Button
+                                  type="button"
+                                  onClick={handleAddCart}
+                                  className="btn-primary btn-large"
+                                  text="add to cart"
+                                  status
+                                />
+                              </div>
+                            )
+                            : (
+                              <div className="add-cart">
+                                <Quantity quantity={handleSetQuantity} />
+                                <Button
+                                  type="button"
+                                  onClick={handleAddCart}
+                                  className="btn-primary btn-large"
+                                  text="add to cart"
+                                />
+                              </div>
+                            )
+                        }
                       </div>
                     </div>
                     <div className="product-description">

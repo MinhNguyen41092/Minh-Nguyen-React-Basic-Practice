@@ -16,3 +16,12 @@
 .quantity {
   padding: 0px 20px;
 }
+
+.btn-decrement[disabled]{
+  border: none;
+  background-color: var(--color-quantity-button);
+}
+
+.btn-decrement[disabled]:hover{
+  background-color: var(--color-quantity-button);
+}

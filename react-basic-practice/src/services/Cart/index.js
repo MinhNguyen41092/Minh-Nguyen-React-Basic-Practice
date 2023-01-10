@@ -16,7 +16,7 @@ export const createNewCart = async (data) => {
  * @returns {object} list product of user
  */
 export const getCartByUserId = async (userId) => {
-  const res = await axios.get(`${CART_API}?userId=${userId}`);
+  const res = await axios.get(`${CART_API}/${userId}`);
 
   return res.data;
 };
@@ -26,8 +26,9 @@ export const getCartByUserId = async (userId) => {
  * @param {number} userId
  * @param {object} data list product (productId, quantity)
  */
-export const update = async (userId, data) => {
-  const res = await axios.put(`${CART_API}?userId=${userId}`, data);
+export const updateCart = async (userId, data) => {
+  console.log(data);
+  const res = await axios.patch(`${CART_API}/userId=${userId}`, data);
 
   return res.data;
 };
