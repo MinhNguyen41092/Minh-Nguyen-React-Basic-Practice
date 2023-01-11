@@ -90,6 +90,12 @@
           "quantity": 4,
           "name": "lira earrings",
           "price": 20
+        },
+        {
+          "idProduct": 1,
+          "quantity": 5,
+          "name": "lira earrings",
+          "price": 20
         }
       ]
     },

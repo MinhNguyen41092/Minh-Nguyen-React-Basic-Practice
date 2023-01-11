@@ -1,25 +1,44 @@
 import React from 'react';
 import Button from '../common/Button';
+import './index.css';
 
 function Popup(props) {
   const {
-    className, status, icon, message,
+    isSuccess, message, onClose,
   } = props;
 
   return (
-    <div className="notification toast">
-      <Button
-        type="button"
-        className="btn btn-close"
-        text="X"
-      />
-      <div className={className}>
-        <img src={icon} alt="icon" />
-      </div>
-      <div>
-        <p className="notification-title">{status}</p>
-        <p className="notification-message">{message}</p>
-      </div>
+    <div className="popup">
+      {
+        isSuccess
+          ? (
+            <div className="notification success">
+              <div className="message">
+                <p className="title">Success</p>
+                <p className="content">{message}</p>
+              </div>
+              <Button
+                onClick={onClose}
+                type="button"
+                className="btn btn-close"
+                text="X"
+              />
+            </div>
+          )
+          : (
+            <div className="notification fail">
+              <div className="message">
+                <p className="title">Faill</p>
+                <p className="content">{message}</p>
+              </div>
+              <Button
+                type="button"
+                className="btn btn-close"
+                text="X"
+              />
+            </div>
+          )
+      }
     </div>
   );
 }

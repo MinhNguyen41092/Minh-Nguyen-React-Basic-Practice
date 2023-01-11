@@ -1,4 +1,38 @@
+.popup {
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgb(25, 186, 119);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.notification .message {
+  color: var(--color-white);
+  margin: 0px 10px;
+}
+.notification .message .title {
+  font-weight: var(--fw-bold);
+}
+
+.notification .message .content {
+  margin: 5px 0px;
+  font-size: var(--fs-small);
+}
+
 .btn.btn-close {
   border: none;
   color: var(--color-white);
+  background-color: rgb(26, 218, 138);;
+}
+
+.btn.btn-close:hover{
+  border: none;
+  color:  rgb(26, 218, 138);
+  background-color: var(--color-white);
 }

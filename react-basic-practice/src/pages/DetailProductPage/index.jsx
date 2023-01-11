@@ -5,6 +5,7 @@ import { updateCart, getCartByUserId } from '@/services/Cart';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
+import Popup from '@/components/Popup';
 
 import { useLoading } from '@/contexts/loading';
 
@@ -15,6 +16,8 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState([]);
   const [quantityProduct, setQuantity] = useState(0);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -55,7 +58,14 @@ const ProductDetail = () => {
       listProducts: productAddCart,
     };
 
-    updateCart(1, cartUser);
+    try {
+      updateCart(1, cartUser);
+      setIsSuccess(true);
+    } catch {
+      setIsSuccess(false);
+    } finally {
+      setOpenPopup(true);
+    }
   };
 
   return (
@@ -118,6 +128,7 @@ const ProductDetail = () => {
             </>
           )
       }
+      {openPopup && <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />}
     </DefaultLayout>
   );
 };
