@@ -27,7 +27,6 @@ export const getCartByUserId = async (userId) => {
  * @param {object} data list product (productId, quantity)
  */
 export const updateCart = async (userId, data) => {
-  console.log(data);
   const res = await axios.put(`${CART_API}/${userId}`, data);
 
   return res.data;
