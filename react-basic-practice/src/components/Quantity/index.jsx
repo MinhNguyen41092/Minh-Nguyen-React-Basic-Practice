@@ -18,7 +18,9 @@ const Quantity = (props) => {
     }
   };
 
-  quantity(counter);
+  if (!status) {
+    quantity(counter);
+  }
 
   return (
     <div className="quantity-group">
