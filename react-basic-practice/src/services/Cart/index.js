@@ -28,7 +28,7 @@ export const getCartByUserId = async (userId) => {
  */
 export const updateCart = async (userId, data) => {
   console.log(data);
-  const res = await axios.patch(`${CART_API}/userId=${userId}`, data);
+  const res = await axios.put(`${CART_API}/${userId}`, data);
 
   return res.data;
 };

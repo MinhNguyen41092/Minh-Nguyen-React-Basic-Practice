@@ -36,20 +36,23 @@ const ProductDetail = () => {
     setQuantity(value);
   };
 
-  const handleAddCart = () => {
+  const handleAddCart = async () => {
     let productAddCart = {};
+    const dataCart = await getCartByUserId(1);
     product.forEach((field) => {
-      productAddCart = {
-        idProduct: field.id,
-        quantity: quantityProduct,
-        name: field.name,
-        price: field.price,
-      };
+      productAddCart = [
+        ...dataCart.listProducts,
+        {
+          idProduct: field.id,
+          quantity: quantityProduct,
+          name: field.name,
+          price: field.price,
+        }];
     });
 
     const cartUser = {
       id: 1,
-      listProducts: [{ productAddCart }],
+      listProducts: productAddCart,
     };
 
     updateCart(1, cartUser);
