@@ -18,7 +18,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const [quantityProduct, setQuantity] = useState(0);
   const {
-    openPopup, setOpenPopup, isSuccess, setIsSuccess,
+    openPopup, setOpenPopup, isSuccess, setIsSuccess, message, setMessage,
   } = usePopup();
 
   useEffect(() => {
@@ -79,8 +79,10 @@ const ProductDetail = () => {
     try {
       addCart();
       setIsSuccess(true);
+      setMessage('The item added to your shopping bag');
     } catch {
       setIsSuccess(false);
+      setMessage('Add to cart failed, please try again');
     } finally {
       setOpenPopup(true);
     }
@@ -155,7 +157,7 @@ const ProductDetail = () => {
         && (
         <Popup
           isSuccess={isSuccess}
-          message={isSuccess ? 'The item added to your shopping bag' : 'Add to cart failed, please try again'}
+          message={message}
           onClose={handleClose}
         />
         )
