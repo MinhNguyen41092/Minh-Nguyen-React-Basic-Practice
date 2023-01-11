@@ -72,30 +72,6 @@
           "quantity": 3,
           "name": "lira earrings",
           "price": 20
-        },
-        {
-          "idProduct": 2,
-          "quantity": 2,
-          "name": "hal earrings",
-          "price": 25
-        },
-        {
-          "idProduct": 5,
-          "quantity": 4,
-          "name": "plaine necklace",
-          "price": 20
-        },
-        {
-          "idProduct": 1,
-          "quantity": 4,
-          "name": "lira earrings",
-          "price": 20
-        },
-        {
-          "idProduct": 1,
-          "quantity": 5,
-          "name": "lira earrings",
-          "price": 20
         }
       ]
     },

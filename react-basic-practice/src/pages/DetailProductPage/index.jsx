@@ -128,8 +128,9 @@ const ProductDetail = () => {
             </>
           )
       }
-      <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />
-      {/* {openPopup && <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />} */}
+      {
+        openPopup && <Popup isSuccess={isSuccess} message={isSuccess ? 'The item added to your shopping bag' : 'Add to cart failed, please try again'} />
+      }
     </DefaultLayout>
   );
 };
