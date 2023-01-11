@@ -7,7 +7,7 @@ import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
 
-import { useLoading } from '../../contexts/loading';
+import { useLoading } from '../../contexts/LoadingProvider';
 import { getUserByEmail } from '../../services/Users';
 import validateInput from '../../helpers/validate';
 import hasData from '../../helpers/data';

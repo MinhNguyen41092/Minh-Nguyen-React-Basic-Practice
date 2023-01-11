@@ -5,7 +5,7 @@ import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 
 import { getListProducts } from '../../services/Products';
-import { useLoading } from '@/contexts/loading';
+import { useLoading } from '@/contexts/LoadingProvider';
 
 import './index.css';
 

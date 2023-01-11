@@ -7,7 +7,8 @@ import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
 import Popup from '@/components/Popup';
 
-import { useLoading } from '@/contexts/loading';
+import { useLoading } from '@/contexts/LoadingProvider';
+import { usePopup } from '@/contexts/PopupProvider';
 
 import './index.css';
 
@@ -16,8 +17,9 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState([]);
   const [quantityProduct, setQuantity] = useState(0);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false);
+  const {
+    openPopup, setOpenPopup, isSuccess, setIsSuccess,
+  } = usePopup();
 
   useEffect(() => {
     const getData = async () => {
