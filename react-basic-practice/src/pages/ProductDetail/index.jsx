@@ -86,6 +86,10 @@ const ProductDetail = () => {
     }
   };
 
+  const handleClose = () => {
+    setOpenPopup(false);
+  };
+
   return (
     <DefaultLayout>
       {
@@ -147,7 +151,14 @@ const ProductDetail = () => {
           )
       }
       {
-        openPopup && <Popup isSuccess={isSuccess} message={isSuccess ? 'The item added to your shopping bag' : 'Add to cart failed, please try again'} />
+        openPopup
+        && (
+        <Popup
+          isSuccess={isSuccess}
+          message={isSuccess ? 'The item added to your shopping bag' : 'Add to cart failed, please try again'}
+          onClose={handleClose}
+        />
+        )
       }
     </DefaultLayout>
   );

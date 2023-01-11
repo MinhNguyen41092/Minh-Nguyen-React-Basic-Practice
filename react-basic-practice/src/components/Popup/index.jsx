@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../common/Button';
 import './index.css';
 
-function Popup(props) {
+const Popup = (props) => {
   const {
     isSuccess, message, onClose,
   } = props;
