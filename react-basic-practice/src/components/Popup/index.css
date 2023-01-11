@@ -7,9 +7,16 @@
 .notification {
   display: flex;
   align-items: flex-start;
-  background-color: rgb(25, 186, 119);
   border-radius: 4px;
   padding: 10px;
+}
+
+.notification.success {
+  background-color: var(--color-success);
+}
+
+.notification.fail {
+  background-color: var(--color-secondary);
 }
 
 .notification .message {
@@ -28,11 +35,9 @@
 .btn.btn-close {
   border: none;
   color: var(--color-white);
-  background-color: rgb(26, 218, 138);;
+  background-color: initial;
 }
 
 .btn.btn-close:hover{
-  border: none;
-  color:  rgb(26, 218, 138);
-  background-color: var(--color-white);
+  border: 1px solid var(--color-white);
 }

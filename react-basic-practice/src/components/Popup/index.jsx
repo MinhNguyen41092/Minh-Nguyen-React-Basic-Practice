@@ -28,7 +28,7 @@ function Popup(props) {
           : (
             <div className="notification fail">
               <div className="message">
-                <p className="title">Faill</p>
+                <p className="title">Fail</p>
                 <p className="content">{message}</p>
               </div>
               <Button

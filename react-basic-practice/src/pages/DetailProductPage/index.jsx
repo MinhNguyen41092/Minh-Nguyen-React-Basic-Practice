@@ -128,7 +128,8 @@ const ProductDetail = () => {
             </>
           )
       }
-      {openPopup && <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />}
+      <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />
+      {/* {openPopup && <Popup isSuccess={isSuccess} message="The item added to your shopping bag" />} */}
     </DefaultLayout>
   );
 };
