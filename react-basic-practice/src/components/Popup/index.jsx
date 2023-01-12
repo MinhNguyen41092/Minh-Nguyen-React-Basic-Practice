@@ -32,6 +32,7 @@ const Popup = (props) => {
                 <p className="content">{message}</p>
               </div>
               <Button
+                onClick={onClose}
                 type="button"
                 className="btn btn-close"
                 text="X"
@@ -41,6 +42,6 @@ const Popup = (props) => {
       }
     </div>
   );
-}
+};
 
 export default Popup;

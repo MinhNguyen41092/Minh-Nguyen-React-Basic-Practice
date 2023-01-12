@@ -17,14 +17,14 @@ const ToastProvider = (props) => {
     setStatus,
     message,
     setMessage,
-  }), [openPopup, status]);
+  }), [openPopup, status, message]);
 
   return (
-    <ToastProvider.Provider
+    <ToastContext.Provider
       value={valueContext}
     >
       {children}
-    </ToastProvider.Provider>
+    </ToastContext.Provider>
   );
 };
 

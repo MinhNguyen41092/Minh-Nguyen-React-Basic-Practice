@@ -37,6 +37,13 @@ const ProductDetail = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setOpenPopup(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [openPopup]);
+
   const handleSetQuantity = (value) => {
     setQuantity(value);
   };
