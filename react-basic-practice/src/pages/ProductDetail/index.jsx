@@ -37,10 +37,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setToast((preToast) => ({
-        ...preToast,
-        openPopup: false,
-      }));
+      setToast({ ...toast, openPopup: false });
     }, 3000);
     return () => clearTimeout(timer);
   }, [toast.openPopup]);
@@ -50,7 +47,6 @@ const ProductDetail = () => {
   };
 
   const handleAddCart = async () => {
-    // const productAddCart = [];
     try {
       const dataCart = await getCartByUserId(1);
 
@@ -68,31 +64,24 @@ const ProductDetail = () => {
 
       updateCart(1, cartUser);
 
-      setToast((preToast) => ({
-        ...preToast,
+      setToast({
+        ...toast,
         status: 'success',
         message: 'The item added to your shopping bag',
-      }));
+      });
     } catch {
-      console.log('catch');
-      setToast((preToast) => ({
-        ...preToast,
+      setToast({
+        ...toast,
         status: 'error',
         message: 'Add to cart failed, please try again',
-      }));
+      });
     } finally {
-      setToast((preToast) => ({
-        ...preToast,
-        openPopup: true,
-      }));
+      setToast({ ...toast, openPopup: true });
     }
   };
 
   const handleClose = () => {
-    setToast((preToast) => ({
-      ...preToast,
-      openPopup: false,
-    }));
+    setToast({ ...toast, openPopup: false });
   };
 
   return (
