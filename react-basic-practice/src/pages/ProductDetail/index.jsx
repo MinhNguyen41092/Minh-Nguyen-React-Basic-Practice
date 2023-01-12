@@ -41,43 +41,27 @@ const ProductDetail = () => {
     setQuantity(value);
   };
 
-  const handleAddCart = () => {
-    const addCart = async () => {
-      let productAddCart = [];
-      try {
-        const dataCart = await getCartByUserId(1);
-        product.forEach((field) => {
-          productAddCart = [
-            ...dataCart.listProducts,
-            {
-              idProduct: field.id,
-              quantity: quantityProduct,
-              name: field.name,
-              price: field.price,
-            }];
-        });
-      } catch {
-        product.forEach((field) => {
-          productAddCart = [
-            {
-              idProduct: field.id,
-              quantity: quantityProduct,
-              name: field.name,
-              price: field.price,
-            }];
-        });
-      }
-
+  const handleAddCart = async () => {
+    let productAddCart = [];
+    try {
+      const dataCart = await getCartByUserId(1);
+      product.forEach((field) => {
+        productAddCart = [
+          ...dataCart.listProducts,
+          {
+            idProduct: field.id,
+            quantity: quantityProduct,
+            name: field.name,
+            price: field.price,
+          }];
+      });
       const cartUser = {
         id: 1,
         listProducts: productAddCart,
       };
 
       updateCart(1, cartUser);
-    };
 
-    try {
-      addCart();
       setStatus(true);
       setMessage('The item added to your shopping bag');
     } catch {
