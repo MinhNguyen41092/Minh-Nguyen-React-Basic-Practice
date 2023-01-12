@@ -5,9 +5,9 @@ const ToastContext = React.createContext();
 const useToast = () => useContext(ToastContext);
 
 const initialToast = {
-  status: false,
-  openPopup: false,
+  status: '',
   message: '',
+  openPopup: false,
 };
 
 const ToastProvider = (props) => {

@@ -1,4 +1,4 @@
-.popup {
+.toast {
   position: fixed;
   left: 15px;
   bottom: 15px;
@@ -23,7 +23,7 @@
   color: var(--color-white);
   margin: 0px 10px;
 }
-.notification .message .title {
+.notification .message .status {
   font-weight: var(--fw-bold);
 }
 
