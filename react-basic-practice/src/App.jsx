@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { LoadingProvider } from './contexts/loading';
+import { LoadingProvider } from './contexts/LoadingProvider';
+import { ToastProvider } from '@/contexts/ToastProvider';
 import Routing from './Routing';
 
 const App = () => (
   <div className="App">
     <Router>
       <LoadingProvider>
-        <Routing />
+        <ToastProvider>
+          <Routing />
+        </ToastProvider>
       </LoadingProvider>
     </Router>
   </div>
