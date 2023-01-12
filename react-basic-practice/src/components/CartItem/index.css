@@ -1,0 +1,24 @@
+.cart-item {
+  position: relative;
+  width: 300px;
+  background-color: var(--color-tertiary);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.cart-item .name {
+  margin: 0px;
+  font-weight: var(--fw-semibold);
+}
+
+.quantity {
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.btn-delete {
+  position: absolute;
+  right: 10px;
+  bottom: 30px;
+  background-color: var(--color-tertiary);
+}

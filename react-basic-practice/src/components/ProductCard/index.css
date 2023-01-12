@@ -20,12 +20,12 @@
   line-height: 26px;
 }
 
-.product-card .name {
+.name {
   margin: 16px 0px;
   color: var(--color-black);
   text-transform: capitalize;
 }
 
-.product-card .price {
+.price {
   color: var(--color-price);
 }
