@@ -4,20 +4,19 @@ const ToastContext = React.createContext();
 
 const useToast = () => useContext(ToastContext);
 
+const initialToast = {
+  status: false,
+  openPopup: false,
+  message: '',
+};
+
 const ToastProvider = (props) => {
   const { children } = props;
-  const [status, setStatus] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false);
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(initialToast);
 
   const valueContext = useMemo(() => ({
-    openPopup,
-    setOpenPopup,
-    status,
-    setStatus,
-    message,
-    setMessage,
-  }), [openPopup, status, message]);
+    toast, setToast,
+  }), [toast]);
 
   return (
     <ToastContext.Provider

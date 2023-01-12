@@ -17,9 +17,7 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState([]);
   const [quantityProduct, setQuantity] = useState(0);
-  const {
-    openPopup, setOpenPopup, status, setStatus, message, setMessage,
-  } = useToast();
+  const { toast, setToast } = useToast();
 
   useEffect(() => {
     const getData = async () => {
@@ -39,10 +37,13 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setOpenPopup(false);
+      setToast({
+        ...toast,
+        openPopup: false,
+      });
     }, 3000);
     return () => clearTimeout(timer);
-  }, [openPopup]);
+  }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
     setQuantity(value);
@@ -69,18 +70,30 @@ const ProductDetail = () => {
 
       updateCart(1, cartUser);
 
-      setStatus(true);
-      setMessage('The item added to your shopping bag');
+      setToast({
+        ...toast,
+        status: true,
+        message: 'The item added to your shopping bag',
+      });
     } catch {
-      setStatus(false);
-      setMessage('Add to cart failed, please try again');
+      setToast({
+        ...toast,
+        status: false,
+        message: 'Add to cart failed, please try again',
+      });
     } finally {
-      setOpenPopup(true);
+      setToast({
+        ...toast,
+        openPopup: true,
+      });
     }
   };
 
   const handleClose = () => {
-    setOpenPopup(false);
+    setToast({
+      ...toast,
+      openPopup: false,
+    });
   };
 
   return (
@@ -144,11 +157,11 @@ const ProductDetail = () => {
           )
       }
       {
-        openPopup
+        toast.openPopup
         && (
         <Popup
-          isSuccess={status}
-          message={message}
+          isSuccess={toast.status}
+          message={toast.message}
           onClose={handleClose}
         />
         )
