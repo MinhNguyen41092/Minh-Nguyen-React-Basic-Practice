@@ -5,7 +5,7 @@ import { updateCart, getCartByUserId } from '@/services/Cart';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
-import Popup from '@/components/Popup';
+import Toast from '@/components/Toast';
 
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useToast } from '@/contexts/ToastProvider';
@@ -15,18 +15,16 @@ import './index.css';
 const ProductDetail = () => {
   const { productId } = useParams();
   const { loading, setLoading } = useLoading();
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
-  const {
-    openPopup, setOpenPopup, status, setStatus, message, setMessage,
-  } = useToast();
+  const { toast, setToast } = useToast();
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const data = await getProductById(productId);
-        data ? setProduct(data) : setProduct([]);
+        data ? setProduct(data) : setProduct({});
       } catch {
         alert('Error loading data, please reload the page');
       } finally {
@@ -39,48 +37,62 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setOpenPopup(false);
+      setToast((preToast) => ({
+        ...preToast,
+        openPopup: false,
+      }));
     }, 3000);
     return () => clearTimeout(timer);
-  }, [openPopup]);
+  }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
     setQuantity(value);
   };
 
   const handleAddCart = async () => {
-    let productAddCart = [];
+    // const productAddCart = [];
     try {
       const dataCart = await getCartByUserId(1);
-      product.forEach((field) => {
-        productAddCart = [
-          ...dataCart.listProducts,
-          {
-            idProduct: field.id,
-            quantity: quantityProduct,
-            name: field.name,
-            price: field.price,
-          }];
-      });
+
       const cartUser = {
         id: 1,
-        listProducts: productAddCart,
+        listProducts: [
+          ...dataCart.listProducts,
+          {
+            idProduct: product.id,
+            quantity: quantityProduct,
+            name: product.name,
+            price: product.price,
+          }],
       };
 
       updateCart(1, cartUser);
 
-      setStatus(true);
-      setMessage('The item added to your shopping bag');
+      setToast((preToast) => ({
+        ...preToast,
+        status: 'success',
+        message: 'The item added to your shopping bag',
+      }));
     } catch {
-      setStatus(false);
-      setMessage('Add to cart failed, please try again');
+      console.log('catch');
+      setToast((preToast) => ({
+        ...preToast,
+        status: 'error',
+        message: 'Add to cart failed, please try again',
+      }));
     } finally {
-      setOpenPopup(true);
+      setToast((preToast) => ({
+        ...preToast,
+        openPopup: true,
+      }));
     }
   };
 
   const handleClose = () => {
-    setOpenPopup(false);
+    setToast((preToast) => ({
+      ...preToast,
+      openPopup: false,
+    }));
   };
 
   return (
@@ -91,18 +103,15 @@ const ProductDetail = () => {
             <p className="loading">Loading...</p>
           )
           : (
-            <>
-              {
-                product.map((field) => (
-                  <div className="product-main">
-                    <div className="product">
-                      <img className="image" src={field.image} alt={field.name} />
-                      <div className="information">
-                        <span className="name">{field.name}</span>
-                        <span className="price">{`$ ${field.price}`}</span>
-                        <p className="description">{field.description}</p>
-                        {
-                          (field.label === 'Sold out')
+            <div className="product-main">
+              <div className="product">
+                <img className="image" src={product.image} alt={product.name} />
+                <div className="information">
+                  <span className="name">{product.name}</span>
+                  <span className="price">{`$ ${product.price}`}</span>
+                  <p className="description">{product.description}</p>
+                  {
+                          (product.label === 'Sold out')
                             ? (
                               <div className="add-cart">
                                 <Quantity status />
@@ -127,28 +136,25 @@ const ProductDetail = () => {
                               </div>
                             )
                         }
-                      </div>
-                    </div>
-                    <div className="product-description">
-                      <div className="title">
-                        Description
-                      </div>
-                      <div className="description">
-                        {field.description}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              }
-            </>
+                </div>
+              </div>
+              <div className="product-description">
+                <div className="title">
+                  Description
+                </div>
+                <div className="description">
+                  {product.description}
+                </div>
+              </div>
+            </div>
           )
       }
       {
-        openPopup
+        toast.openPopup
         && (
-        <Popup
-          isSuccess={status}
-          message={message}
+        <Toast
+          status={toast.status}
+          message={toast.message}
           onClose={handleClose}
         />
         )

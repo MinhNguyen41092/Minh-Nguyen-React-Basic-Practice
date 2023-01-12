@@ -21,7 +21,7 @@ export const getListProducts = async (pageNumber, keyword = '') => {
  * @returns {object} product
  */
 export const getProductById = async (productId) => {
-  const res = await axios.get(`${PRODUCTS_API}?id=${productId}`);
+  const res = await axios.get(`${PRODUCTS_API}/${productId}`);
 
   return res.data;
 };
