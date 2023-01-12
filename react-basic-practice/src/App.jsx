@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { LoadingProvider } from './contexts/LoadingProvider';
-import { PopupProvider } from '@/contexts/PopupProvider';
+import { PopupProvider } from '@/contexts/ToastProvider';
 import Routing from './Routing';
 
 const App = () => (

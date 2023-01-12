@@ -1,31 +1,31 @@
 import React, { useContext, useMemo, useState } from 'react';
 
-const PopupContext = React.createContext();
+const ToastContext = React.createContext();
 
-const usePopup = () => useContext(PopupContext);
+const useToast = () => useContext(ToastContext);
 
-const PopupProvider = (props) => {
+const ToastProvider = (props) => {
   const { children } = props;
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [status, setStatus] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
   const [message, setMessage] = useState('');
 
   const valueContext = useMemo(() => ({
     openPopup,
     setOpenPopup,
-    isSuccess,
-    setIsSuccess,
+    status,
+    setStatus,
     message,
     setMessage,
-  }), [openPopup, isSuccess]);
+  }), [openPopup, status]);
 
   return (
-    <PopupContext.Provider
+    <ToastProvider.Provider
       value={valueContext}
     >
       {children}
-    </PopupContext.Provider>
+    </ToastProvider.Provider>
   );
 };
 
-export { usePopup, PopupProvider };
+export { useToast, ToastProvider };

@@ -8,7 +8,7 @@ import Button from '@/components/common/Button';
 import Popup from '@/components/Popup';
 
 import { useLoading } from '@/contexts/LoadingProvider';
-import { usePopup } from '@/contexts/PopupProvider';
+import { useToast } from '@/contexts/ToastProvider';
 
 import './index.css';
 
@@ -18,8 +18,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const [quantityProduct, setQuantity] = useState(0);
   const {
-    openPopup, setOpenPopup, isSuccess, setIsSuccess, message, setMessage,
-  } = usePopup();
+    openPopup, setOpenPopup, status, setStatus, message, setMessage,
+  } = useToast();
 
   useEffect(() => {
     const getData = async () => {
@@ -43,7 +43,7 @@ const ProductDetail = () => {
 
   const handleAddCart = () => {
     const addCart = async () => {
-      let productAddCart = {};
+      let productAddCart = [];
       try {
         const dataCart = await getCartByUserId(1);
         product.forEach((field) => {
@@ -78,10 +78,10 @@ const ProductDetail = () => {
 
     try {
       addCart();
-      setIsSuccess(true);
+      setStatus(true);
       setMessage('The item added to your shopping bag');
     } catch {
-      setIsSuccess(false);
+      setStatus(false);
       setMessage('Add to cart failed, please try again');
     } finally {
       setOpenPopup(true);
@@ -156,7 +156,7 @@ const ProductDetail = () => {
         openPopup
         && (
         <Popup
-          isSuccess={isSuccess}
+          isSuccess={status}
           message={message}
           onClose={handleClose}
         />
