@@ -1,4 +1,5 @@
 .cart-item {
+  margin: 50px auto;
   position: relative;
   width: 300px;
   background-color: var(--color-tertiary);
@@ -21,4 +22,5 @@
   right: 10px;
   bottom: 30px;
   background-color: var(--color-tertiary);
+  color: var(--color-primary);
 }
