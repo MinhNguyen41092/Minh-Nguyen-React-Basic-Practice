@@ -37,10 +37,10 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setToast({
-        ...toast,
+      setToast((preToast) => ({
+        ...preToast,
         openPopup: false,
-      });
+      }));
     }, 3000);
     return () => clearTimeout(timer);
   }, [toast.openPopup]);
@@ -70,30 +70,30 @@ const ProductDetail = () => {
 
       updateCart(1, cartUser);
 
-      setToast({
-        ...toast,
+      setToast((preToast) => ({
+        ...preToast,
         status: true,
         message: 'The item added to your shopping bag',
-      });
+      }));
     } catch {
-      setToast({
-        ...toast,
+      setToast((preToast) => ({
+        ...preToast,
         status: false,
         message: 'Add to cart failed, please try again',
-      });
+      }));
     } finally {
-      setToast({
-        ...toast,
+      setToast((preToast) => ({
+        ...preToast,
         openPopup: true,
-      });
+      }));
     }
   };
 
   const handleClose = () => {
-    setToast({
-      ...toast,
+    setToast((preToast) => ({
+      ...preToast,
       openPopup: false,
-    });
+    }));
   };
 
   return (
