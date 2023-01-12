@@ -65,18 +65,16 @@ const ProductDetail = () => {
       updateCart(1, cartUser);
 
       setToast({
-        ...toast,
+        openPopup: true,
         status: 'success',
         message: 'The item added to your shopping bag',
       });
     } catch {
       setToast({
-        ...toast,
+        openPopup: true,
         status: 'error',
         message: 'Add to cart failed, please try again',
       });
-    } finally {
-      setToast({ ...toast, openPopup: true });
     }
   };
 
@@ -100,30 +98,30 @@ const ProductDetail = () => {
                   <span className="price">{`$ ${product.price}`}</span>
                   <p className="description">{product.description}</p>
                   {
-                          (product.label === 'Sold out')
-                            ? (
-                              <div className="add-cart">
-                                <Quantity status />
-                                <Button
-                                  type="button"
-                                  onClick={handleAddCart}
-                                  className="btn-primary btn-large"
-                                  text="add to cart"
-                                  status
-                                />
-                              </div>
-                            )
-                            : (
-                              <div className="add-cart">
-                                <Quantity quantity={handleSetQuantity} />
-                                <Button
-                                  type="button"
-                                  onClick={handleAddCart}
-                                  className="btn-primary btn-large"
-                                  text="add to cart"
-                                />
-                              </div>
-                            )
+                    (product.label === 'Sold out')
+                      ? (
+                        <div className="add-cart">
+                          <Quantity status />
+                          <Button
+                            type="button"
+                            onClick={handleAddCart}
+                            className="btn-primary btn-large"
+                            text="add to cart"
+                            status
+                          />
+                        </div>
+                      )
+                      : (
+                        <div className="add-cart">
+                          <Quantity quantity={handleSetQuantity} />
+                          <Button
+                            type="button"
+                            onClick={handleAddCart}
+                            className="btn-primary btn-large"
+                            text="add to cart"
+                          />
+                        </div>
+                      )
                         }
                 </div>
               </div>
