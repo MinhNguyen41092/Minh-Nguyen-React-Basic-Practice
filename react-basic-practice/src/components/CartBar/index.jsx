@@ -24,7 +24,7 @@ const CartBar = () => {
   // const {
   //   onClose, data,
   // } = props;
-  const onHandleDeleteCartItem = () => {};
+  const onDeleteCartItem = () => {};
   const onHandleCloseNav = () => {
     // onClose(false);
   };
@@ -47,7 +47,7 @@ const CartBar = () => {
           data.map((item) => (
             <CartItem
               item={item}
-              deleteCartItem={onHandleDeleteCartItem}
+              handleDeleteCartItem={onDeleteCartItem}
             />
           ))
         }
