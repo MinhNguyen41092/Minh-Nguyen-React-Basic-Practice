@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../common/Button';
+import closeButton from '@/assets/images/iconButton/btn-close.png';
 import './index.css';
 
 const CartItem = (props) => {
@@ -13,7 +14,7 @@ const CartItem = (props) => {
         onClick={onHandleDeleteCart}
         type="button"
         className="btn btn-delete"
-        text="X"
+        icon={closeButton}
       />
     </article>
   );
