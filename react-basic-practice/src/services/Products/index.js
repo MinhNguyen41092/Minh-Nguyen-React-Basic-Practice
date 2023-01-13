@@ -8,7 +8,6 @@ import { PRODUCTS_API } from '../../constants/api';
  * @returns {object} list 6 products
  */
 export const getListProducts = async (pageNumber, keyword = '') => {
-  console.log(keyword);
   const res = await axios.get(`${PRODUCTS_API}?_page=${pageNumber}&_limit=6&name_like=${keyword}`);
 
   return res.data;
