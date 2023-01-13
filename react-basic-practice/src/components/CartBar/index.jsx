@@ -20,23 +20,17 @@ const data = [
   },
 ];
 
-const CartBar = () => {
-  // const {
-  //   onClose, data,
-  // } = props;
+const CartBar = (props) => {
+  const { handleCloseCart } = props;
   const onDeleteCartItem = () => {};
-  const onHandleCloseNav = () => {
-    // onClose(false);
-  };
 
   return (
     <aside className="cart-bar">
-      <div className="overlay" />
       <div className="main">
         <div className="header">
           <h2 className="title">Shopping bag</h2>
           <Button
-            onClick={onHandleCloseNav}
+            onClick={handleCloseCart}
             type="button"
             className="btn btn-close"
             icon={closeButton}

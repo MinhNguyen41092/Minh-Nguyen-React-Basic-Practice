@@ -1,10 +1,11 @@
-.cart-bar .overlay {
+.cart-bar {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: var(--color-overlay);
+  z-index: 1;
 }
 
 .cart-bar .main {

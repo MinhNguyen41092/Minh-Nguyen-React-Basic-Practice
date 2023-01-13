@@ -11,7 +11,7 @@
   font-weight: var(--fw-semibold);
 }
 
-.quantity {
+.cart-item .quantity {
   padding: 0px;
   margin: 5px 0px;
 }
