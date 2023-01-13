@@ -1,7 +1,6 @@
 .cart-item {
-  margin: 50px auto;
+  margin: 10px 20px;
   position: relative;
-  width: 300px;
   background-color: var(--color-tertiary);
   border-radius: 6px;
   padding: 10px;
