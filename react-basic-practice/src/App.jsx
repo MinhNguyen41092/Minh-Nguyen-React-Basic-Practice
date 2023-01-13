@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { LoadingProvider } from './contexts/LoadingProvider';
 import { ToastProvider } from '@/contexts/ToastProvider';
 import Routing from './Routing';
-import CartItem from './components/CartItem';
+import CartBar from './components/CartBar';
 
 const item = {
   id: 1,
@@ -17,7 +17,7 @@ const App = () => (
     <Router>
       <LoadingProvider>
         <ToastProvider>
-          <CartItem item={item} />
+          <CartBar />
           {/* <Routing /> */}
         </ToastProvider>
       </LoadingProvider>
