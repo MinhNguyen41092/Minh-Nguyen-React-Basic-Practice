@@ -9,6 +9,7 @@ import './index.css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const onOpenCart = () => {
     setIsOpen(true);
   };

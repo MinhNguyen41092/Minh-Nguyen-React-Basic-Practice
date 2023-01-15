@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../common/Button';
 import CartItem from '../CartItem';
+import { useCart } from '@/contexts/CartProvider';
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 
 import './index.css';
@@ -22,6 +23,8 @@ const data = [
 
 const CartBar = (props) => {
   const { handleCloseCart } = props;
+  const { listItem, setListItem } = useCart();
+  console.log(listItem);
   const onDeleteCartItem = () => {};
 
   return (

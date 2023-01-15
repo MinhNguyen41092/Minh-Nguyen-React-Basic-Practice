@@ -10,13 +10,17 @@ const CartProvider = (props) => {
   const { children } = props;
   const [listItem, setListItem] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const dataCart = await getCartByUserId(1);
-      setListItem(dataCart);
-    } catch {
-      setListItem([]);
-    }
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const dataCart = await getCartByUserId(1);
+        setListItem(dataCart);
+      } catch {
+        setListItem([]);
+      }
+    };
+
+    getData();
   }, []);
 
   const updateItemCart = useCallback(
@@ -31,8 +35,7 @@ const CartProvider = (props) => {
   const valueContext = useMemo(() => ({
     listItem,
     setListItem,
-    updateItemCart,
-  }), [listItem, updateCart]);
+  }), [listItem]);
 
   return (
     <CartContext.Provider
@@ -43,4 +46,4 @@ const CartProvider = (props) => {
   );
 };
 
-export { useCart, CartProvider, initCartList };
+export { useCart, CartProvider };
