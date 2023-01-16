@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '@/services/Products';
-import { updateCart, getCartByUserId } from '@/services/Cart';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
