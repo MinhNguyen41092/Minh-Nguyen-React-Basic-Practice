@@ -4,16 +4,17 @@ import CartItem from '../CartItem';
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 import { useCart } from '@/contexts/CartProvider';
 import { useToast } from '@/contexts/ToastProvider';
+import { updateCart } from '@/services/Cart';
 
 import './index.css';
 import Toast from '../Toast';
 
 const CartSideBar = (props) => {
-  const { handleCloseCart } = props;
-  const { listItem, setListItem, updateItemCart } = useCart();
+  const { onCloseCart } = props;
+  const { listItem, setListItem } = useCart();
   const { toast, setToast } = useToast();
 
-  const handleDeleteCartItem = (e) => {
+  const handleDeleteCartItem = async (e) => {
     try {
       const idSelected = e.target.closest('.cart-item').dataset.id;
       const updateCarts = listItem.listProducts.filter(
@@ -26,7 +27,7 @@ const CartSideBar = (props) => {
       };
 
       setListItem(cartUser);
-      updateItemCart(cartUser);
+      await updateCart(1, cartUser);
 
       setToast({
         openPopup: true,
@@ -52,7 +53,7 @@ const CartSideBar = (props) => {
         <div className="header">
           <h2 className="title">Shopping bag</h2>
           <Button
-            onClick={handleCloseCart}
+            onClick={onCloseCart}
             type="button"
             className="btn btn-close"
             icon={closeButton}

@@ -39,7 +39,7 @@ const Header = () => {
         </div>
       </div>
       {
-        isOpen && <CartSideBar handleCloseCart={handleCloseCart} />
+        isOpen && <CartSideBar onCloseCart={handleCloseCart} />
       }
     </header>
   );

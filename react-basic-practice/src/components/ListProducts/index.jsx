@@ -21,7 +21,7 @@ const ListProducts = (props) => {
       try {
         setLoading(true);
         const data = await getListProducts(pageNumber, keyword);
-        data ? setProducts(data) : setProducts([]);
+        data ? setProducts({ ...data }) : setProducts([]);
       } catch {
         alert('Error loading data, please reload the page');
       } finally {

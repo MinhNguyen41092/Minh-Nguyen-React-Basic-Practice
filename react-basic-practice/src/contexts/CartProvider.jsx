@@ -1,7 +1,7 @@
 import React, {
-  useCallback, useContext, useEffect, useMemo, useState,
+  useContext, useEffect, useMemo, useState,
 } from 'react';
-import { getCartByUserId, updateCart } from '@/services/Cart';
+import { getCartByUserId } from '@/services/Cart';
 
 const CartContext = React.createContext();
 const useCart = () => useContext(CartContext);
@@ -23,14 +23,9 @@ const CartProvider = (props) => {
     getData();
   }, []);
 
-  const updateItemCart = async (data) => {
-    await updateCart(1, data);
-  };
-
   const valueContext = useMemo(() => ({
     listItem,
     setListItem,
-    updateItemCart,
   }), [listItem]);
 
   return (
