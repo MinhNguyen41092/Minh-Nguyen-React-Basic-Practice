@@ -23,9 +23,9 @@ const CartProvider = (props) => {
     getData();
   }, []);
 
-  const updateItemCart = useCallback(async (data) => {
+  const updateItemCart = async (data) => {
     await updateCart(1, data);
-  }, []);
+  };
 
   const valueContext = useMemo(() => ({
     listItem,

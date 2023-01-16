@@ -68,16 +68,16 @@
       "id": 1,
       "listProducts": [
         {
-          "idProduct": 1,
-          "quantity": 3,
-          "name": "lira earrings",
-          "price": 20
-        },
-        {
           "idProduct": 2,
           "quantity": 3,
           "name": "hal earrings",
           "price": 25
+        },
+        {
+          "idProduct": 6,
+          "quantity": 1,
+          "name": "yuki hair pin set of 3",
+          "price": 20
         }
       ]
     },

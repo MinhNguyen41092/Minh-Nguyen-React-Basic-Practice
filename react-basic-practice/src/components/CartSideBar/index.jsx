@@ -62,6 +62,7 @@ const CartSideBar = (props) => {
           {
             listItem.listProducts.map((item) => (
               <CartItem
+                key={item.idProduct}
                 item={item}
                 handleDeleteCartItem={handleDeleteCartItem}
               />
