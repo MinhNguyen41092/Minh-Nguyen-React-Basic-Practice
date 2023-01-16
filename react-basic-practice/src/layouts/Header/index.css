@@ -9,6 +9,7 @@
   background-color: var(--color-white);
   border: none;
   padding: 10px 0px;
+  width: 30px;
 }
 
 .user {
@@ -25,4 +26,20 @@
   max-width: 20px;
   max-height: 20px;
   margin-right: 5px;
+}
+
+.cart {
+  position: relative;
+}
+
+.quantity-cart {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-white);
+  position: absolute;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: var(--color-secondary);
+  right: -10px;
 }

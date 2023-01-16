@@ -11,7 +11,7 @@ import './index.css';
 import { createUser, getAllUsers } from '../../services/Users';
 import { createNewCart } from '../../services/Cart';
 import validateInput from '../../helpers/validate';
-import { useLoading } from '../../contexts/loading';
+import { useLoading } from '../../contexts/LoadingProvider';
 
 const initialErrorMsgs = {
   email: '',
