@@ -13,9 +13,9 @@ const CartSideBar = (props) => {
   const { listItem, setListItem, updateItemCart } = useCart();
   const { toast, setToast } = useToast();
 
-  const onDeleteCartItem = (e) => {
+  const handleDeleteCartItem = (e) => {
     try {
-      const idSelected = e.target.closest('.cart-item').id;
+      const idSelected = e.target.closest('.cart-item').dataset.id;
       const updateCarts = listItem.listProducts.filter(
         (cartItem) => cartItem.idProduct !== Number(idSelected),
       );
@@ -63,7 +63,7 @@ const CartSideBar = (props) => {
             listItem.listProducts.map((item) => (
               <CartItem
                 item={item}
-                handleDeleteCartItem={onDeleteCartItem}
+                handleDeleteCartItem={handleDeleteCartItem}
               />
             ))
         }
