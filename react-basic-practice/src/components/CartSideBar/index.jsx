@@ -10,7 +10,7 @@ import './index.css';
 import Toast from '../Toast';
 
 const CartSideBar = (props) => {
-  const { handleCloseCart } = props;
+  const { onCloseCart } = props;
   const { listItem, setListItem } = useCart();
   const { toast, setToast } = useToast();
 
@@ -53,7 +53,7 @@ const CartSideBar = (props) => {
         <div className="header">
           <h2 className="title">Shopping bag</h2>
           <Button
-            onClick={handleCloseCart}
+            onClick={onCloseCart}
             type="button"
             className="btn btn-close"
             icon={closeButton}
