@@ -40,8 +40,8 @@ const ListProducts = (props) => {
           : (
             <Grid columns="3" rowGap="large" columnGap="large">
               {products.map((item) => (
-                <Link to={`/products/${item.id}`}>
-                  <ProductCard key={item.id} product={item} />
+                <Link to={`/products/${item.id}`} key={item.id}>
+                  <ProductCard product={item} />
                 </Link>
               ))}
             </Grid>

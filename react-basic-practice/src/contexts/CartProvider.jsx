@@ -1,21 +1,32 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
+import { getCartByUserId } from '@/services/Cart';
 
 const CartContext = React.createContext();
 const useCart = () => useContext(CartContext);
-const initCartList = [];
 
 const CartProvider = (props) => {
   const { children } = props;
-  const [cartItem, setCartItem] = useState();
+  const [listItem, setListItem] = useState([]);
 
-  const addCart = '';
-  const deleteCart = '';
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const dataCart = await getCartByUserId(1);
+        setListItem(dataCart);
+      } catch {
+        setListItem([]);
+      }
+    };
+
+    getData();
+  }, []);
 
   const valueContext = useMemo(() => ({
-    listCart: cartItem?.products || [],
-    addCart,
-    deleteCart,
-  }), [cartItem?.products, addCart, deleteCart]);
+    listItem,
+    setListItem,
+  }), [listItem]);
 
   return (
     <CartContext.Provider
@@ -26,4 +37,4 @@ const CartProvider = (props) => {
   );
 };
 
-export { useCart, CartProvider, initCartList };
+export { useCart, CartProvider };

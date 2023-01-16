@@ -55,3 +55,7 @@ button[disabled]:hover{
   color: var(--color-primary);
   cursor: no-drop;
 }
+
+.btn img {
+  width: 100%;
+}

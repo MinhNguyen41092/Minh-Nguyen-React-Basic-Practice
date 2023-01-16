@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '@/services/Products';
-import { updateCart, getCartByUserId } from '@/services/Cart';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
 import Toast from '@/components/Toast';
 
+import { updateCart } from '@/services/Cart';
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useToast } from '@/contexts/ToastProvider';
+import { useCart } from '@/contexts/CartProvider';
 
 import './index.css';
 
@@ -18,6 +19,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
   const { toast, setToast } = useToast();
+  const { listItem, setListItem } = useCart();
 
   useEffect(() => {
     const getData = async () => {
@@ -48,12 +50,10 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
-      const dataCart = await getCartByUserId(1);
-
       const cartUser = {
         id: 1,
         listProducts: [
-          ...dataCart.listProducts,
+          ...listItem.listProducts,
           {
             idProduct: product.id,
             quantity: quantityProduct,
@@ -62,7 +62,8 @@ const ProductDetail = () => {
           }],
       };
 
-      updateCart(1, cartUser);
+      setListItem(cartUser);
+      await updateCart(1, cartUser);
 
       setToast({
         openPopup: true,
