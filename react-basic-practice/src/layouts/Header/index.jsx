@@ -4,11 +4,13 @@ import Button from '../../components/common/Button';
 import userIcon from '@/assets/images/user-icon.png';
 import cartButton from '@/assets/images/iconButton/cart.png';
 import CartBar from '@/components/CartBar';
+import { useCart } from '@/contexts/CartProvider';
 
 import './index.css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { listItem } = useCart();
 
   const onOpenCart = () => {
     setIsOpen(true);
@@ -33,7 +35,7 @@ const Header = () => {
             icon={cartButton}
             onClick={onOpenCart}
           />
-          <span className="quantity-cart">2</span>
+          <span className="quantity-cart">{listItem.listProducts?.length}</span>
         </div>
       </div>
       {

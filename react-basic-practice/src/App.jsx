@@ -4,7 +4,6 @@ import { LoadingProvider } from './contexts/LoadingProvider';
 import { ToastProvider } from '@/contexts/ToastProvider';
 import { CartProvider } from './contexts/CartProvider';
 import Routing from './Routing';
-import HomePage from './pages/HomePage';
 
 const App = () => (
   <div className="App">
@@ -12,8 +11,7 @@ const App = () => (
       <LoadingProvider>
         <ToastProvider>
           <CartProvider>
-            {/* <Routing /> */}
-            <HomePage />
+            <Routing />
           </CartProvider>
         </ToastProvider>
       </LoadingProvider>

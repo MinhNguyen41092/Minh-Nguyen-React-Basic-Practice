@@ -9,6 +9,7 @@ import Toast from '@/components/Toast';
 
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useToast } from '@/contexts/ToastProvider';
+import { useCart } from '@/contexts/CartProvider';
 
 import './index.css';
 
@@ -18,6 +19,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
   const { toast, setToast } = useToast();
+  const { listItem, setListItem, updateItemCart } = useCart();
 
   useEffect(() => {
     const getData = async () => {
@@ -48,12 +50,10 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
-      const dataCart = await getCartByUserId(1);
-
       const cartUser = {
         id: 1,
         listProducts: [
-          ...dataCart.listProducts,
+          ...listItem.listProducts,
           {
             idProduct: product.id,
             quantity: quantityProduct,
@@ -62,7 +62,8 @@ const ProductDetail = () => {
           }],
       };
 
-      updateCart(1, cartUser);
+      setListItem(cartUser);
+      updateItemCart(cartUser);
 
       setToast({
         openPopup: true,

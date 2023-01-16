@@ -6,7 +6,7 @@ import './index.css';
 const CartItem = (props) => {
   const { item, handleDeleteCartItem } = props;
   return (
-    <article className="cart-item">
+    <article className="cart-item" id={item.idProduct}>
       <h4 className="name">{item.name}</h4>
       <p className="quantity">{`Quantity: ${item.quantity}`}</p>
       <p className="price">{`$ ${item.price}`}</p>

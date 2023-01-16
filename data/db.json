@@ -78,12 +78,6 @@
           "quantity": 3,
           "name": "hal earrings",
           "price": 25
-        },
-        {
-          "idProduct": 1,
-          "quantity": 4,
-          "name": "lira earrings",
-          "price": 20
         }
       ]
     },
