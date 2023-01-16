@@ -3,7 +3,7 @@ import Logo from '../../components/common/Logo';
 import Button from '../../components/common/Button';
 import userIcon from '@/assets/images/user-icon.png';
 import cartButton from '@/assets/images/iconButton/cart.png';
-import CartBar from '@/components/CartBar';
+import CartSideBar from '@/components/CartSideBar';
 import { useCart } from '@/contexts/CartProvider';
 
 import './index.css';
@@ -39,7 +39,7 @@ const Header = () => {
         </div>
       </div>
       {
-        isOpen && <CartBar handleCloseCart={onCloseCart} />
+        isOpen && <CartSideBar handleCloseCart={onCloseCart} />
       }
     </header>
   );

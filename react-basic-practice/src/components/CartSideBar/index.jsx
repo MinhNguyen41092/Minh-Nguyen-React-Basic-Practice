@@ -8,7 +8,7 @@ import { useToast } from '@/contexts/ToastProvider';
 import './index.css';
 import Toast from '../Toast';
 
-const CartBar = (props) => {
+const CartSideBar = (props) => {
   const { handleCloseCart } = props;
   const { listItem, setListItem, updateItemCart } = useCart();
   const { toast, setToast } = useToast();
@@ -83,4 +83,4 @@ const CartBar = (props) => {
   );
 };
 
-export default CartBar;
+export default CartSideBar;

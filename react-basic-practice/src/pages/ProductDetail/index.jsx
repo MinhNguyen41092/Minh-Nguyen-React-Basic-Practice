@@ -47,6 +47,8 @@ const ProductDetail = () => {
     setQuantity(value);
   };
 
+  console.log(listItem.lis);
+
   const handleAddCart = async () => {
     try {
       const cartUser = {
