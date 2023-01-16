@@ -12,11 +12,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { listItem } = useCart();
 
-  const onOpenCart = () => {
+  const handleOpenCart = () => {
     setIsOpen(true);
   };
 
-  const onCloseCart = () => {
+  const handleCloseCart = () => {
     setIsOpen(false);
   };
 
@@ -33,13 +33,13 @@ const Header = () => {
             type="button"
             className="btn-cart"
             icon={cartButton}
-            onClick={onOpenCart}
+            onClick={handleOpenCart}
           />
           <span className="quantity-cart">{listItem.listProducts?.length}</span>
         </div>
       </div>
       {
-        isOpen && <CartSideBar handleCloseCart={onCloseCart} />
+        isOpen && <CartSideBar handleCloseCart={handleCloseCart} />
       }
     </header>
   );
