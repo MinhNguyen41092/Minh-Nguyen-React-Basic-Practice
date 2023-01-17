@@ -5,14 +5,20 @@ import SelectGroup from '@/components/SelectGroup';
 import './index.css';
 
 const options = [
-  'Name',
-  'Price',
+  { value: 'name asc', label: 'Name (ascending)' },
+  { value: 'name desc', label: 'Name (descending )' },
+  { value: 'price asc', label: 'Price (ascending)' },
+  { value: 'price desc', label: 'Price (descending )' },
 ];
 
 const Sidebar = (props) => {
-  const { onSearch } = props;
+  const { onSearch, onSort } = props;
   const handleSearch = (value) => {
     onSearch(value.keyword);
+  };
+
+  const handleSort = (value) => {
+    onSort(value);
   };
 
   return (
@@ -32,7 +38,10 @@ const Sidebar = (props) => {
           onClick={handleSearch}
         />
       </div>
-      <SelectGroup options={options} />
+      <SelectGroup
+        options={options}
+        handleSelectOptionChange={handleSort}
+      />
     </div>
   );
 };

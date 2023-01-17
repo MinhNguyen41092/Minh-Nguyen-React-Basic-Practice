@@ -11,7 +11,7 @@ import { useLoading } from '@/contexts/LoadingProvider';
 import './index.css';
 
 const ListProducts = (props) => {
-  const { keyword } = props;
+  const { fieldSort, order, keyword } = props;
   const [products, setProducts] = useState([]);
   const { loading, setLoading } = useLoading();
   const [pageNumber, setPageNumber] = useState(1);
@@ -21,8 +21,26 @@ const ListProducts = (props) => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getListProducts(pageNumber, keyword);
-        data ? setProducts([...data, ...products]) : setProducts([]);
+        const data = await getListProducts(pageNumber, keyword, fieldSort, order);
+        data ? setProducts(data) : setProducts([]);
+      } catch {
+        alert('Error loading data, please reload the page');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, [keyword, fieldSort, order]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoading(true);
+        const data = await getListProducts(pageNumber);
+        const newData = [...products, data];
+
+        data ? setProducts(newData.flat()) : setProducts([]);
         data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
       } catch {
         alert('Error loading data, please reload the page');
@@ -32,7 +50,7 @@ const ListProducts = (props) => {
     };
 
     getData();
-  }, [keyword, pageNumber]);
+  }, [pageNumber]);
 
   const handleLoadMore = () => {
     setPageNumber(pageNumber + 1);
