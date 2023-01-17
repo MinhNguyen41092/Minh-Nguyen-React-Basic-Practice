@@ -12,6 +12,7 @@ import { createUser, getAllUsers } from '../../services/Users';
 import { createNewCart } from '../../services/Cart';
 import validateInput from '../../helpers/validate';
 import { useLoading } from '../../contexts/LoadingProvider';
+import ROUTE from '@/constants/route';
 
 const initialErrorMsgs = {
   email: '',
@@ -75,7 +76,7 @@ const SignUpForm = () => {
             await createNewCart(newCart),
           ]);
 
-          navigate('/login');
+          navigate(ROUTE.LOGIN);
         }
       } else {
         setErrorMessage(errorValid.validateError);
@@ -128,7 +129,7 @@ const SignUpForm = () => {
             handleInputChange={handleInputValue}
           />
 
-          {errorMessage.form && <p className="form-sign-up-error-message">{errorMessage.form}</p>}
+          {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
           {
             loading
@@ -153,7 +154,7 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          <Link to="/login" className="open-login-page">
+          <Link to={ROUTE.LOGIN} className="open-login-page">
             Login
           </Link>
         </span>

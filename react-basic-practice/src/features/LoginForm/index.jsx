@@ -6,11 +6,13 @@ import Input from '../../components/common/Input';
 import Logo from '../../components/common/Logo';
 import FormGroup from '../../components/FormGroup';
 import './index.css';
+import ROUTE from '@/constants/route';
 
 import { useLoading } from '../../contexts/LoadingProvider';
 import { getUserByEmail } from '../../services/Users';
 import validateInput from '../../helpers/validate';
 import hasData from '../../helpers/data';
+import { useAuth } from '@/contexts/AuthProvider';
 
 const initialErrorMsgs = {
   email: '',
@@ -27,6 +29,7 @@ const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const { loading, setLoading } = useLoading();
+  const { setUserId } = useAuth();
   const navigate = useNavigate();
 
   const handleInputValue = (value) => {
@@ -47,7 +50,13 @@ const LoginForm = () => {
         const dataUser = await getUserByEmail(inputValue.email);
         const haveUser = hasData(dataUser, 'password', inputValue.password);
 
-        haveUser ? navigate('/homepage') : setErrorMessage({ form: 'Incorrect email or password.' });
+        if (haveUser) {
+          localStorage.setItem('auth', dataUser[0].id);
+          setUserId(dataUser[0].id);
+          navigate(ROUTE.HOMEPAGE);
+        } else {
+          setErrorMessage({ form: 'Incorrect email or password.' });
+        }
       } else {
         setErrorMessage(errorValid.validateError);
       }
@@ -89,7 +98,7 @@ const LoginForm = () => {
             handleInputChange={handleInputValue}
           />
 
-          {errorMessage.form && <p className="form-login-error-message">{errorMessage.form}</p>}
+          {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
           {
             loading
@@ -114,7 +123,7 @@ const LoginForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          <Link to="/signup" className="open-sign-up-page">
+          <Link to={ROUTE.SIGNUP} className="open-sign-up-page">
             Signup
           </Link>
         </span>

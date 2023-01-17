@@ -4,22 +4,23 @@ import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ProductDetail from './pages/ProductDetail';
+import ROUTE from './constants/route';
 
 const Routing = () => (
   <Routes>
     <Route
-      path="/"
+      path={ROUTE.LOGIN}
       element={<LoginPage />}
     />
     <Route
-      path="/signup"
+      path={ROUTE.SIGNUP}
       element={<SignUpPage />}
     />
     <Route
-      path="/homepage"
+      path={ROUTE.HOMEPAGE}
       element={<HomePage />}
     />
-    <Route path="/products/:productId" element={<ProductDetail />} />
+    <Route path={ROUTE.PRODUCT} element={<ProductDetail />} />
   </Routes>
 );
 
