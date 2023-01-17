@@ -6,9 +6,9 @@ import './index.css';
 
 const options = [
   { value: 'name ascending', label: 'Name (ascending)' },
-  { value: 'name decrease', label: 'Name (decrease)' },
+  { value: 'name descending ', label: 'Name (descending )' },
   { value: 'price ascending', label: 'Price (ascending)' },
-  { value: 'price decrease', label: 'Price (decrease)' },
+  { value: 'price descending ', label: 'Price (descending )' },
 ];
 
 const Sidebar = (props) => {

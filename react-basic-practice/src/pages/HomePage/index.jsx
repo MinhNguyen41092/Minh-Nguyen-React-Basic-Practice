@@ -21,7 +21,7 @@ const HomePage = () => {
         setFieldSort('name');
         setOrder('asc');
         break;
-      case 'name decrease':
+      case 'name descending':
         setFieldSort('name');
         setOrder('desc');
         break;
