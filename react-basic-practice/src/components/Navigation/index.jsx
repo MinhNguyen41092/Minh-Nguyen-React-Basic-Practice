@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ROUTE from '@/constants/route';
 
 import './index.css';
 
@@ -7,17 +8,17 @@ const Navigation = () => (
   <nav className="navigation">
     <ul className="nav-list">
       <li className="nav-item">
-        <Link to="/">
+        <Link to={ROUTE.HOMEPAGE}>
           CONTACT
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/">
+        <Link to={ROUTE.HOMEPAGE}>
           TERMS OF SERVICES
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/">
+        <Link to={ROUTE.HOMEPAGE}>
           SHIPPING AND RETURNS
         </Link>
       </li>

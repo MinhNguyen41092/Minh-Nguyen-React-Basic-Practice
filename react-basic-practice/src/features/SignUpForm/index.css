@@ -23,12 +23,11 @@
   font-weight: var(--fw-bold);
 }
 
-.form-sign-up-error-message {
+.error-message {
   width: 100%;
   font-weight: var(--fw-bold);
   color: var(--color-secondary);
   text-align: center;
-  margin: 20px;
 }
 
 .btn-sign-up {
