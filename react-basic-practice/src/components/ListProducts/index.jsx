@@ -55,26 +55,13 @@ const ListProducts = (props) => {
             </Grid>
           )
       }
-      {
-        isDisabled
-          ? (
-            <Button
-              type="button"
-              onClick={handleLoadMore}
-              className="btn-primary btn-large"
-              text="load more"
-              status={isDisabled}
-            />
-          )
-          : (
-            <Button
-              type="button"
-              onClick={handleLoadMore}
-              className="btn-primary btn-large"
-              text="load more"
-            />
-          )
-      }
+      <Button
+        type="button"
+        onClick={handleLoadMore}
+        className="btn-primary btn-large"
+        text="load more"
+        status={isDisabled}
+      />
     </div>
   );
 };
