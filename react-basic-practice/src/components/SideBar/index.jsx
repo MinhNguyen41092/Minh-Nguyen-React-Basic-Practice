@@ -18,7 +18,6 @@ const Sidebar = (props) => {
   };
 
   const handleSort = (value) => {
-    // console.log(value.split());
     onSort(value);
   };
 
