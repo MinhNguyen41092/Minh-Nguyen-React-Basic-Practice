@@ -15,24 +15,10 @@ const HomePage = () => {
   };
 
   const handleSort = (value) => {
+    const param = value.split(' ');
+    setFieldSort(param[0]);
+    setOrder(param[1]);
     setValueSelected(value);
-    switch (value) {
-      case 'name ascending':
-        setFieldSort('name');
-        setOrder('asc');
-        break;
-      case 'name descending':
-        setFieldSort('name');
-        setOrder('desc');
-        break;
-      case 'price ascending':
-        setFieldSort('price');
-        setOrder('asc');
-        break;
-      default:
-        setFieldSort('price');
-        setOrder('desc');
-    }
   };
 
   return (
