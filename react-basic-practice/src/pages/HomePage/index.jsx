@@ -6,15 +6,33 @@ import './index.css';
 
 const HomePage = () => {
   const [keyword, setKeyword] = useState('');
-  // const [order, setOrder] = useState('');
-  // const [fieldSort, setFieldSort] = useState('');
+  const [order, setOrder] = useState('');
+  const [fieldSort, setFieldSort] = useState('');
+  const [valueSelected, setValueSelected] = useState('');
 
   const handleSearch = (value) => {
     setKeyword(value);
   };
 
   const handleSort = (value) => {
-    console.log(value);
+    setValueSelected(value);
+    switch (value) {
+      case 'name ascending':
+        setFieldSort('name');
+        setOrder('asc');
+        break;
+      case 'name decrease':
+        setFieldSort('name');
+        setOrder('desc');
+        break;
+      case 'price ascending':
+        setFieldSort('price');
+        setOrder('asc');
+        break;
+      default:
+        setFieldSort('price');
+        setOrder('desc');
+    }
   };
 
   return (
@@ -22,8 +40,9 @@ const HomePage = () => {
       <Sidebar
         onSearch={handleSearch}
         onSort={handleSort}
+        valueSelected={valueSelected}
       />
-      <ListProducts keyword={keyword} />
+      <ListProducts fieldSort={fieldSort} order={order} keyword={keyword} />
     </DefaultLayout>
   );
 };

@@ -5,10 +5,10 @@ import SelectGroup from '@/components/SelectGroup';
 import './index.css';
 
 const options = [
-  'Name (ascending)',
-  'Name (decrease)',
-  'Price (ascending)',
-  'Price (decrease)',
+  { value: 'name ascending', label: 'Name (ascending)' },
+  { value: 'name decrease', label: 'Name (decrease)' },
+  { value: 'price ascending', label: 'Price (ascending)' },
+  { value: 'price decrease', label: 'Price (decrease)' },
 ];
 
 const Sidebar = (props) => {
