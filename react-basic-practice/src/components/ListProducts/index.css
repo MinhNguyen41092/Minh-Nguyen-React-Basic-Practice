@@ -2,8 +2,16 @@
   display: block;
   margin: auto;
   margin: 300px;
-  text-align: center; 
+  text-align: center;
   font-size: var(--fs-exLarge);
   font-weight: var(--fw-normal);
   color: var(--color-loading);
+}
+
+.list-products {
+  text-align: center;
+}
+
+.list-products button {
+  margin-top: 30px;
 }
