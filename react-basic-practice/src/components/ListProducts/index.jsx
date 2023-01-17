@@ -12,6 +12,7 @@ import './index.css';
 
 const ListProducts = (props) => {
   const { keyword } = props;
+  console.log(keyword);
   const [products, setProducts] = useState([]);
   const { loading, setLoading } = useLoading();
   const [pageNumber, setPageNumber] = useState(1);

@@ -12,7 +12,6 @@ const options = [
 ];
 
 const Sidebar = (props) => {
-  console.log(typeof options);
   const { onSearch, onSort } = props;
   const handleSearch = (value) => {
     onSearch(value.keyword);
