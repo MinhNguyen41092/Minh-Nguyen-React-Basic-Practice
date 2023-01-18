@@ -2,6 +2,7 @@ import React, {
   useContext, useEffect, useMemo, useState,
 } from 'react';
 import { getCartByUserId } from '@/services/Cart';
+import { useAuth } from './AuthProvider';
 
 const CartContext = React.createContext();
 const useCart = () => useContext(CartContext);
@@ -9,11 +10,12 @@ const useCart = () => useContext(CartContext);
 const CartProvider = (props) => {
   const { children } = props;
   const [listItem, setListItem] = useState([]);
+  const { userData } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const dataCart = await getCartByUserId(1);
+        const dataCart = await getCartByUserId(userData.userId);
         setListItem(dataCart);
       } catch {
         setListItem([]);
@@ -21,7 +23,7 @@ const CartProvider = (props) => {
     };
 
     getData();
-  }, []);
+  }, [userData]);
 
   const valueContext = useMemo(() => ({
     listItem,

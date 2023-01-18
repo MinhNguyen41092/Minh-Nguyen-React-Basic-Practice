@@ -20,6 +20,9 @@
       "@/services/*": [ 
         "services/*",
       ],
+      "@/constants/*": [ 
+        "constants/*",
+      ],
     },
     "incremental": true,
   },

@@ -12,17 +12,18 @@ import { createUser, getAllUsers } from '../../services/Users';
 import { createNewCart } from '../../services/Cart';
 import validateInput from '../../helpers/validate';
 import { useLoading } from '../../contexts/LoadingProvider';
+import ROUTE from '@/constants/route';
 
 const initialErrorMsgs = {
   email: '',
-  userName: '',
+  username: '',
   password: '',
   form: '',
 };
 
 const initialInput = {
   email: '',
-  userName: '',
+  username: '',
   password: '',
 };
 
@@ -60,7 +61,7 @@ const SignUpForm = () => {
           // Send data to API to create new users.
           const newUser = {
             id: uuidv4(),
-            username: inputValue.userName || '',
+            username: inputValue.username || '',
             email: inputValue.email || '',
             password: inputValue.password || '',
           };
@@ -75,7 +76,7 @@ const SignUpForm = () => {
             await createNewCart(newCart),
           ]);
 
-          navigate('/login');
+          navigate(ROUTE.LOGIN);
         }
       } else {
         setErrorMessage(errorValid.validateError);
@@ -111,11 +112,11 @@ const SignUpForm = () => {
           <Input
             label="Username:"
             inputType="text"
-            name="userName"
+            name="username"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.userName}
+            errorMessage={errorMessage.username}
           />
 
           <Input
@@ -128,7 +129,7 @@ const SignUpForm = () => {
             handleInputChange={handleInputValue}
           />
 
-          {errorMessage.form && <p className="form-sign-up-error-message">{errorMessage.form}</p>}
+          {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
           {
             loading
@@ -153,7 +154,7 @@ const SignUpForm = () => {
         <span className="form-message">
           Already have an account?
           {' '}
-          <Link to="/login" className="open-login-page">
+          <Link to={ROUTE.LOGIN} className="open-login-page">
             Login
           </Link>
         </span>

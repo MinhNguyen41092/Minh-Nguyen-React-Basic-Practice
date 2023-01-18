@@ -9,6 +9,7 @@ import Toast from '@/components/Toast';
 import { updateCart } from '@/services/Cart';
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useToast } from '@/contexts/ToastProvider';
+import { useAuth } from '@/contexts/AuthProvider';
 import { useCart } from '@/contexts/CartProvider';
 
 import './index.css';
@@ -20,6 +21,7 @@ const ProductDetail = () => {
   const [quantityProduct, setQuantity] = useState(0);
   const { toast, setToast } = useToast();
   const { listItem, setListItem } = useCart();
+  const { userData } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
@@ -51,7 +53,7 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       const cartUser = {
-        id: 1,
+        id: userData.userId,
         listProducts: [
           ...listItem.listProducts,
           {
@@ -63,7 +65,7 @@ const ProductDetail = () => {
       };
 
       setListItem(cartUser);
-      await updateCart(1, cartUser);
+      await updateCart(userData.userId, cartUser);
 
       setToast({
         openPopup: true,

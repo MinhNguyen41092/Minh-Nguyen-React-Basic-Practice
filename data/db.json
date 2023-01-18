@@ -2,15 +2,15 @@
   "users": [
     {
       "id": 1,
-      "userName": "Minh Nguyen",
+      "username": "Minh Nguyen",
       "email": "minh@gmail.com",
       "password": "1234abcd"
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
-      "username": "minhng8976",
+      "username": "Mai Huynh",
       "email": "minhng271@gmail.com",
-      "password": "1"
+      "password": "1234abcd"
     }
   ],
   "products": [
@@ -92,22 +92,35 @@
       "id": 1,
       "listProducts": [
         {
-          "idProduct": 2,
-          "quantity": 3,
-          "name": "hal earrings",
-          "price": 25
+          "idProduct": 1,
+          "quantity": 1,
+          "name": "lira earrings",
+          "price": 20
         },
         {
-          "idProduct": 6,
-          "quantity": 1,
-          "name": "yuki hair pin set of 3",
+          "idProduct": 2,
+          "quantity": 3,
+          "name": "lira earrings",
           "price": 20
         }
       ]
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
-      "listProducts": []
+      "listProducts": [
+        {
+          "idProduct": 6,
+          "quantity": 1,
+          "name": "yuki hair pin set of 3",
+          "price": 29
+        },
+        {
+          "idProduct": 1,
+          "quantity": 1,
+          "name": "lira earrings",
+          "price": 20
+        }
+      ]
     }
   ]
 }
