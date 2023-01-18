@@ -9,15 +9,15 @@ import Routing from './Routing';
 const App = () => (
   <div className="App">
     <Router>
-      <LoadingProvider>
-        <ToastProvider>
-          <AuthProvider>
+      <AuthProvider>
+        <LoadingProvider>
+          <ToastProvider>
             <CartProvider>
               <Routing />
             </CartProvider>
-          </AuthProvider>
-        </ToastProvider>
-      </LoadingProvider>
+          </ToastProvider>
+        </LoadingProvider>
+      </AuthProvider>
     </Router>
   </div>
 );

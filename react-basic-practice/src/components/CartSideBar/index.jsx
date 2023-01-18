@@ -5,6 +5,7 @@ import closeButton from '@/assets/images/iconButton/btn-close.png';
 import { useCart } from '@/contexts/CartProvider';
 import { useToast } from '@/contexts/ToastProvider';
 import { updateCart } from '@/services/Cart';
+import { useAuth } from '@/contexts/AuthProvider';
 
 import './index.css';
 import Toast from '../Toast';
@@ -13,6 +14,7 @@ const CartSideBar = (props) => {
   const { onCloseCart } = props;
   const { listItem, setListItem } = useCart();
   const { toast, setToast } = useToast();
+  const { userId } = useAuth();
 
   const handleDeleteCartItem = async (e) => {
     try {
@@ -22,12 +24,12 @@ const CartSideBar = (props) => {
       );
 
       const cartUser = {
-        id: 1,
+        id: userId,
         listProducts: updateCarts,
       };
 
       setListItem(cartUser);
-      await updateCart(1, cartUser);
+      await updateCart(userId, cartUser);
 
       setToast({
         openPopup: true,
