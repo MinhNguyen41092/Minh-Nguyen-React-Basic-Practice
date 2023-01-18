@@ -1,21 +1,21 @@
-// import react
+// Import react
 import React from 'react';
 
-// import component
+// Import component
 import Button from '../common/Button';
 import CartItem from '../CartItem';
 import Toast from '../Toast';
 
-// import image
+// Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 
-// import context
+// Import context
 import { useCart } from '@/contexts/CartProvider';
 import { useToast } from '@/contexts/ToastProvider';
 import { updateCart } from '@/services/Cart';
 import { useAuth } from '@/contexts/AuthProvider';
 
-// import file css
+// Import file css
 import './index.css';
 
 const CartSideBar = (props) => {

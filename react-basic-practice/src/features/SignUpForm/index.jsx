@@ -19,10 +19,10 @@ import validateInput from '@/helpers/validate';
 // import context
 import { useLoading } from '@/contexts/LoadingProvider';
 
-// import constants
+// Import constants
 import ROUTE from '@/constants/route';
 
-// import file css
+// Import file css
 import './index.css';
 
 const initialErrorMsgs = {

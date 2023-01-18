@@ -1,19 +1,19 @@
-// import react
+// Import react
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// import image
+// Import image
 import userIcon from '@/assets/images/user-icon.png';
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 import Button from '../common/Button';
 
-// import constant
+// Import constant
 import ROUTE from '@/constants/route';
 
-// import context
+// Import context
 import { useAuth } from '@/contexts/AuthProvider';
 
-// import file css
+// Import file css
 import './index.css';
 
 const UserCard = (props) => {

@@ -1,11 +1,11 @@
-// import react
+// Import react
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import image
+// Import image
 import logo from '@/assets/images/Logo.png';
 
-// import constants
+// Import constants
 import ROUTE from '@/constants/route';
 
 const Logo = () => (

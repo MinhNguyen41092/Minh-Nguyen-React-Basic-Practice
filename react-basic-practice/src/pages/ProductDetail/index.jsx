@@ -1,24 +1,24 @@
-// import react
+// Import react
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-// import components
+// Import components
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
 import Toast from '@/components/Toast';
 
-// import service
+// Import service
 import { getProductById } from '@/services/Products';
 import { updateCart } from '@/services/Cart';
 
-// import context
+// Import context
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useToast } from '@/contexts/ToastProvider';
 import { useAuth } from '@/contexts/AuthProvider';
 import { useCart } from '@/contexts/CartProvider';
 
-// import file css
+// Import file css
 import './index.css';
 
 const ProductDetail = () => {

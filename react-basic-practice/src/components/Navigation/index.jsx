@@ -1,11 +1,11 @@
-// import react
+// Import react
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import constants
+// Import constants
 import ROUTE from '@/constants/route';
 
-// import file css
+// Import file css
 import './index.css';
 
 const Navigation = () => (

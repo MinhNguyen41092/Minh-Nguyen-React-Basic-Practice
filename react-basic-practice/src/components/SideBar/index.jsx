@@ -1,12 +1,12 @@
-// import react
+// Import react
 import React from 'react';
 
-// import components
+// Import components
 import Input from '@/components/common/Input';
 import Button from '@/components/common/Button';
 import SelectGroup from '@/components/SelectGroup';
 
-// import file css
+// Import file css
 import './index.css';
 
 const options = [

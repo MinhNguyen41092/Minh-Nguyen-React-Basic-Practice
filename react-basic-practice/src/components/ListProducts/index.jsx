@@ -1,16 +1,16 @@
-// import react
+// Import react
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import component
+// Import component
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 import Button from '../common/Button';
 
-// import context
+// Import context
 import { useLoading } from '@/contexts/LoadingProvider';
 
-// import service
+// Import service
 import { getListProducts } from '../../services/Products';
 
 import './index.css';

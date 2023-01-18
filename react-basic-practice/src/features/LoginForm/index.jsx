@@ -1,28 +1,28 @@
-// import react
+// Import react
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// import components
+// Import components
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Logo from '@/components/common/Logo';
 import FormGroup from '@/components/FormGroup';
 
-// import constants
+// Import constants
 import ROUTE from '@/constants/route';
 
-// import context
+// Import context
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useAuth } from '@/contexts/AuthProvider';
 
-// import service
+// Import service
 import { getUserByEmail } from '@/services/Users';
 
-// import helpers
+// Import helpers
 import validateInput from '@/helpers/validate';
 import hasData from '@/helpers/data';
 
-// import file css
+// Import file css
 import './index.css';
 
 const initialErrorMsgs = {

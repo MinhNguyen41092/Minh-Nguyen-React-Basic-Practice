@@ -1,21 +1,21 @@
 // import react
 import React, { useState } from 'react';
 
-// import component
+// Import component
 import Logo from '@/components/common/Logo';
 import Button from '@/components/common/Button';
 import CartSideBar from '@/components/CartSideBar';
 import UserCard from '@/components/UserCard';
 
-// import context
+// Import context
 import { useCart } from '@/contexts/CartProvider';
 import { useAuth } from '@/contexts/AuthProvider';
 
-// import image
+// Import image
 import userIcon from '@/assets/images/user-icon.png';
 import cartButton from '@/assets/images/iconButton/cart.png';
 
-// import file css
+// Import file css
 import './index.css';
 
 const Header = () => {
