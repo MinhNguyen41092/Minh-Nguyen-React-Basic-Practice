@@ -1,7 +1,11 @@
+// Import react
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// Import constants
 import ROUTE from '@/constants/route';
 
+// Import file css
 import './index.css';
 
 const Navigation = () => (

@@ -1,14 +1,20 @@
+// Import react
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from '../../components/Navigation';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
+
+// Import components
+import Navigation from '@/components/Navigation';
+import Input from '@/components/common/Input';
+import Button from '@/components/common/Button';
+
+// Import image
 import arrowButton from '@/assets/images/iconButton/btn-arrow.png';
 import linkedinLogo from '@/assets/images/socialLogo/linkedin-logo.jpg';
 import facebookLogo from '@/assets/images/socialLogo/facebook-logo.png';
 import instagramLogo from '@/assets/images/socialLogo/instagram-logo.png';
 import twitterLogo from '@/assets/images/socialLogo/twitter-logo.png';
 
+// Import file css
 import './index.css';
 
 const Footer = () => (

@@ -23,6 +23,10 @@
       "@/constants/*": [ 
         "constants/*",
       ],
+      ,
+      "@/helpers/*": [ 
+        "helpers/*",
+      ],
     },
     "incremental": true,
   },

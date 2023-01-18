@@ -1,0 +1,36 @@
+.user-card {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-overlay);
+  z-index: 1;
+}
+
+.user-card .user-information {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+.user-card .main {
+  background-color: var(--color-white);
+  padding: 35px;
+  text-align: center;
+}
+
+.user-card .user-icon {
+  width: 30px;
+  margin: 10px;
+}
+
+.user-card .user-email{
+  margin: 10px 0px;
+}
+
+.user-card .btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

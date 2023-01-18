@@ -1,7 +1,12 @@
+// Import react
 import React, { useState } from 'react';
+
+// Import component
 import DefaultLayout from '@/layouts/DefaultLayout';
 import ListProducts from '@/components/ListProducts';
 import Sidebar from '@/components/SideBar';
+
+// Import file css
 import './index.css';
 
 const HomePage = () => {

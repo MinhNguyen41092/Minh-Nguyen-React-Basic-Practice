@@ -1,6 +1,13 @@
+// Import react
 import React from 'react';
+
+// Import component
 import Button from '../common/Button';
+
+// Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';
+
+// Import file css
 import './index.css';
 
 const CartItem = (props) => {

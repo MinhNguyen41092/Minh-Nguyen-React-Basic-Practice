@@ -22,10 +22,11 @@
   font-size: var(--fs-super-small);
 }
 
-.user-icon {
-  max-width: 20px;
-  max-height: 20px;
+.btn-user {
+  max-width: 35px;
+  max-height: 35px;
   margin-right: 5px;
+  background-color: var(--color-white);
 }
 
 .cart {
