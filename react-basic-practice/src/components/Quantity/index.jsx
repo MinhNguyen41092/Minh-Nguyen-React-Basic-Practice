@@ -1,5 +1,10 @@
+// import react
 import React, { useState } from 'react';
+
+// import component
 import Button from '../common/Button';
+
+// import file css
 import './index.css';
 
 const Quantity = (props) => {

@@ -1,14 +1,22 @@
+// import react
 import React from 'react';
+
+// import component
 import Button from '../common/Button';
 import CartItem from '../CartItem';
+import Toast from '../Toast';
+
+// import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';
+
+// import context
 import { useCart } from '@/contexts/CartProvider';
 import { useToast } from '@/contexts/ToastProvider';
 import { updateCart } from '@/services/Cart';
 import { useAuth } from '@/contexts/AuthProvider';
 
+// import file css
 import './index.css';
-import Toast from '../Toast';
 
 const CartSideBar = (props) => {
   const { onCloseCart } = props;

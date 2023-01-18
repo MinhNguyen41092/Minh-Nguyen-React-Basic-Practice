@@ -1,18 +1,29 @@
+// import react
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-import Button from '../../components/common/Button';
-import Input from '../../components/common/Input';
-import Logo from '../../components/common/Logo';
-import FormGroup from '../../components/FormGroup';
-import './index.css';
+// import components
+import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
+import Logo from '@/components/common/Logo';
+import FormGroup from '@/components/FormGroup';
 
-import { createUser, getAllUsers } from '../../services/Users';
-import { createNewCart } from '../../services/Cart';
-import validateInput from '../../helpers/validate';
-import { useLoading } from '../../contexts/LoadingProvider';
+// import service
+import { createUser, getAllUsers } from '@/services/Users';
+import { createNewCart } from '@/services/Cart';
+
+// import helpers
+import validateInput from '@/helpers/validate';
+
+// import context
+import { useLoading } from '@/contexts/LoadingProvider';
+
+// import constants
 import ROUTE from '@/constants/route';
+
+// import file css
+import './index.css';
 
 const initialErrorMsgs = {
   email: '',

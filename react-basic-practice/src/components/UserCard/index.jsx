@@ -1,32 +1,57 @@
+// import react
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// import image
 import userIcon from '@/assets/images/user-icon.png';
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 import Button from '../common/Button';
 
+// import constant
+import ROUTE from '@/constants/route';
+
+// import context
+import { useAuth } from '@/contexts/AuthProvider';
+
+// import file css
 import './index.css';
 
 const UserCard = (props) => {
-  const { username, onCloseUserCard } = props;
-  const handleLogout = () => {
+  const { onCloseUserCard } = props;
+  const { userData, setUserData } = useAuth();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    const user = {
+      userId: '',
+      username: '',
+      email: '',
+    };
+    setUserData(user);
+    localStorage.removeItem('auth');
+    navigate(ROUTE.LOGIN);
   };
+
   return (
-    <div className="user">
-      <div className="user-card">
-        <img className="user-icon" src={userIcon} alt="user" />
-        <span className="user-name">{username}</span>
-        <Button
-          type="button"
-          className="btn-cart"
-          text="Logout"
-          onClick={handleLogout}
-        />
-        <Button
-          onClick={onCloseUserCard}
-          type="button"
-          className="btn btn-close"
-          icon={closeButton}
-        />
+    <div className="user-card">
+      <div className="user-information">
+        <div className="main">
+          <img className="user-icon" src={userIcon} alt="user" />
+          <p className="user-name">{userData.username}</p>
+          <p className="user-email">{userData.email}</p>
+          <Button
+            type="button"
+            className="btn-logout"
+            text="Logout"
+            onClick={handleLogout}
+          />
+          <Button
+            onClick={onCloseUserCard}
+            type="button"
+            className="btn btn-close"
+            icon={closeButton}
+          />
+        </div>
       </div>
     </div>
   );

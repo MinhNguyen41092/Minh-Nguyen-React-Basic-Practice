@@ -1,7 +1,12 @@
+// import react
 import React from 'react';
+
+// import components
 import Input from '@/components/common/Input';
 import Button from '@/components/common/Button';
 import SelectGroup from '@/components/SelectGroup';
+
+// import file css
 import './index.css';
 
 const options = [
