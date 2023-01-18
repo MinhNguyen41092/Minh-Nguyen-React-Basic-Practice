@@ -14,7 +14,7 @@ const CartSideBar = (props) => {
   const { onCloseCart } = props;
   const { listItem, setListItem } = useCart();
   const { toast, setToast } = useToast();
-  const { userId } = useAuth();
+  const { userData } = useAuth();
 
   const handleDeleteCartItem = async (e) => {
     try {
@@ -24,12 +24,12 @@ const CartSideBar = (props) => {
       );
 
       const cartUser = {
-        id: userId,
+        id: userData.userId,
         listProducts: updateCarts,
       };
 
       setListItem(cartUser);
-      await updateCart(userId, cartUser);
+      await updateCart(userData.userId, cartUser);
 
       setToast({
         openPopup: true,

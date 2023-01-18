@@ -113,6 +113,12 @@
           "quantity": 1,
           "name": "yuki hair pin set of 3",
           "price": 29
+        },
+        {
+          "idProduct": 1,
+          "quantity": 1,
+          "name": "lira earrings",
+          "price": 20
         }
       ]
     }
