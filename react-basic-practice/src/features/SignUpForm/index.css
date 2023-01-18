@@ -28,6 +28,7 @@
   font-weight: var(--fw-bold);
   color: var(--color-secondary);
   text-align: center;
+  text-transform: capitalize;
 }
 
 .btn-sign-up {

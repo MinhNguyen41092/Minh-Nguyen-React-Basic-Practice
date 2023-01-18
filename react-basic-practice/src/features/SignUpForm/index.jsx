@@ -16,14 +16,14 @@ import ROUTE from '@/constants/route';
 
 const initialErrorMsgs = {
   email: '',
-  userName: '',
+  username: '',
   password: '',
   form: '',
 };
 
 const initialInput = {
   email: '',
-  userName: '',
+  username: '',
   password: '',
 };
 
@@ -61,7 +61,7 @@ const SignUpForm = () => {
           // Send data to API to create new users.
           const newUser = {
             id: uuidv4(),
-            username: inputValue.userName || '',
+            username: inputValue.username || '',
             email: inputValue.email || '',
             password: inputValue.password || '',
           };
@@ -112,11 +112,11 @@ const SignUpForm = () => {
           <Input
             label="Username:"
             inputType="text"
-            name="userName"
+            name="username"
             cssClasses="input-form input-username"
             placeholder="Minh Nguyen"
             handleInputChange={handleInputValue}
-            errorMessage={errorMessage.userName}
+            errorMessage={errorMessage.username}
           />
 
           <Input

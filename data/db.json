@@ -2,13 +2,13 @@
   "users": [
     {
       "id": 1,
-      "userName": "Minh Nguyen",
+      "username": "Minh Nguyen",
       "email": "minh@gmail.com",
       "password": "1234abcd"
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
-      "username": "minhng8976",
+      "username": "Mai Huynh",
       "email": "minhng271@gmail.com",
       "password": "1234abcd"
     }
