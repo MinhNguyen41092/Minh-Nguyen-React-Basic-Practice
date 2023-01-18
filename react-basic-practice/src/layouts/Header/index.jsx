@@ -14,16 +14,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const { listItem } = useCart();
-  const { userId } = useAuth();
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getUserById(userId);
-      data ? setUserName(data.username) : setUserName('User name');
-    };
-
-    getData();
-  }, [userId]);
+  const { userData } = useAuth();
 
   const handleOpenCart = () => {
     setIsOpen(true);
@@ -39,7 +30,7 @@ const Header = () => {
       <div className="user">
         <div className="user-information">
           <img className="user-icon" src={userIcon} alt="user" />
-          <span className="user-name">{userName}</span>
+          <span className="user-name">{userData.username}</span>
         </div>
         <div className="cart">
           <Button

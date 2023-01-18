@@ -21,7 +21,7 @@ const ProductDetail = () => {
   const [quantityProduct, setQuantity] = useState(0);
   const { toast, setToast } = useToast();
   const { listItem, setListItem } = useCart();
-  const { userId } = useAuth();
+  const { userData } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
@@ -53,7 +53,7 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       const cartUser = {
-        id: userId,
+        id: userData.userId,
         listProducts: [
           ...listItem.listProducts,
           {
@@ -65,7 +65,7 @@ const ProductDetail = () => {
       };
 
       setListItem(cartUser);
-      await updateCart(userId, cartUser);
+      await updateCart(userData.userId, cartUser);
 
       setToast({
         openPopup: true,
