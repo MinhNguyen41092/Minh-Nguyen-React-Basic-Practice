@@ -7,19 +7,21 @@ import CartSideBar from '@/components/CartSideBar';
 import { useCart } from '@/contexts/CartProvider';
 import { useAuth } from '@/contexts/AuthProvider';
 import { getUserById } from '@/services/Users';
+import UserCard from '@/components/UserCard';
 
 import './index.css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [userCard, setUserCard] = useState(false);
+  const [username, setUsername] = useState('');
   const { listItem } = useCart();
   const { userId } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
       const data = await getUserById(userId);
-      data ? setUserName(data.username) : setUserName('User name');
+      data ? setUsername(data.username) : setUsername('Username');
     };
 
     getData();
@@ -33,13 +35,26 @@ const Header = () => {
     setIsOpen(false);
   };
 
+  const handleOpenUserCard = () => {
+    setUserCard(true);
+  };
+
+  const handleCloseUserCard = () => {
+    setUserCard(false);
+  };
+
   return (
     <header className="header-wrapper">
       <Logo />
       <div className="user">
         <div className="user-information">
-          <img className="user-icon" src={userIcon} alt="user" />
-          <span className="user-name">{userName}</span>
+          <Button
+            type="button"
+            className="btn-user"
+            icon={userIcon}
+            onClick={handleOpenUserCard}
+          />
+          <span className="user-name">{username}</span>
         </div>
         <div className="cart">
           <Button
@@ -53,6 +68,9 @@ const Header = () => {
       </div>
       {
         isOpen && <CartSideBar onCloseCart={handleCloseCart} />
+      }
+      {
+        userCard && <UserCard username={username} onCloseCart={handleCloseUserCard} />
       }
     </header>
   );

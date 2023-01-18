@@ -1,0 +1,18 @@
+.user {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-overlay);
+  z-index: 1;
+}
+
+.user-card{
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: var(--color-white);
+  width: 15%;
+}
