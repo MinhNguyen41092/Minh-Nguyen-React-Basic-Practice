@@ -29,7 +29,7 @@ const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(initialErrorMsgs);
   const [inputValue, setInputValue] = useState(initialInput);
   const { loading, setLoading } = useLoading();
-  // const { setUserId } = useAuth();
+  const { setUserId } = useAuth();
   const navigate = useNavigate();
 
   const handleInputValue = (value) => {
@@ -51,8 +51,8 @@ const LoginForm = () => {
         const haveUser = hasData(dataUser, 'password', inputValue.password);
 
         if (haveUser) {
+          setUserId(dataUser[0].id);
           localStorage.setItem('auth', dataUser[0].id);
-          // setUserId(dataUser[0].id);
           navigate(ROUTE.HOMEPAGE);
         } else {
           setErrorMessage({ form: 'Incorrect email or password.' });

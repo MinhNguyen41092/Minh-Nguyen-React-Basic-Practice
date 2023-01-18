@@ -11,12 +11,11 @@ const CartProvider = (props) => {
   const { children } = props;
   const [listItem, setListItem] = useState([]);
   const { userId } = useAuth();
-  // console.log(userId);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const dataCart = await getCartByUserId(1);
+        const dataCart = await getCartByUserId(userId);
         setListItem(dataCart);
       } catch {
         setListItem([]);
@@ -24,7 +23,7 @@ const CartProvider = (props) => {
     };
 
     getData();
-  }, []);
+  }, [userId]);
 
   const valueContext = useMemo(() => ({
     listItem,
