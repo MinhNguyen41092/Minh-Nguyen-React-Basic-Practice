@@ -102,6 +102,18 @@
           "quantity": 3,
           "name": "lira earrings",
           "price": 20
+        },
+        {
+          "idProduct": 1,
+          "quantity": 7,
+          "name": "lira earrings",
+          "price": 20
+        },
+        {
+          "idProduct": 1,
+          "quantity": "20",
+          "name": "lira earrings",
+          "price": 20
         }
       ]
     },

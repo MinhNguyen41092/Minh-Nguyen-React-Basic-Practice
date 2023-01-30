@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 // Import component
 import Button from '../common/Button';
+import Input from '../common/Input';
 
 // Import file css
 import './index.css';
@@ -23,6 +24,10 @@ const Quantity = (props) => {
     }
   };
 
+  const setQuantity = (value) => {
+    setCounter(value.quantity);
+  };
+
   if (!status) {
     quantity(counter);
   }
@@ -35,7 +40,12 @@ const Quantity = (props) => {
         text="-"
         status={status || ''}
       />
-      <p className="quantity">{counter}</p>
+      <Input
+        name="quantity"
+        className="quantity"
+        value={counter}
+        handleInputChange={setQuantity}
+      />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"
