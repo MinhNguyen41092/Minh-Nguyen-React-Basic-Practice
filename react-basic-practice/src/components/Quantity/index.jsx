@@ -18,7 +18,7 @@ const Quantity = (props) => {
 
   const decrementCount = () => {
     // Update state with decremented value
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter((preCounter) => preCounter - 1);
     }
   };
