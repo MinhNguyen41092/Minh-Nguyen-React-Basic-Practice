@@ -59,16 +59,53 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
+      // let cartUser = {};
+      // if (listItem.listProducts) {
+      // Object.entries(listItem.listProducts).forEach(([key, value]) => {
+      //   if (value.name === product.name) {
+      //     cartUser = {
+      //       id: userData.userId,
+      //       listProducts: [
+      //         listItem.listProducts[key] = {
+      //           idProduct: product.id,
+      //           quantity: quantityProduct,
+      //           name: product.name,
+      //           price: product.price,
+      //         }],
+      //     };
+      //   } else {
+      //     cartUser = {
+      //       id: userData.userId,
+      //       listProducts: [
+      //         ...listItem.listProducts,
+      //         {
+      //           idProduct: product.id,
+      //           quantity: quantityProduct,
+      //           name: product.name,
+      //           price: product.price,
+      //         }],
+      //     };
+      //   }
+      // });
+      // }
+      const arr = listItem?.listProducts?.map((item) => {
+        console.log(item);
+        console.log(product);
+        if (item.idProduct === product.id) {
+          return {
+            ...item,
+            quantity: quantityProduct,
+          };
+        }
+        return product;
+      });
+
       const cartUser = {
         id: userData.userId,
         listProducts: [
           ...listItem.listProducts,
-          {
-            idProduct: product.id,
-            quantity: quantityProduct,
-            name: product.name,
-            price: product.price,
-          }],
+          arr,
+        ],
       };
 
       setListItem(cartUser);
@@ -92,83 +129,66 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
-  const haveProduct = () => {
-    let checkProduct = false;
-    if (listItem.listProducts) {
-      Object.entries(listItem.listProducts).forEach(([key, value]) => {
-        if (value.name === product.name || product.label === 'Sold out') {
-          checkProduct = true;
-        }
-      });
-    }
+  // const haveProduct = () => {
+  //   let checkProduct = false;
+  //   if (listItem.listProducts) {
+  //     Object.entries(listItem.listProducts).forEach(([key, value]) => {
+  //       if (value.name === product.name || product.label === 'Sold out') {
+  //         checkProduct = true;
+  //       }
+  //     });
+  //   }
 
-    return checkProduct;
-  };
+  //   return checkProduct;
+  // };
+  // console.log('listItem', listItem);
+  // console.log(typeof listItem.listProducts);
 
   return (
     <DefaultLayout>
-      {
-        loading
-          ? (
-            <p className="loading">Loading...</p>
-          )
-          : (
-            <div className="product-main">
-              <div className="product">
-                <img className="image" src={product.image} alt={product.name} />
-                <div className="information">
-                  <span className="name">{product.name}</span>
-                  <span className="price">{`$ ${product.price}`}</span>
-                  <p className="description">{product.description}</p>
-                  {
-                    (haveProduct())
-                      ? (
-                        <div className="add-cart">
-                          <Quantity status />
-                          <Button
-                            type="button"
-                            onClick={handleAddCart}
-                            className="btn-primary btn-large"
-                            text="add to cart"
-                            status
-                          />
-                        </div>
-                      )
-                      : (
-                        <div className="add-cart">
-                          <Quantity quantity={handleSetQuantity} />
-                          <Button
-                            type="button"
-                            onClick={handleAddCart}
-                            className="btn-primary btn-large"
-                            text="add to cart"
-                          />
-                        </div>
-                      )
-                        }
+      {loading ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <div className="product-main">
+          <div className="product">
+            <img className="image" src={product.image} alt={product.name} />
+            <div className="information">
+              <span className="name">{product.name}</span>
+              <span className="price">{`$ ${product.price}`}</span>
+              <p className="description">{product.description}</p>
+              {product.label === 'Sold out' ? (
+                <div className="add-cart">
+                  <Quantity status />
+                  <Button
+                    type="button"
+                    onClick={handleAddCart}
+                    className="btn-primary btn-large"
+                    text="add to cart"
+                    status
+                  />
                 </div>
-              </div>
-              <div className="product-description">
-                <div className="title">
-                  Description
+              ) : (
+                <div className="add-cart">
+                  <Quantity quantity={handleSetQuantity} />
+                  <Button
+                    type="button"
+                    onClick={handleAddCart}
+                    className="btn-primary btn-large"
+                    text="add to cart"
+                  />
                 </div>
-                <div className="description">
-                  {product.description}
-                </div>
-              </div>
+              )}
             </div>
-          )
-      }
-      {
-        toast.openPopup
-        && (
-        <Toast
-          status={toast.status}
-          message={toast.message}
-          onClose={handleClose}
-        />
-        )
-      }
+          </div>
+          <div className="product-description">
+            <div className="title">Description</div>
+            <div className="description">{product.description}</div>
+          </div>
+        </div>
+      )}
+      {toast.openPopup && (
+        <Toast status={toast.status} message={toast.message} onClose={handleClose} />
+      )}
     </DefaultLayout>
   );
 };
