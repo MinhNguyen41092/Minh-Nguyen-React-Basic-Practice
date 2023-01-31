@@ -92,6 +92,19 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
+  const haveProduct = () => {
+    let checkProduct = false;
+    if (listItem.listProducts) {
+      Object.entries(listItem.listProducts).forEach(([key, value]) => {
+        if (value.name === product.name || product.label === 'Sold out') {
+          checkProduct = true;
+        }
+      });
+    }
+
+    return checkProduct;
+  };
+
   return (
     <DefaultLayout>
       {
@@ -108,7 +121,7 @@ const ProductDetail = () => {
                   <span className="price">{`$ ${product.price}`}</span>
                   <p className="description">{product.description}</p>
                   {
-                    (product.label === 'Sold out')
+                    (haveProduct())
                       ? (
                         <div className="add-cart">
                           <Quantity status />

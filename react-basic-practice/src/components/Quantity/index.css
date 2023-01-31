@@ -13,18 +13,18 @@
   color: var(--color-primary);
 }
 
-.input-group {
+.quantity-group .input-group {
   padding: 0px;
   margin: 0px;
 }
 
-.input-text {
+.quantity-group .input-text {
   margin: 10px;
   padding: 0px;
   min-width: 20px;
 }
 
-.quantity {
+.quantity-group .quantity {
   background-color: var(--color-quantity-button);
   border: none;
   width: 10px;
