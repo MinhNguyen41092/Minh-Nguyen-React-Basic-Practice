@@ -60,11 +60,11 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       let cartUser = {};
-      const haveProduct = cart?.products?.findIndex(
+      const indexProduct = cart?.products?.findIndex(
         (item) => item.idProduct === Number(productId),
       );
-      if (haveProduct > 0) {
-        cart.products[haveProduct].quantity += quantityProduct;
+      if (indexProduct > 0) {
+        cart.products[indexProduct].quantity += quantityProduct;
         cartUser = cart;
       } else {
         cartUser = {
@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 </div>
               ) : (
                 <div className="add-cart">
-                  <Quantity quantity={handleSetQuantity} />
+                  <Quantity getQuantity={handleSetQuantity} />
                   <Button
                     type="button"
                     onClick={handleAddCart}

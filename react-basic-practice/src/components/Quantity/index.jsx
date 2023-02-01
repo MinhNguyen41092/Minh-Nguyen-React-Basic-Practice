@@ -9,7 +9,7 @@ import Input from '../common/Input';
 import './index.css';
 
 const Quantity = (props) => {
-  const { status, quantity } = props;
+  const { status, getQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
@@ -28,8 +28,9 @@ const Quantity = (props) => {
     setCounter(value.quantity);
   };
 
+  // Check product ready status then set status for button
   if (!status) {
-    quantity(counter);
+    getQuantity(counter);
   }
 
   return (
