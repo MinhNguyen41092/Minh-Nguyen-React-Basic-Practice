@@ -59,54 +59,27 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
-      // let cartUser = {};
-      // if (listItem.listProducts) {
-      // Object.entries(listItem.listProducts).forEach(([key, value]) => {
-      //   if (value.name === product.name) {
-      //     cartUser = {
-      //       id: userData.userId,
-      //       listProducts: [
-      //         listItem.listProducts[key] = {
-      //           idProduct: product.id,
-      //           quantity: quantityProduct,
-      //           name: product.name,
-      //           price: product.price,
-      //         }],
-      //     };
-      //   } else {
-      //     cartUser = {
-      //       id: userData.userId,
-      //       listProducts: [
-      //         ...listItem.listProducts,
-      //         {
-      //           idProduct: product.id,
-      //           quantity: quantityProduct,
-      //           name: product.name,
-      //           price: product.price,
-      //         }],
-      //     };
-      //   }
-      // });
-      // }
-      const arr = listItem?.listProducts?.map((item) => {
-        console.log(item);
-        console.log(product);
-        if (item.idProduct === product.id) {
-          return {
-            ...item,
-            quantity: quantityProduct,
-          };
-        }
-        return product;
-      });
-
-      const cartUser = {
-        id: userData.userId,
-        listProducts: [
-          ...listItem.listProducts,
-          arr,
-        ],
-      };
+      let cartUser = {};
+      const a = listItem?.listProducts?.find((item) => item.idProduct === Number(productId));
+      const c = listItem?.listProducts?.findIndex((item) => item.idProduct === Number(productId));
+      if (a) {
+        a.quantity += quantityProduct;
+        listItem.listProducts[c] = a;
+        cartUser = listItem;
+      } else {
+        cartUser = {
+          id: userData.userId,
+          listProducts: [
+            ...listItem.listProducts,
+            {
+              idProduct: product.id,
+              quantity: quantityProduct,
+              name: product.name,
+              price: product.price,
+            },
+          ],
+        };
+      }
 
       setListItem(cartUser);
       await updateCart(userData.userId, cartUser);
@@ -128,21 +101,6 @@ const ProductDetail = () => {
   const handleClose = () => {
     setToast({ ...toast, openPopup: false });
   };
-
-  // const haveProduct = () => {
-  //   let checkProduct = false;
-  //   if (listItem.listProducts) {
-  //     Object.entries(listItem.listProducts).forEach(([key, value]) => {
-  //       if (value.name === product.name || product.label === 'Sold out') {
-  //         checkProduct = true;
-  //       }
-  //     });
-  //   }
-
-  //   return checkProduct;
-  // };
-  // console.log('listItem', listItem);
-  // console.log(typeof listItem.listProducts);
 
   return (
     <DefaultLayout>
