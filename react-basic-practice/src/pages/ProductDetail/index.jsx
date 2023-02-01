@@ -27,7 +27,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
   const { toast, setToast } = useToast();
-  const { listItem, setListItem } = useCart();
+  const { cart, setCart } = useCart();
   const { userData } = useAuth();
 
   useEffect(() => {
@@ -60,15 +60,17 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       let cartUser = {};
-      const c = listItem?.listProducts?.findIndex((item) => item.idProduct === Number(productId));
-      if (c > 0) {
-        listItem.listProducts[c].quantity += quantityProduct;
-        cartUser = listItem;
+      const haveProduct = cart?.products?.findIndex(
+        (item) => item.idProduct === Number(productId),
+      );
+      if (haveProduct > 0) {
+        cart.products[haveProduct].quantity += quantityProduct;
+        cartUser = cart;
       } else {
         cartUser = {
           id: userData.userId,
-          listProducts: [
-            ...listItem.listProducts,
+          products: [
+            ...cart.products,
             {
               idProduct: product.id,
               quantity: quantityProduct,
@@ -79,7 +81,7 @@ const ProductDetail = () => {
         };
       }
 
-      setListItem(cartUser);
+      setCart(cartUser);
       await updateCart(userData.userId, cartUser);
 
       setToast({
@@ -137,8 +139,8 @@ const ProductDetail = () => {
             </div>
           </div>
           <div className="product-description">
-            <div className="title">Description</div>
-            <div className="description">{product.description}</div>
+            <p className="title">Description</p>
+            <p className="description">{product.description}</p>
           </div>
         </div>
       )}

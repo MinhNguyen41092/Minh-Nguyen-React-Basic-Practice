@@ -20,23 +20,23 @@ import './index.css';
 
 const CartSideBar = (props) => {
   const { onCloseCart } = props;
-  const { listItem, setListItem } = useCart();
+  const { cart, setCart } = useCart();
   const { toast, setToast } = useToast();
   const { userData } = useAuth();
 
   const handleDeleteCartItem = async (e) => {
     try {
       const idSelected = e.target.closest('.cart-item').dataset.id;
-      const updateCarts = listItem.listProducts.filter(
+      const updateCarts = cart.products.filter(
         (cartItem) => cartItem.idProduct !== Number(idSelected),
       );
 
       const cartUser = {
         id: userData.userId,
-        listProducts: updateCarts,
+        products: updateCarts,
       };
 
-      setListItem(cartUser);
+      setCart(cartUser);
       await updateCart(userData.userId, cartUser);
 
       setToast({
@@ -71,7 +71,7 @@ const CartSideBar = (props) => {
         </div>
         <div className="list-cart-item">
           {
-            listItem.listProducts.map((item) => (
+            cart.products.map((item) => (
               <CartItem
                 key={item.idProduct}
                 item={item}
