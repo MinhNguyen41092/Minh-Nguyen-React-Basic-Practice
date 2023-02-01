@@ -60,11 +60,9 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       let cartUser = {};
-      const a = listItem?.listProducts?.find((item) => item.idProduct === Number(productId));
       const c = listItem?.listProducts?.findIndex((item) => item.idProduct === Number(productId));
-      if (a) {
-        a.quantity += quantityProduct;
-        listItem.listProducts[c] = a;
+      if (c > 0) {
+        listItem.listProducts[c].quantity += quantityProduct;
         cartUser = listItem;
       } else {
         cartUser = {
