@@ -28,10 +28,7 @@ const Quantity = (props) => {
     setCounter(value.quantity);
   };
 
-  // Check product ready status then set status for button
-  if (!statusButton) {
-    getQuantity(counter);
-  }
+  getQuantity(counter);
 
   return (
     <div className="quantity-group">
@@ -41,12 +38,7 @@ const Quantity = (props) => {
         text="-"
         isDisabled={statusButton}
       />
-      <Input
-        name="quantity"
-        className="quantity"
-        value={counter}
-        handleInputChange={setQuantity}
-      />
+      <Input name="quantity" className="quantity" value={counter} handleInputChange={setQuantity} />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"

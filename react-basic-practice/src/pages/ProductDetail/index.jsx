@@ -134,7 +134,7 @@ const ProductDetail = () => {
                   onClick={handleAddCart}
                   className="btn-primary btn-large"
                   text="add to cart"
-                  status={checkUnavailableProduct() && true}
+                  isDisabled={checkUnavailableProduct() && true}
                 />
               </div>
             </div>
