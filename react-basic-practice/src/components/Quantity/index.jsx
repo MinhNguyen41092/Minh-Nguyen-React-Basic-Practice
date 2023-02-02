@@ -9,7 +9,7 @@ import Input from '../common/Input';
 import './index.css';
 
 const Quantity = (props) => {
-  const { status, getQuantity } = props;
+  const { statusButton, getQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
@@ -29,7 +29,7 @@ const Quantity = (props) => {
   };
 
   // Check product ready status then set status for button
-  if (!status) {
+  if (!statusButton) {
     getQuantity(counter);
   }
 
@@ -39,7 +39,7 @@ const Quantity = (props) => {
         onClick={decrementCount}
         className="btn btn-decrement"
         text="-"
-        status={status || ''}
+        status={statusButton || ''}
       />
       <Input
         name="quantity"
@@ -51,7 +51,7 @@ const Quantity = (props) => {
         onClick={incrementCount}
         className="btn btn-decrement"
         text="+"
-        status={status || ''}
+        status={statusButton || ''}
       />
     </div>
   );

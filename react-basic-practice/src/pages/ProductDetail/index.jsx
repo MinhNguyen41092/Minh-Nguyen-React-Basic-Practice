@@ -26,6 +26,7 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
+  const [unavailableProduct, setUnavailableProduct] = useState(false);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
@@ -102,6 +103,12 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
+  const checkAvailableProduct = () => {
+    if (product.label === 'Sold out') {
+      setUnavailableProduct(true);
+    }
+  };
+
   return (
     <DefaultLayout>
       {loading ? (
@@ -114,9 +121,9 @@ const ProductDetail = () => {
               <span className="name">{product.name}</span>
               <span className="price">{`$ ${product.price}`}</span>
               <p className="description">{product.description}</p>
-              {product.label === 'Sold out' ? (
+              {unavailableProduct ? (
                 <div className="add-cart">
-                  <Quantity status />
+                  <Quantity statusButton={unavailableProduct} />
                   <Button
                     type="button"
                     onClick={handleAddCart}

@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useMemo, useState,
-} from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { getUserById } from '@/services/Users';
 
 const AuthContext = React.createContext();
@@ -34,16 +32,15 @@ const AuthProvider = (props) => {
     getData();
   }, []);
 
-  const valueContext = useMemo(() => ({
-    userData,
-    setUserData,
-  }), [userData]);
-
-  return (
-    <AuthContext.Provider value={valueContext}>
-      {children}
-    </AuthContext.Provider>
+  const valueContext = useMemo(
+    () => ({
+      userData,
+      setUserData,
+    }),
+    [userData],
   );
+
+  return <AuthContext.Provider value={valueContext}>{children}</AuthContext.Provider>;
 };
 
 export { useAuth, AuthProvider };
