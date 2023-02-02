@@ -7,6 +7,7 @@ import DefaultLayout from '@/layouts/DefaultLayout';
 import Quantity from '@/components/Quantity';
 import Button from '@/components/common/Button';
 import Toast from '@/components/Toast';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 // Import service
 import { getProductById } from '@/services/Products';
@@ -108,7 +109,7 @@ const ProductDetail = () => {
   return (
     <DefaultLayout>
       {loading ? (
-        <p className="loading">Loading...</p>
+        <LoadingSpinner />
       ) : (
         <div className="product-main">
           <div className="product">

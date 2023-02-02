@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 import Button from '../common/Button';
+import LoadingSpinner from '../common/LoadingSpinner';
 
 // Import context
 import { useLoading } from '@/contexts/LoadingProvider';
@@ -67,7 +68,7 @@ const ListProducts = (props) => {
       {
         loading
           ? (
-            <p className="loading">Loading...</p>
+            <LoadingSpinner />
           )
           : (
             <Grid columns="3" rowGap="large" columnGap="large">
