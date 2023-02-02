@@ -60,18 +60,18 @@ const SignUpForm = () => {
       const errorValid = validateInput(inputValue);
 
       if (!errorValid.error) {
-        // Check email already exists.
+        // Check email already exists
         const dataUser = await getAllUsers();
         const haveUser = dataUser.some((user) => user.email === inputValue.email);
 
         if (haveUser) {
-          // Show error if email already exists.
+          // Show error if email already exists
           setErrorMessage((preMsg) => ({
             ...preMsg,
             form: 'Email is already in use. Please try another one.',
           }));
         } else {
-          // Send data to API to create new users.
+          // Send data to API to create new users
           const newUser = {
             id: uuidv4(),
             username: inputValue.username || '',
