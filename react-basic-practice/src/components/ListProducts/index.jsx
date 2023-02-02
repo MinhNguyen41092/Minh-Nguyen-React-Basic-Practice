@@ -28,6 +28,7 @@ const ListProducts = (props) => {
         setLoading(true);
         const data = await getListProducts(pageNumber, keyword, fieldSort, order);
         data ? setProducts(data) : setProducts([]);
+        data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
       } catch {
         alert('Error loading data, please reload the page');
       } finally {
@@ -42,7 +43,7 @@ const ListProducts = (props) => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getListProducts(pageNumber);
+        const data = await getListProducts(pageNumber, keyword, fieldSort, order);
         const newData = [...products, data];
 
         data ? setProducts(newData.flat()) : setProducts([]);
@@ -83,7 +84,7 @@ const ListProducts = (props) => {
         onClick={handleLoadMore}
         className="btn-primary btn-large"
         text="load more"
-        status={isDisabled}
+        isDisabled={isDisabled}
       />
     </div>
   );

@@ -14,6 +14,18 @@ export const getListProducts = async (pageNumber, keyword = '', sortBy = '', ord
 };
 
 /**
+ * Get all data product
+ * @param {number} productId
+ *
+ * @returns {object} product
+ */
+export const getProduct = async () => {
+  const res = await axios.get(`${PRODUCTS_API}`);
+
+  return res.data;
+};
+
+/**
  * Get data product by productId
  * @param {number} productId
  *
