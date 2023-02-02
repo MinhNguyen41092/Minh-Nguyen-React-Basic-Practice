@@ -44,15 +44,6 @@ const Header = () => {
     <header className="header-wrapper">
       <Logo />
       <div className="user">
-        <div className="user-information">
-          <Button
-            type="button"
-            className="btn-user"
-            icon={userIcon}
-            onClick={handleOpenUserCard}
-          />
-          <span className="user-name">{userData.username}</span>
-        </div>
         <div className="cart">
           <Button
             type="button"
@@ -62,13 +53,10 @@ const Header = () => {
           />
           <span className="quantity-cart">{cart.products?.length}</span>
         </div>
+        <Button type="button" className="btn-user" icon={userIcon} onClick={handleOpenUserCard} />
       </div>
-      {
-        isOpen && <CartSideBar onCloseCart={handleCloseCart} />
-      }
-      {
-        userCard && <UserCard onCloseUserCard={handleCloseUserCard} />
-      }
+      {isOpen && <CartSideBar onCloseCart={handleCloseCart} />}
+      {userCard && <UserCard onCloseUserCard={handleCloseUserCard} />}
     </header>
   );
 };
