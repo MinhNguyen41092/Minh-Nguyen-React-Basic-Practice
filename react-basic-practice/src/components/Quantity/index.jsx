@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 
 // Import component
 import Button from '../common/Button';
+import Input from '../common/Input';
 
 // Import file css
 import './index.css';
 
 const Quantity = (props) => {
-  const { status, quantity } = props;
+  const { isUnavailableProduct, onChangeQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
@@ -18,14 +19,16 @@ const Quantity = (props) => {
 
   const decrementCount = () => {
     // Update state with decremented value
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter((preCounter) => preCounter - 1);
     }
   };
 
-  if (!status) {
-    quantity(counter);
-  }
+  const setQuantity = (value) => {
+    setCounter(value.quantity);
+  };
+
+  onChangeQuantity(counter);
 
   return (
     <div className="quantity-group">
@@ -33,14 +36,14 @@ const Quantity = (props) => {
         onClick={decrementCount}
         className="btn btn-decrement"
         text="-"
-        status={status || ''}
+        isDisabled={isUnavailableProduct}
       />
-      <p className="quantity">{counter}</p>
+      <Input name="quantity" className="quantity" value={counter} handleInputChange={setQuantity} />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"
         text="+"
-        status={status || ''}
+        isDisabled={isUnavailableProduct}
       />
     </div>
   );

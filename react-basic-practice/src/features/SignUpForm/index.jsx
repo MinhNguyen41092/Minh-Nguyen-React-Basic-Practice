@@ -79,7 +79,7 @@ const SignUpForm = () => {
 
           const newCart = {
             id: newUser.id,
-            listProducts: [],
+            products: [],
           };
 
           Promise.all([

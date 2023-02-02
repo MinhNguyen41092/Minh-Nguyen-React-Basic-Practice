@@ -21,7 +21,7 @@ import './index.css';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userCard, setUserCard] = useState(false);
-  const { listItem } = useCart();
+  const { cart } = useCart();
   const { userData } = useAuth();
 
   const handleOpenCart = () => {
@@ -60,7 +60,7 @@ const Header = () => {
             icon={cartButton}
             onClick={handleOpenCart}
           />
-          <span className="quantity-cart">{listItem.listProducts?.length}</span>
+          <span className="quantity-cart">{cart.products?.length}</span>
         </div>
       </div>
       {

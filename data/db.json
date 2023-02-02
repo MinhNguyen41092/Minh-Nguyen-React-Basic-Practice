@@ -90,24 +90,18 @@
   "cart": [
     {
       "id": 1,
-      "listProducts": [
-        {
-          "idProduct": 1,
-          "quantity": 1,
-          "name": "lira earrings",
-          "price": 20
-        },
+      "products": [
         {
           "idProduct": 2,
           "quantity": 3,
-          "name": "lira earrings",
-          "price": 20
+          "name": "hal earrings",
+          "price": 25
         }
       ]
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
-      "listProducts": [
+      "products": [
         {
           "idProduct": 6,
           "quantity": 1,

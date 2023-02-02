@@ -32,7 +32,7 @@ const AuthProvider = (props) => {
     };
 
     getData();
-  }, [userData.id]);
+  }, []);
 
   const valueContext = useMemo(() => ({
     userData,

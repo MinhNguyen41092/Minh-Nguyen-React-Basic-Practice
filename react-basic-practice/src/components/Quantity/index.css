@@ -1,27 +1,41 @@
 .quantity-group {
-    background-color: var(--color-quantity-button);
-    color: var(--color-primary);
-    max-width: 136px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 4px;
+  background-color: var(--color-quantity-button);
+  color: var(--color-primary);
+  max-width: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 4px;
 }
 
 .quantity-group .btn {
-    padding: 14px;
-    color: var(--color-primary);
+  padding: 14px;
+  color: var(--color-primary);
 }
 
-.quantity {
-  padding: 0px 20px;
+.quantity-group .input-group {
+  padding: 0px;
+  margin: 0px;
 }
 
-.btn-decrement[disabled]{
+.quantity-group .input-text {
+  margin: 10px;
+  padding: 0px;
+  min-width: 20px;
+}
+
+.quantity-group .quantity {
+  background-color: var(--color-quantity-button);
+  border: none;
+  width: 10px;
+  text-align: center;
+}
+
+.btn-decrement[disabled] {
   border: none;
   background-color: var(--color-quantity-button);
 }
 
-.btn-decrement[disabled]:hover{
+.btn-decrement[disabled]:hover {
   background-color: var(--color-quantity-button);
 }
