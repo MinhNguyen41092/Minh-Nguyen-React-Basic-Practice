@@ -1,11 +1,6 @@
-.loading {
-  display: block;
-  margin: auto;
-  margin: 300px;
+.spinner-container {
+  margin: 0px 300px;
   text-align: center;
-  font-size: var(--fs-exLarge);
-  font-weight: var(--fw-normal);
-  color: var(--color-loading);
 }
 
 .list-products {
