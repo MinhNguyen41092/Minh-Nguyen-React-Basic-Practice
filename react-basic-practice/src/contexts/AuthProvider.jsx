@@ -20,8 +20,8 @@ const AuthProvider = (props) => {
         const data = await getUserById(userData.userId);
         const user = {
           userId: userData.userId,
-          username: data.username,
-          email: data.email,
+          username: data.username || '',
+          email: data.email || '',
         };
         setUserData(user);
       } catch {

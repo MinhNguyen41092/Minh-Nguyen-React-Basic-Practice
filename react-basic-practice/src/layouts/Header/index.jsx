@@ -24,8 +24,6 @@ const Header = () => {
   const { cart } = useCart();
   const { userData } = useAuth();
 
-  console.log(userData);
-
   const handleOpenCart = () => {
     setIsOpen(true);
   };
