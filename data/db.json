@@ -92,22 +92,10 @@
       "id": 1,
       "products": [
         {
-          "idProduct": 5,
-          "quantity": 6,
-          "name": "plaine necklace",
-          "price": 23
-        },
-        {
-          "idProduct": 1,
-          "quantity": 17,
-          "name": "lira earrings",
-          "price": 20
-        },
-        {
-          "idProduct": 6,
-          "quantity": 4,
-          "name": "yuki hair pin set of 3",
-          "price": 29
+          "idProduct": 2,
+          "quantity": 3,
+          "name": "hal earrings",
+          "price": 25
         }
       ]
     },

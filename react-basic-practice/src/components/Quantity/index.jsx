@@ -9,7 +9,7 @@ import Input from '../common/Input';
 import './index.css';
 
 const Quantity = (props) => {
-  const { statusButton, getQuantity } = props;
+  const { isUnavailableProduct, onChangeQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
@@ -28,10 +28,7 @@ const Quantity = (props) => {
     setCounter(value.quantity);
   };
 
-  // Check product ready status then set status for button
-  if (!statusButton) {
-    getQuantity(counter);
-  }
+  onChangeQuantity(counter);
 
   return (
     <div className="quantity-group">
@@ -39,19 +36,14 @@ const Quantity = (props) => {
         onClick={decrementCount}
         className="btn btn-decrement"
         text="-"
-        status={statusButton || ''}
+        isDisabled={isUnavailableProduct}
       />
-      <Input
-        name="quantity"
-        className="quantity"
-        value={counter}
-        handleInputChange={setQuantity}
-      />
+      <Input name="quantity" className="quantity" value={counter} handleInputChange={setQuantity} />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"
         text="+"
-        status={statusButton || ''}
+        isDisabled={isUnavailableProduct}
       />
     </div>
   );
