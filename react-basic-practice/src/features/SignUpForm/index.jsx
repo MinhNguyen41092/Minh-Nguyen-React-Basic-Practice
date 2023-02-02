@@ -18,6 +18,7 @@ import validateInput from '@/helpers/validate';
 
 // import context
 import { useLoading } from '@/contexts/LoadingProvider';
+import { useAuth } from '@/contexts/AuthProvider';
 
 // Import constants
 import ROUTE from '@/constants/route';
@@ -43,6 +44,7 @@ const SignUpForm = () => {
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
   const { loading, setLoading } = useLoading();
+  const { setUserData } = useAuth();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
@@ -87,7 +89,14 @@ const SignUpForm = () => {
             await createNewCart(newCart),
           ]);
 
-          navigate(ROUTE.LOGIN);
+          const user = {
+            userId: newUser.id,
+            username: newUser.username,
+            email: newUser.email,
+          };
+          setUserData(user);
+          localStorage.setItem('auth', user.userId);
+          navigate(ROUTE.HOMEPAGE);
         }
       } else {
         setErrorMessage(errorValid.validateError);
