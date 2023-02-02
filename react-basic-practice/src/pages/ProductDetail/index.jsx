@@ -103,7 +103,7 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
-  const checkUnavailableProduct = () => (product.label === 'Sold out' ?? true);
+  const checkUnavailableProduct = () => (product.label === 'Sold out');
 
   return (
     <DefaultLayout>
