@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
-  const [unavailableProduct, setUnavailableProduct] = useState(false);
+  // const [unavailableProduct, setUnavailableProduct] = useState(false);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
@@ -62,7 +62,7 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
       if (indexProduct > 0) {
         cart.products[indexProduct].quantity += quantityProduct;
@@ -104,9 +104,12 @@ const ProductDetail = () => {
   };
 
   const checkAvailableProduct = () => {
+    let unavailableProduct = false;
     if (product.label === 'Sold out') {
-      setUnavailableProduct(true);
+      unavailableProduct = true;
     }
+
+    return unavailableProduct;
   };
 
   return (
@@ -121,28 +124,19 @@ const ProductDetail = () => {
               <span className="name">{product.name}</span>
               <span className="price">{`$ ${product.price}`}</span>
               <p className="description">{product.description}</p>
-              {unavailableProduct ? (
-                <div className="add-cart">
-                  <Quantity statusButton={unavailableProduct} />
-                  <Button
-                    type="button"
-                    onClick={handleAddCart}
-                    className="btn-primary btn-large"
-                    text="add to cart"
-                    status
-                  />
-                </div>
-              ) : (
-                <div className="add-cart">
-                  <Quantity getQuantity={handleSetQuantity} />
-                  <Button
-                    type="button"
-                    onClick={handleAddCart}
-                    className="btn-primary btn-large"
-                    text="add to cart"
-                  />
-                </div>
-              )}
+              <div className="add-cart">
+                <Quantity
+                  getQuantity={handleSetQuantity}
+                  statusButton={checkAvailableProduct() ? true : ''}
+                />
+                <Button
+                  type="button"
+                  onClick={handleAddCart}
+                  className="btn-primary btn-large"
+                  text="add to cart"
+                  status={checkAvailableProduct() ? true : ''}
+                />
+              </div>
             </div>
           </div>
           <div className="product-description">
