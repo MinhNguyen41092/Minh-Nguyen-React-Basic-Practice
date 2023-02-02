@@ -103,7 +103,7 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
-  const checkAvailableProduct = () => {
+  const checkUnavailableProduct = () => {
     let unavailableProduct = false;
     if (product.label === 'Sold out') {
       unavailableProduct = true;
@@ -127,14 +127,14 @@ const ProductDetail = () => {
               <div className="add-cart">
                 <Quantity
                   getQuantity={handleSetQuantity}
-                  statusButton={checkAvailableProduct() ? true : ''}
+                  statusButton={checkUnavailableProduct() && true}
                 />
                 <Button
                   type="button"
                   onClick={handleAddCart}
                   className="btn-primary btn-large"
                   text="add to cart"
-                  status={checkAvailableProduct() ? true : ''}
+                  status={checkUnavailableProduct() && true}
                 />
               </div>
             </div>
