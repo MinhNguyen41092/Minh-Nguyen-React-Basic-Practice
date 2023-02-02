@@ -39,7 +39,7 @@ const Quantity = (props) => {
         onClick={decrementCount}
         className="btn btn-decrement"
         text="-"
-        status={statusButton}
+        isDisabled={statusButton}
       />
       <Input
         name="quantity"
@@ -51,7 +51,7 @@ const Quantity = (props) => {
         onClick={incrementCount}
         className="btn btn-decrement"
         text="+"
-        status={statusButton}
+        isDisabled={statusButton}
       />
     </div>
   );
