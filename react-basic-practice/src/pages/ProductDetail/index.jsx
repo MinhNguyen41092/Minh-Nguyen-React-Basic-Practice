@@ -27,8 +27,9 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
+  // const [unavailableProduct, setUnavailableProduct] = useState(false);
   const { toast, setToast } = useToast();
-  const { listItem, setListItem } = useCart();
+  const { cart, setCart } = useCart();
   const { userData } = useAuth();
 
   useEffect(() => {
@@ -61,15 +62,17 @@ const ProductDetail = () => {
   const handleAddCart = async () => {
     try {
       let cartUser = {};
-      const c = listItem?.listProducts?.findIndex((item) => item.idProduct === Number(productId));
-      if (c > 0) {
-        listItem.listProducts[c].quantity += quantityProduct;
-        cartUser = listItem;
+      const indexProduct = cart?.products?.findIndex(
+        (item) => item.idProduct === Number(productId)
+      );
+      if (indexProduct > 0) {
+        cart.products[indexProduct].quantity += quantityProduct;
+        cartUser = cart;
       } else {
         cartUser = {
           id: userData.userId,
-          listProducts: [
-            ...listItem.listProducts,
+          products: [
+            ...cart.products,
             {
               idProduct: product.id,
               quantity: quantityProduct,
@@ -80,7 +83,7 @@ const ProductDetail = () => {
         };
       }
 
-      setListItem(cartUser);
+      setCart(cartUser);
       await updateCart(userData.userId, cartUser);
 
       setToast({
@@ -101,6 +104,8 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
+  const checkUnavailableProduct = () => (product.label === 'Sold out');
+
   return (
     <DefaultLayout>
       {loading ? (
@@ -113,33 +118,24 @@ const ProductDetail = () => {
               <span className="name">{product.name}</span>
               <span className="price">{`$ ${product.price}`}</span>
               <p className="description">{product.description}</p>
-              {product.label === 'Sold out' ? (
-                <div className="add-cart">
-                  <Quantity status />
-                  <Button
-                    type="button"
-                    onClick={handleAddCart}
-                    className="btn-primary btn-large"
-                    text="add to cart"
-                    status
-                  />
-                </div>
-              ) : (
-                <div className="add-cart">
-                  <Quantity quantity={handleSetQuantity} />
-                  <Button
-                    type="button"
-                    onClick={handleAddCart}
-                    className="btn-primary btn-large"
-                    text="add to cart"
-                  />
-                </div>
-              )}
+              <div className="add-cart">
+                <Quantity
+                  onChangeQuantity={handleSetQuantity}
+                  isUnavailableProduct={checkUnavailableProduct()}
+                />
+                <Button
+                  type="button"
+                  onClick={handleAddCart}
+                  className="btn-primary btn-large"
+                  text="add to cart"
+                  isDisabled={checkUnavailableProduct()}
+                />
+              </div>
             </div>
           </div>
           <div className="product-description">
-            <div className="title">Description</div>
-            <div className="description">{product.description}</div>
+            <p className="title">Description</p>
+            <p className="description">{product.description}</p>
           </div>
         </div>
       )}

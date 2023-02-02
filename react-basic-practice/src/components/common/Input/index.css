@@ -25,4 +25,5 @@
   width: 100%;
   font-weight: var(--fw-bold);
   color: var(--color-secondary);
+  text-transform: capitalize;
 }

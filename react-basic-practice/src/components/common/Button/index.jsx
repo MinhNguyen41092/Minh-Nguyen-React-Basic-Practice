@@ -3,7 +3,7 @@ import './index.css';
 
 const Button = (props) => {
   const {
-    type, onClick, className, text, icon, status,
+    type, onClick, className, text, icon, isDisabled,
   } = props;
 
   return (
@@ -12,7 +12,7 @@ const Button = (props) => {
       onClick={onClick}
       className={`btn ${className}`}
       value="button"
-      disabled={status}
+      disabled={isDisabled}
     >
       { text || <img className="icon" src={icon} alt="icon" />}
     </button>

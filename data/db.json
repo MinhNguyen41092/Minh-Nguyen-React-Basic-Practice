@@ -90,30 +90,18 @@
   "cart": [
     {
       "id": 1,
-      "listProducts": [
+      "products": [
         {
-          "idProduct": 5,
-          "quantity": 6,
-          "name": "plaine necklace",
-          "price": 23
-        },
-        {
-          "idProduct": 1,
-          "quantity": 17,
-          "name": "lira earrings",
-          "price": 20
-        },
-        {
-          "idProduct": 6,
+          "idProduct": 2,
           "quantity": 3,
-          "name": "yuki hair pin set of 3",
-          "price": 29
+          "name": "hal earrings",
+          "price": 25
         }
       ]
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
-      "listProducts": [
+      "products": [
         {
           "idProduct": 6,
           "quantity": 1,
