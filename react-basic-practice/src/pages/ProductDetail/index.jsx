@@ -126,15 +126,15 @@ const ProductDetail = () => {
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
-                  getQuantity={handleSetQuantity}
-                  statusButton={checkUnavailableProduct() && true}
+                  onChangeQuantity={handleSetQuantity}
+                  isUnavailableProduct={checkUnavailableProduct()}
                 />
                 <Button
                   type="button"
                   onClick={handleAddCart}
                   className="btn-primary btn-large"
                   text="add to cart"
-                  isDisabled={checkUnavailableProduct() && true}
+                  isDisabled={checkUnavailableProduct()}
                 />
               </div>
             </div>
