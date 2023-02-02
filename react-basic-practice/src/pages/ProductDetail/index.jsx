@@ -27,7 +27,6 @@ const ProductDetail = () => {
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
   const [quantityProduct, setQuantity] = useState(0);
-  // const [unavailableProduct, setUnavailableProduct] = useState(false);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
