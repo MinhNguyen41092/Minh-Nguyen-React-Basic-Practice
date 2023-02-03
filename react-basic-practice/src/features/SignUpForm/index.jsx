@@ -1,22 +1,22 @@
-// import react
+// Import react
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-// import components
+// Import components
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Logo from '@/components/common/Logo';
 import FormGroup from '@/components/FormGroup';
 
-// import service
-import { createUser, getAllUsers } from '@/services/Users';
+// Import service
+import { createUser, getUserByEmail } from '@/services/Users';
 import { createNewCart } from '@/services/Cart';
 
-// import helpers
+// Import helpers
 import validateInput from '@/helpers/validate';
 
-// import context
+// Import context
 import { useLoading } from '@/contexts/LoadingProvider';
 import { useAuth } from '@/contexts/AuthProvider';
 
@@ -61,10 +61,9 @@ const SignUpForm = () => {
 
       if (!errorValid.error) {
         // Check email already exists
-        const dataUser = await getAllUsers();
-        const haveUser = dataUser.some((user) => user.email === inputValue.email);
+        const dataUser = await getUserByEmail();
 
-        if (haveUser) {
+        if (dataUser) {
           // Show error if email already exists
           setErrorMessage((preMsg) => ({
             ...preMsg,
