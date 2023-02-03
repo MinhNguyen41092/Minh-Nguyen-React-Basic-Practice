@@ -1,91 +1,37 @@
 // Import react
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Import component
 import Grid from '@/layouts/Grid';
 import ProductCard from '../ProductCard';
 import Button from '../common/Button';
-import LoadingSpinner from '../common/LoadingSpinner';
-
-// Import context
-import { useLoading } from '@/contexts/LoadingProvider';
-
-// Import service
-import { getListProducts } from '../../services/Products';
 
 import './index.css';
 
 const ListProducts = (props) => {
-  const { fieldSort, order, keyword } = props;
-  const [products, setProducts] = useState([]);
-  const { loading, setLoading } = useLoading();
-  const [pageNumber, setPageNumber] = useState(1);
-  const [isDisabled, setIsDisabled] = useState(false);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setLoading(true);
-        const data = await getListProducts(pageNumber, keyword, fieldSort, order);
-        data ? setProducts(data) : setProducts([]);
-        data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
-      } catch {
-        alert('Error loading data, please reload the page');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, [keyword, fieldSort, order]);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setLoading(true);
-        const data = await getListProducts(pageNumber, keyword, fieldSort, order);
-        const newData = [...products, data];
-
-        data ? setProducts(newData.flat()) : setProducts([]);
-        data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
-      } catch {
-        alert('Error loading data, please reload the page');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, [pageNumber]);
+  const { products, isDisabledLoadMoreBtn, setPageNumber } = props;
 
   const handleLoadMore = () => {
-    setPageNumber(pageNumber + 1);
+    setPageNumber(1);
   };
 
   return (
     <div className="list-products">
-      {
-        loading
-          ? (
-            <LoadingSpinner />
-          )
-          : (
-            <Grid columns="3" rowGap="large" columnGap="large">
-              {products && products.map((item) => (
-                <Link to={`/products/${item.id}`} key={item.id}>
-                  <ProductCard product={item} />
-                </Link>
-              ))}
-            </Grid>
-          )
-      }
+      <Grid columns="3" rowGap="large" columnGap="large">
+        {products
+          && products.map((item) => (
+            <Link to={`/products/${item.id}`} key={item.id}>
+              <ProductCard product={item} />
+            </Link>
+          ))}
+      </Grid>
       <Button
         type="button"
         onClick={handleLoadMore}
         className="btn-primary btn-large"
         text="load more"
-        isDisabled={isDisabled}
+        isDisabled={isDisabledLoadMoreBtn}
       />
     </div>
   );
