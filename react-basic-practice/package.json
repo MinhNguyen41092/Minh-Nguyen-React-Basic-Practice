@@ -6,7 +6,6 @@
   "scripts": {
     "lint:eslint": "eslint --ignore-path .gitignore . --ext .js,.jsx",
     "fix:eslint": "eslint --fix --ignore-path .gitignore . --ext .js,.jsx",
-    "start-db": "cd .. && json-server --watch data/db.json --host 127.0.0.1",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

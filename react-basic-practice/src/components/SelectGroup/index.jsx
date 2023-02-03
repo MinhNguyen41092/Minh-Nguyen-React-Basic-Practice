@@ -12,13 +12,16 @@ const SelectGroup = (props) => {
       onChange={onChangeOption}
       className="select-group"
       value={valueSelected}
+      defaultValue="DEFAULT"
     >
-      <option value="default" disabled selected hidden>Sort by</option>
-      {
-        options.map(
-          (option) => <option key={option.value} value={option.value}>{option.label}</option>
-        )
-      }
+      <option value="DEFAULT" disabled selected hidden>
+        Sort by
+      </option>
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
     </select>
   );
 };

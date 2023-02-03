@@ -67,7 +67,10 @@
       $ git clone git@github.com:MinhNguyen41092/Minh-Nguyen-React-Basic-Practice.git
       ```
 - Step 2: Checkout to branch develop `git checkout develop`
-- Step 3: Go to the folder react practice `cd react-basic-practice`
+- Step 3: Go to the folder server `cd data`
 - Step 4: Install package `pnpm install`
-- Step 5: Run server `pnpm run start-db` and run project `pnpm run dev`
-- Step 6: Open `http://127.0.0.1:5173/` in your browser to see the Web application.
+- Step 5: Run server `pnpm run start-db`
+- Step 6: Go to the folder react practice `cd react-basic-practice`
+- Step 7: Install package `pnpm install`
+- Step 8: Run project `pnpm run dev`
+- Step 9: Open `http://127.0.0.1:5173/` in your browser to see the Web application.
