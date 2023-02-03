@@ -72,5 +72,5 @@
 - Step 5: Run server `pnpm run start-db`
 - Step 6: Go to the folder react practice `cd react-basic-practice`
 - Step 7: Install package `pnpm install`
-- Step 8: Run server `pnpm run start-db` and run project `pnpm run dev`
+- Step 8: Run project `pnpm run dev`
 - Step 9: Open `http://127.0.0.1:5173/` in your browser to see the Web application.
