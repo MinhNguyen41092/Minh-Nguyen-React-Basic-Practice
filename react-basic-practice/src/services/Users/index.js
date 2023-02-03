@@ -1,12 +1,6 @@
 import axios from 'axios';
 import { USERS_API } from '../../constants/api';
 
-export const getAllUsers = async () => {
-  const res = await axios.get(`${USERS_API}`);
-
-  return res.data;
-};
-
 /**
  * Get data of user by userId
  * @param {number} id of user
