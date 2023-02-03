@@ -25,14 +25,18 @@ const HomePage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [isDisabled, setIsDisabled] = useState(false);
   const { loading, setLoading } = useLoading();
+  const maxLimitListProducts = 6;
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const data = await getListProducts(pageNumber, keyword, fieldSort, order);
-        data ? setProducts(data) : setProducts([]);
-        data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
+        if (!data) {
+          setProducts([]);
+        }
+        pageNumber > 1 ? setProducts([...products, data].flat()) : setProducts(data);
+        setIsDisabled(data.length < maxLimitListProducts);
       } catch {
         alert('Error loading data, please reload the page');
       } finally {
@@ -41,26 +45,7 @@ const HomePage = () => {
     };
 
     getData();
-  }, [keyword, fieldSort, order]);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setLoading(true);
-        const data = await getListProducts(pageNumber, keyword, fieldSort, order);
-        const newData = [...products, data];
-
-        data ? setProducts(newData.flat()) : setProducts([]);
-        data.length >= 6 ? setIsDisabled(false) : setIsDisabled(true);
-      } catch {
-        alert('Error loading data, please reload the page');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, [pageNumber]);
+  }, [keyword, fieldSort, order, pageNumber]);
 
   const handleSearch = (value) => {
     setKeyword(value);
