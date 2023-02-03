@@ -2,7 +2,7 @@
   "name": "server-api",
   "version": "1.0.0",
   "scripts": {
-    "start": "json-server --watch data/db.json --host 127.0.0.1"
+    "start-db": "json-server --watch data/db.json --host 127.0.0.1"
   },
   "dependencies": {
     "json-server": "0.17.1"
