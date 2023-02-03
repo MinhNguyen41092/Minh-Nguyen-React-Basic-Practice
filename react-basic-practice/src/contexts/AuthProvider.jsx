@@ -37,7 +37,7 @@ const AuthProvider = (props) => {
       userData,
       setUserData,
     }),
-    [userData],
+    [userData.userId],
   );
 
   return <AuthContext.Provider value={valueContext}>{children}</AuthContext.Provider>;
