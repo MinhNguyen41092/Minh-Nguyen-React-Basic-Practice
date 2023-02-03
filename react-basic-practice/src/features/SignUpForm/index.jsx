@@ -1,23 +1,24 @@
-// import react
+// Import react
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-// import components
+// Import components
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Logo from '@/components/common/Logo';
 import FormGroup from '@/components/FormGroup';
 
-// import service
-import { createUser, getAllUsers } from '@/services/Users';
+// Import service
+import { createUser, getUserByEmail } from '@/services/Users';
 import { createNewCart } from '@/services/Cart';
 
-// import helpers
+// Import helpers
 import validateInput from '@/helpers/validate';
 
-// import context
+// Import context
 import { useLoading } from '@/contexts/LoadingProvider';
+import { useAuth } from '@/contexts/AuthProvider';
 
 // Import constants
 import ROUTE from '@/constants/route';
@@ -43,6 +44,7 @@ const SignUpForm = () => {
   const [inputValue, setInputValue] = useState(initialInput);
   const navigate = useNavigate();
   const { loading, setLoading } = useLoading();
+  const { setUserData } = useAuth();
 
   const handleInputValue = (value) => {
     setInputValue({ ...inputValue, ...value });
@@ -58,18 +60,17 @@ const SignUpForm = () => {
       const errorValid = validateInput(inputValue);
 
       if (!errorValid.error) {
-        // Check email already exists.
-        const dataUser = await getAllUsers();
-        const haveUser = dataUser.some((user) => user.email === inputValue.email);
+        // Check email already exists
+        const dataUser = await getUserByEmail();
 
-        if (haveUser) {
-          // Show error if email already exists.
+        if (dataUser) {
+          // Show error if email already exists
           setErrorMessage((preMsg) => ({
             ...preMsg,
             form: 'Email is already in use. Please try another one.',
           }));
         } else {
-          // Send data to API to create new users.
+          // Send data to API to create new users
           const newUser = {
             id: uuidv4(),
             username: inputValue.username || '',
@@ -87,7 +88,14 @@ const SignUpForm = () => {
             await createNewCart(newCart),
           ]);
 
-          navigate(ROUTE.LOGIN);
+          const user = {
+            userId: newUser.id,
+            username: newUser.username,
+            email: newUser.email,
+          };
+          setUserData(user);
+          localStorage.setItem('auth', user.userId);
+          navigate(ROUTE.HOMEPAGE);
         }
       } else {
         setErrorMessage(errorValid.validateError);

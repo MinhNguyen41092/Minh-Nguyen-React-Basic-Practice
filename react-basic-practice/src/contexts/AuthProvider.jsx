@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useMemo, useState,
-} from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { getUserById } from '@/services/Users';
 
 const AuthContext = React.createContext();
@@ -22,8 +20,8 @@ const AuthProvider = (props) => {
         const data = await getUserById(userData.userId);
         const user = {
           userId: userData.userId,
-          username: data.username,
-          email: data.email,
+          username: data.username || '',
+          email: data.email || '',
         };
         setUserData(user);
       } catch {
@@ -34,16 +32,15 @@ const AuthProvider = (props) => {
     getData();
   }, []);
 
-  const valueContext = useMemo(() => ({
-    userData,
-    setUserData,
-  }), [userData]);
-
-  return (
-    <AuthContext.Provider value={valueContext}>
-      {children}
-    </AuthContext.Provider>
+  const valueContext = useMemo(
+    () => ({
+      userData,
+      setUserData,
+    }),
+    [userData.userId],
   );
+
+  return <AuthContext.Provider value={valueContext}>{children}</AuthContext.Provider>;
 };
 
 export { useAuth, AuthProvider };

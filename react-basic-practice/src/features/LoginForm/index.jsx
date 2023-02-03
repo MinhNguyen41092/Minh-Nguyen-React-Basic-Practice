@@ -64,8 +64,8 @@ const LoginForm = () => {
         if (haveUser) {
           const user = {
             userId: dataUser[0].id,
-            username: dataUser.username,
-            email: dataUser.email,
+            username: dataUser[0].username,
+            email: dataUser[0].email,
           };
           setUserData(user);
           localStorage.setItem('auth', user.userId);
