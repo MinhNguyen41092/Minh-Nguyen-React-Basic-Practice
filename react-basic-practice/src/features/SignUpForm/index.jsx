@@ -63,7 +63,7 @@ const SignUpForm = () => {
         // Check email already exists
         const dataUser = await getUserByEmail();
 
-        if (dataUser) {
+        if (!dataUser) {
           // Show error if email already exists
           setErrorMessage((preMsg) => ({
             ...preMsg,
