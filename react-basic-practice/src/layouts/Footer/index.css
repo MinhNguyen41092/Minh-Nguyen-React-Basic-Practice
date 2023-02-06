@@ -17,6 +17,10 @@
   font-weight: var(--fw-normal);
 }
 
+.footer-social {
+  margin-left: 5px;
+}
+
 .footer-social.email {
   display: flex;
   border-bottom: 1px solid var(--color-black);
