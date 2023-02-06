@@ -1,5 +1,6 @@
 // Import react
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Import component
 import Button from '../common/Button';
@@ -12,11 +13,15 @@ import './index.css';
 
 const CartItem = (props) => {
   const { item, handleDeleteCartItem } = props;
+  const price = item.price.toFixed(2);
+
   return (
     <article className="cart-item" data-id={item.idProduct}>
-      <h4 className="name">{item.name}</h4>
+      <Link to={`/products/${item.idProduct}`}>
+        <h4 className="name">{item.name}</h4>
+      </Link>
       <p className="quantity">{`Quantity: ${item.quantity}`}</p>
-      <p className="price">{`$ ${item.price}`}</p>
+      <p className="price">{`$ ${price}`}</p>
       <Button
         onClick={handleDeleteCartItem}
         type="button"

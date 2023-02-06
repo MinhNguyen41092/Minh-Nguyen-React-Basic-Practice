@@ -19,7 +19,7 @@ const options = [
 const Sidebar = (props) => {
   const { onSearch, onSort } = props;
   const handleSearch = (value) => {
-    onSearch(value.keyword);
+    onSearch(value.keyword.trim());
   };
 
   const handleSort = (value) => {
