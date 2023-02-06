@@ -1,4 +1,5 @@
 import REGEXP from '../constants/regexp';
+import ERR_MSG from '../constants/errorMsg';
 
 /* Check validate */
 const validateInput = (dataInput) => {
@@ -18,15 +19,7 @@ const validateInput = (dataInput) => {
     // Check for format and show error
     if (value !== '') {
       if (!REGEXP[key].test(value)) {
-        if (key === 'email') {
-          validateError = { ...validateError, [key]: `${key} is invalid` };
-        }
-        if (key === 'username') {
-          validateError = { ...validateError, [key]: `${key} includes first and last name, no number` };
-        }
-        if (key === 'password') {
-          validateError = { ...validateError, [key]: `${key} must contain at least 8 characters.` };
-        }
+        validateError = { ...validateError, [key]: ERR_MSG.ERR_MSG[key] };
         error = true;
       } else {
         validateError = { ...validateError, [key]: '' };
