@@ -1,5 +1,5 @@
 // import react
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Import component
 import Logo from '@/components/common/Logo';
@@ -9,7 +9,6 @@ import UserCard from '@/components/UserCard';
 
 // Import context
 import { useCart } from '@/contexts/CartProvider';
-import { useAuth } from '@/contexts/AuthProvider';
 
 // Import image
 import userIcon from '@/assets/images/user-icon.png';
@@ -19,10 +18,22 @@ import cartButton from '@/assets/images/iconButton/cart.png';
 import './index.css';
 
 const Header = () => {
+  const bodyRef = useRef(document.querySelector('body'));
   const [isOpen, setIsOpen] = useState(false);
   const [userCard, setUserCard] = useState(false);
   const { cart } = useCart();
-  const { userData } = useAuth();
+
+  useEffect(() => {
+    const updatePageScroll = () => {
+      if (isOpen) {
+        bodyRef.current.style.overflow = 'hidden';
+      } else {
+        bodyRef.current.style.overflow = '';
+      }
+    };
+
+    updatePageScroll();
+  }, [isOpen]);
 
   const handleOpenCart = () => {
     setIsOpen(true);
@@ -45,12 +56,7 @@ const Header = () => {
       <Logo />
       <div className="user">
         <div className="cart">
-          <Button
-            type="button"
-            className="btn-cart"
-            icon={cartButton}
-            onClick={handleOpenCart}
-          />
+          <Button type="button" className="btn-cart" icon={cartButton} onClick={handleOpenCart} />
           <span className="quantity-cart">{cart.products?.length}</span>
         </div>
         <Button type="button" className="btn-user" icon={userIcon} onClick={handleOpenUserCard} />
