@@ -28,7 +28,6 @@
   color: var(--color-secondary);
   text-align: left;
   padding-left: 155px;
-  text-transform: capitalize;
 }
 
 .btn-login {

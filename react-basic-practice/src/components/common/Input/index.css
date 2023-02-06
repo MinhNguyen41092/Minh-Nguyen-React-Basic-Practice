@@ -1,6 +1,6 @@
 .input-group {
   padding: 12px 10px; 
-  width: fit-content;
+  width: 300px;
   margin: auto;
   margin-bottom: 10px;
   text-align: left;
@@ -25,5 +25,4 @@
   width: 100%;
   font-weight: var(--fw-bold);
   color: var(--color-secondary);
-  text-transform: capitalize;
 }
