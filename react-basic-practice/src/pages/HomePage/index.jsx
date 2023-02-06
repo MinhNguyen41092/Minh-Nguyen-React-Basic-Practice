@@ -1,5 +1,6 @@
 // Import react
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Import component
 import DefaultLayout from '@/layouts/DefaultLayout';
@@ -9,6 +10,10 @@ import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 // Import context
 import { useLoading } from '@/contexts/LoadingProvider';
+import { useAuth } from '@/contexts/AuthProvider';
+
+// Import constants
+import ROUTE from '@/constants/route';
 
 // Import service
 import { getListProducts } from '../../services/Products';
@@ -25,6 +30,8 @@ const HomePage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [isDisabled, setIsDisabled] = useState(false);
   const { loading, setLoading } = useLoading();
+  const { userData } = useAuth();
+  const navigate = useNavigate();
   const maxLimitListProducts = 6;
 
   useEffect(() => {
@@ -63,6 +70,10 @@ const HomePage = () => {
   const handleLoadMore = (value) => {
     setPageNumber(pageNumber + value);
   };
+
+  if (!userData.userId) {
+    navigate(ROUTE.LOGIN);
+  }
 
   return (
     <DefaultLayout>
