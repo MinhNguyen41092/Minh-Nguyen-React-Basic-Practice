@@ -63,7 +63,7 @@
   display: block;
   margin: auto;
   margin: 300px;
-  text-align: center; 
+  text-align: center;
   font-size: var(--fs-exLarge);
   font-weight: var(--fw-normal);
 }

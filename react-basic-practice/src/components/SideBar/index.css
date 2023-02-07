@@ -21,4 +21,5 @@
 .btn-search {
   padding: 0px;
   background-color: var(--color-white);
+  width: 20px;
 }

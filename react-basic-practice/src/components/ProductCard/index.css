@@ -1,5 +1,6 @@
 .product-card {
   position: relative;
+  text-align: left;
 }
 
 .product-card .product-label {
@@ -14,7 +15,8 @@
   font-size: var(--fs-super-small);
 }
 
-.product-card span,.product-card h4 {
+.product-card span,
+.product-card h4 {
   display: block;
   font-size: var(--fs-large);
   line-height: 26px;

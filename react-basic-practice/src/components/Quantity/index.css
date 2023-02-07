@@ -9,8 +9,9 @@
 }
 
 .quantity-group .btn {
-  padding: 14px;
+  padding: 14px 20px;
   color: var(--color-primary);
+  font-size: var(--fs-regular);
 }
 
 .quantity-group .input-group {
