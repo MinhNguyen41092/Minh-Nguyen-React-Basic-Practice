@@ -59,9 +59,8 @@ const SignUpForm = () => {
       // Check validation input
       const errorValid = validateInput(inputValue);
 
+      setErrorMessage(errorValid.validateError);
       if (!errorValid.error) {
-        setErrorMessage(errorValid.validateError);
-
         // Check email already exists
         const dataUser = await getUserByEmail(inputValue.email);
 
@@ -97,8 +96,6 @@ const SignUpForm = () => {
           localStorage.setItem('auth', user.userId);
           navigate(ROUTE.HOMEPAGE);
         }
-      } else {
-        setErrorMessage(errorValid.validateError);
       }
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
