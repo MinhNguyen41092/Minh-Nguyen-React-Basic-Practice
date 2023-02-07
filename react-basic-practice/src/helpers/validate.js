@@ -1,5 +1,5 @@
 import REGEXP from '../constants/regexp';
-import ERR_MSG from '../constants/errorMsg';
+import ERROR_MESSAGES from '../constants/errorMsg';
 
 /* Check validate */
 const validateInput = (dataInput) => {
@@ -19,7 +19,7 @@ const validateInput = (dataInput) => {
     // Check for format and show error
     if (value !== '') {
       if (!REGEXP[key].test(value)) {
-        validateError = { ...validateError, [key]: ERR_MSG.ERR_MSG[key] };
+        validateError = { ...validateError, [key]: ERROR_MESSAGES.ERROR_MESSAGES[key] };
         error = true;
       } else {
         validateError = { ...validateError, [key]: '' };
