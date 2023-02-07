@@ -85,7 +85,8 @@ const SignUpForm = () => {
             products: [],
           };
 
-          Promise.all([await createUser(newUser), await createNewCart(newCart)]);
+          await createUser(newUser);
+          await createNewCart(newCart);
 
           const user = {
             userId: newUser.id,
@@ -154,8 +155,7 @@ const SignUpForm = () => {
         </FormGroup>
 
         <span className="form-message">
-          Already have an account?
-          {' '}
+          Already have an account?{' '}
           <Link to={ROUTE.LOGIN} className="open-login-page">
             Log in
           </Link>
