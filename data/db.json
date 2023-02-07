@@ -20,7 +20,8 @@
       "price": 20,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": "- %21"
+      "quantity": 20,
+      "discountPercent": 0
     },
     {
       "id": 2,
@@ -28,7 +29,8 @@
       "price": 25,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 2,
+      "discountPercent": 20
     },
     {
       "id": 3,
@@ -36,7 +38,8 @@
       "price": 21,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 1,
+      "discountPercent": 0
     },
     {
       "id": 4,
@@ -44,7 +47,8 @@
       "price": 22,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": "Sold out"
+      "quantity": 0,
+      "discountPercent": 0
     },
     {
       "id": 5,
@@ -52,7 +56,8 @@
       "price": 23,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 2,
+      "discountPercent": 0
     },
     {
       "id": 6,
@@ -60,7 +65,8 @@
       "price": 29,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 2,
+      "discountPercent": 0
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "price": 26,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": "- %21"
+      "quantity": 2,
+      "discountPercent": 0
     },
     {
       "id": 8,
@@ -76,7 +83,8 @@
       "price": 25,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 20,
+      "discountPercent": 0
     },
     {
       "id": 9,
@@ -84,20 +92,14 @@
       "price": 27,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
       "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
-      "label": ""
+      "quantity": 10,
+      "discountPercent": 0
     }
   ],
   "cart": [
     {
       "id": 1,
-      "products": [
-        {
-          "idProduct": 2,
-          "quantity": 3,
-          "name": "hal earrings",
-          "price": 25
-        }
-      ]
+      "products": []
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
