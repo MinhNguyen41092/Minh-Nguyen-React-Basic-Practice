@@ -4,4 +4,4 @@ const ERROR_MESSAGES = {
   password: 'Username must contain at least 8 characters.',
 };
 
-export default { ERROR_MESSAGES };
+export default ERROR_MESSAGES;

@@ -19,7 +19,7 @@ const validateInput = (dataInput) => {
     // Check for format and show error
     if (value !== '') {
       if (!REGEXP[key].test(value)) {
-        validateError = { ...validateError, [key]: ERROR_MESSAGES.ERROR_MESSAGES[key] };
+        validateError = { ...validateError, [key]: ERROR_MESSAGES[key] };
         error = true;
       } else {
         validateError = { ...validateError, [key]: '' };
