@@ -9,12 +9,14 @@ import Input from '../common/Input';
 import './index.css';
 
 const Quantity = (props) => {
-  const { isUnavailableProduct, onChangeQuantity } = props;
+  const { isUnavailableProduct, onChangeQuantity, limitQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
     // Update state with incremented value
-    setCounter((preCounter) => preCounter + 1);
+    if (counter < limitQuantity) {
+      setCounter((preCounter) => preCounter + 1);
+    }
   };
 
   const decrementCount = () => {

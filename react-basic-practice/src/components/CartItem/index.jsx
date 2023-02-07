@@ -13,7 +13,6 @@ import './index.css';
 
 const CartItem = (props) => {
   const { item, handleDeleteCartItem } = props;
-  const price = item.price.toFixed(2);
 
   return (
     <article className="cart-item" data-id={item.idProduct}>
@@ -21,7 +20,7 @@ const CartItem = (props) => {
         <h4 className="name">{item.name}</h4>
       </Link>
       <p className="quantity">{`Quantity: ${item.quantity}`}</p>
-      <p className="price">{`$ ${price}`}</p>
+      <p className="price">{`$ ${item.price}`}</p>
       <Button
         onClick={handleDeleteCartItem}
         type="button"
