@@ -59,11 +59,12 @@ const SignUpForm = () => {
       // Check validation input
       const errorValid = validateInput(inputValue);
 
+      setErrorMessage(errorValid.validateError);
       if (!errorValid.error) {
         // Check email already exists
-        const dataUser = await getUserByEmail();
+        const dataUser = await getUserByEmail(inputValue.email);
 
-        if (dataUser) {
+        if (dataUser.length) {
           // Show error if email already exists
           setErrorMessage((preMsg) => ({
             ...preMsg,
@@ -83,10 +84,8 @@ const SignUpForm = () => {
             products: [],
           };
 
-          Promise.all([
-            await createUser(newUser),
-            await createNewCart(newCart),
-          ]);
+          await createUser(newUser);
+          await createNewCart(newCart);
 
           const user = {
             userId: newUser.id,
@@ -97,8 +96,6 @@ const SignUpForm = () => {
           localStorage.setItem('auth', user.userId);
           navigate(ROUTE.HOMEPAGE);
         }
-      } else {
-        setErrorMessage(errorValid.validateError);
       }
     } catch (error) {
       alert(`Registration Fail. Please try again ${error}`);
@@ -114,10 +111,7 @@ const SignUpForm = () => {
       </header>
       <main className="sign-up main">
         <h2 className="form-sign-up-heading">Register</h2>
-        <FormGroup
-          className="form-sign-up"
-          handleSubmit={handleSignUp}
-        >
+        <FormGroup className="form-sign-up" handleSubmit={handleSignUp}>
           <Input
             label="Email:"
             inputType="text"
@@ -150,31 +144,17 @@ const SignUpForm = () => {
 
           {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
-          {
-            loading
-              ? (
-                <Button
-                  type="submit"
-                  className="btn-sign-up  btn-loading"
-                  text="Loading..."
-                  disabled
-                />
-              )
-              : (
-                <Button
-                  type="submit"
-                  className="btn-sign-up btn-primary"
-                  text="Submit"
-                />
-              )
-            }
+          {loading ? (
+            <Button type="submit" className="btn-sign-up btn-loading" text="Loading..." disabled />
+          ) : (
+            <Button type="submit" className="btn-sign-up btn-primary" text="Sign Up" />
+          )}
         </FormGroup>
 
         <span className="form-message">
-          Already have an account?
-          {' '}
+          Already have an account?{' '}
           <Link to={ROUTE.LOGIN} className="open-login-page">
-            Login
+            Log in
           </Link>
         </span>
       </main>

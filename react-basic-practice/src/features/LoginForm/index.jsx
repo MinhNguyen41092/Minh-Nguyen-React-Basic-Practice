@@ -130,7 +130,7 @@ const LoginForm = () => {
                 <Button
                   type="submit"
                   className="btn-login btn-primary"
-                  text="Submit"
+                  text="Log In"
                 />
               )
             }
@@ -140,7 +140,7 @@ const LoginForm = () => {
           Already have an account?
           {' '}
           <Link to={ROUTE.SIGNUP} className="open-sign-up-page">
-            Signup
+            Sign up
           </Link>
         </span>
       </main>
