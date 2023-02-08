@@ -5,29 +5,18 @@ import './index.css';
 const ProductCard = (props) => {
   const { product } = props;
 
-  const showLabel = (quantity, discountPercent) => {
-    const label = {
-      haveLabel: false,
-      content: '',
-    };
-
-    if (!quantity) {
-      label.content = 'Sold out';
-      label.haveLabel = true;
-    } else if (discountPercent) {
-      label.content = `${product.discountPercent} %`;
-      label.haveLabel = true;
+  const renderLabel = (quantity, discountPercent) => {
+    if (quantity === 0) {
+      return <span className="product-label">Sold out</span>;
     }
-    return label;
+
+    return <span className="product-label">{`${discountPercent} %`}</span>;
   };
 
   return (
     <article className={`product-card ${product.id}`}>
-      {showLabel(product.quantity, product.discountPercent).haveLabel && (
-        <span className="product-label">
-          {showLabel(product.quantity, product.discountPercent).content}
-        </span>
-      )}
+      {(product.quantity <= 0 || product.discountPercent > 0)
+      && renderLabel(product.quantity, product.discountPercent)}
       <Link to={`/products/${product.id}`} key={product.id}>
         <img className="img" src={product.image} alt="product" />
         <h4 className="name">{product.name}</h4>
