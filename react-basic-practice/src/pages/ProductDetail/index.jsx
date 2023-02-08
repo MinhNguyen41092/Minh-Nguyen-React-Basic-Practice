@@ -65,45 +65,51 @@ const ProductDetail = () => {
         (item) => item.idProduct === Number(productId)
       );
 
-      if (indexProduct >= 0) {
-        cart.products[indexProduct].quantity += quantityProduct;
-        cartUser = cart;
+      if (quantityProduct < product.limitQuantity) {
+        if (indexProduct >= 0) {
+          cart.products[indexProduct].quantity += quantityProduct;
+          cartUser = cart;
+        } else {
+          const setPrice = () => {
+            let price = 0;
+
+            product.discountPercent
+              ? (price = product.price - product.price * (product.discountPercent / 100))
+              : (price = product.price);
+
+            return price.toFixed(2);
+          };
+
+          cartUser = {
+            id: userData.userId,
+            products: [
+              ...cart.products,
+              {
+                idProduct: product.id,
+                quantity: quantityProduct,
+                name: product.name,
+                price: setPrice(),
+                discountPercent: product.discountPercent,
+              },
+            ],
+          };
+        }
+
+        setCart(cartUser);
+        await updateCart(userData.userId, cartUser);
+
+        setToast({
+          openPopup: true,
+          status: 'success',
+          message: 'The item added to your shopping bag',
+        });
       } else {
-        const setPrice = () => {
-          let price = 0;
-
-          if (product.discountPercent) {
-            price = product.price - product.price * (product.discountPercent / 100);
-          } else {
-            price = product.price;
-          }
-
-          return price.toFixed(2);
-        };
-
-        cartUser = {
-          id: userData.userId,
-          products: [
-            ...cart.products,
-            {
-              idProduct: product.id,
-              quantity: quantityProduct,
-              name: product.name,
-              price: setPrice(),
-              discountPercent: product.discountPercent,
-            },
-          ],
-        };
+        setToast({
+          openPopup: true,
+          status: 'error',
+          message: 'Exceeded the allowed amount',
+        });
       }
-
-      setCart(cartUser);
-      await updateCart(userData.userId, cartUser);
-
-      setToast({
-        openPopup: true,
-        status: 'success',
-        message: 'The item added to your shopping bag',
-      });
     } catch {
       setToast({
         openPopup: true,
