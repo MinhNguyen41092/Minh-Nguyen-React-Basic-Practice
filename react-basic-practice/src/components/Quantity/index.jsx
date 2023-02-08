@@ -27,7 +27,7 @@ const Quantity = (props) => {
   };
 
   const setQuantity = (value) => {
-    setCounter(value.quantity);
+    setCounter(Number(value.quantity));
   };
 
   onChangeQuantity(counter);
