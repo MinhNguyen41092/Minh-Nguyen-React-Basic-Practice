@@ -55,7 +55,7 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
-    setQuantity(value);
+    setQuantity(Number(value));
   };
 
   const handleAddCart = async () => {

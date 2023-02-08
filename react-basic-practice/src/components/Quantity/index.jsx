@@ -27,7 +27,7 @@ const Quantity = (props) => {
   };
 
   const setQuantity = (value) => {
-    setCounter(Number(value.quantity));
+    setCounter(value.quantity);
   };
 
   onChangeQuantity(counter);
@@ -40,7 +40,13 @@ const Quantity = (props) => {
         text="-"
         isDisabled={isUnavailableProduct}
       />
-      <Input name="quantity" className="quantity" value={counter} handleInputChange={setQuantity} />
+      <Input
+        type="number"
+        name="quantity"
+        className="quantity"
+        value={counter}
+        handleInputChange={setQuantity}
+      />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"
