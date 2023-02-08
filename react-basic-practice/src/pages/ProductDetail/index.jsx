@@ -65,7 +65,7 @@ const ProductDetail = () => {
         (item) => item.idProduct === Number(productId),
       );
 
-      if (quantityProduct < product.quantity) {
+      if (quantityProduct && quantityProduct < product.quantity) {
         if (indexProduct >= 0) {
           cart.products[indexProduct].quantity += quantityProduct;
           cartUser = cart;
@@ -107,7 +107,7 @@ const ProductDetail = () => {
         setToast({
           openPopup: true,
           status: 'error',
-          message: 'Exceeded the allowed amount',
+          message: 'Invalid quantity',
         });
       }
     } catch {
