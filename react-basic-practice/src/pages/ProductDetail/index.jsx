@@ -62,10 +62,10 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId)
+        (item) => item.idProduct === Number(productId),
       );
 
-      if (quantityProduct < product.limitQuantity) {
+      if (quantityProduct < product.quantity) {
         if (indexProduct >= 0) {
           cart.products[indexProduct].quantity += quantityProduct;
           cartUser = cart;
