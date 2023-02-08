@@ -30,6 +30,10 @@ const Quantity = (props) => {
     setCounter(value.quantity);
   };
 
+  const validateNumber = (e) => {
+    e.target.value = Math.max(0, e.target.value);
+  };
+
   onChangeQuantity(counter);
 
   return (
@@ -46,6 +50,7 @@ const Quantity = (props) => {
         className="quantity"
         value={counter}
         handleInputChange={setQuantity}
+        handleInput={validateNumber}
       />
       <Button
         onClick={incrementCount}
