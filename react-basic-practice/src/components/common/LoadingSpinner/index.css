@@ -1,3 +1,7 @@
+.spinner-container {
+  margin: 50px auto;
+}
+
 .loading-spinner {
   border: 5px solid #f3f3f3;
   border-radius: 50%;
