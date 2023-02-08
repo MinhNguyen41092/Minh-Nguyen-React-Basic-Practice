@@ -60,12 +60,12 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
-      setLoading(true);
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
 
+      setLoading(true);
       if (quantityProduct && quantityProduct < product.quantity) {
         if (indexProduct >= 0) {
           cart.products[indexProduct].quantity += quantityProduct;
@@ -99,7 +99,6 @@ const ProductDetail = () => {
         setCart(cartUser);
         await updateCart(userData.userId, cartUser);
 
-        setLoading(false);
         setToast({
           openPopup: true,
           status: 'success',
@@ -112,6 +111,7 @@ const ProductDetail = () => {
           message: 'Invalid quantity',
         });
       }
+      setLoading(false);
     } catch {
       setToast({
         openPopup: true,
