@@ -141,7 +141,7 @@ const ProductDetail = () => {
                 <Quantity
                   onChangeQuantity={handleSetQuantity}
                   isUnavailableProduct={!product.quantity}
-                  limitQuantity={product.quantity}
+                  maxQuantity={product.quantity}
                 />
                 <Button
                   type="button"
