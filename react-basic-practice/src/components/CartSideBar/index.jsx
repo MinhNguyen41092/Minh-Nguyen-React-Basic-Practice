@@ -2,9 +2,9 @@
 import React from 'react';
 
 // Import component
-import Button from '../common/Button';
-import CartItem from '../CartItem';
-import Toast from '../Toast';
+import Button from '@/components/common/Button';
+import CartItem from '@/components/CartItem';
+import Toast from '@/components/Toast';
 
 // Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';

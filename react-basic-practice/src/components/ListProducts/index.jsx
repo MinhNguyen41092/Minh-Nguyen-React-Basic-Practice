@@ -3,8 +3,8 @@ import React from 'react';
 
 // Import component
 import Grid from '@/layouts/Grid';
-import ProductCard from '../ProductCard';
-import Button from '../common/Button';
+import ProductCard from '@/components/ProductCard';
+import Button from '@/components/common/Button';
 
 import './index.css';
 

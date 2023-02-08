@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 
 // Import component
-import Button from '../common/Button';
-import Input from '../common/Input';
+import Input from '@/components/common/Input';
+import Button from '@/components/common/Button';
 
 // Import file css
 import './index.css';

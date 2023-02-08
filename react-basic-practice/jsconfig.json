@@ -5,6 +5,9 @@
       "@/components/*": [
         "components/*"
       ],
+      "@/components/common/*": [
+        "components/common/*"
+      ],
       "@/assets/*": [ 
         "assets/*",
       ],
@@ -25,6 +28,9 @@
       ],
       "@/helpers/*": [ 
         "helpers/*",
+      ],
+      "@/pages/*": [ 
+        "pages/*",
       ],
     },
     "incremental": true,

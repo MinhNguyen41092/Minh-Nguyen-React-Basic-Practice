@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Import component
-import Button from '../common/Button';
+import Button from '@/components/common/Button';
 
 // Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // Import image
 import userIcon from '@/assets/images/user-icon.png';
 import closeButton from '@/assets/images/iconButton/btn-close.png';
-import Button from '../common/Button';
+import Button from '@/components/common/Button';
 
 // Import constant
 import ROUTE from '@/constants/route';

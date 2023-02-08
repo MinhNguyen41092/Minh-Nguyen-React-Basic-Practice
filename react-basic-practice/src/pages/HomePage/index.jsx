@@ -16,7 +16,7 @@ import { useAuth } from '@/contexts/AuthProvider';
 import ROUTE from '@/constants/route';
 
 // Import service
-import { getListProducts } from '../../services/Products';
+import { getListProducts } from '@/services/Products';
 
 // Import file css
 import './index.css';
