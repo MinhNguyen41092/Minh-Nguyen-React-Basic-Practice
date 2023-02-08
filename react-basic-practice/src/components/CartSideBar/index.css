@@ -44,6 +44,7 @@
 
 .cart-bar .btn-close {
   padding: 5px;
+  padding-bottom: 0px;
 }
 
 .cart-bar .btn-close:hover {
