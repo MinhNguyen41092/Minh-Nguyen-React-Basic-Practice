@@ -60,6 +60,7 @@ const ProductDetail = () => {
 
   const handleAddCart = async () => {
     try {
+      setLoading(true);
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
         (item) => item.idProduct === Number(productId),
@@ -98,10 +99,11 @@ const ProductDetail = () => {
         setCart(cartUser);
         await updateCart(userData.userId, cartUser);
 
+        setLoading(false);
         setToast({
           openPopup: true,
           status: 'success',
-          message: 'The item added to your shopping bag',
+          message: 'The item has been added to your shopping bag.',
         });
       } else {
         setToast({
