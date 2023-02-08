@@ -45,7 +45,7 @@ const ProductDetail = () => {
     };
 
     getData();
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,9 +62,10 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId)
+        (item) => item.idProduct === Number(productId),
       );
-      if (indexProduct > 0) {
+
+      if (indexProduct >= 0) {
         cart.products[indexProduct].quantity += quantityProduct;
         cartUser = cart;
       } else {
@@ -103,7 +104,7 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
-  const checkUnavailableProduct = () => (product.label === 'Sold out');
+  const checkUnavailableProduct = () => product.label === 'Sold out';
 
   return (
     <DefaultLayout>

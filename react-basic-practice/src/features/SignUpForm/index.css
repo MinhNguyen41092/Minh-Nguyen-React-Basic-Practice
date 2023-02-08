@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.sign-up .input-group {
+  width: 330px;
+}
+
 .form-sign-up-heading {
   margin-bottom: 20px;
 }

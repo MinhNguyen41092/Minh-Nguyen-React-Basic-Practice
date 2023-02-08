@@ -28,7 +28,7 @@ const CartSideBar = (props) => {
     try {
       const idSelected = e.target.closest('.cart-item').dataset.id;
       const updateCarts = cart.products.filter(
-        (cartItem) => cartItem.idProduct !== Number(idSelected),
+        (cartItem) => cartItem.idProduct !== Number(idSelected)
       );
 
       const cartUser = {
@@ -57,6 +57,15 @@ const CartSideBar = (props) => {
     setToast({ ...toast, openPopup: false });
   };
 
+  const totalCart = () => {
+    let totalBill = 0;
+    cart.products.forEach((item) => {
+      const totalItem = item.price * item.quantity;
+      totalBill += totalItem;
+    });
+    return totalBill.toFixed(2);
+  };
+
   return (
     <aside className="cart-bar">
       <div className="main">
@@ -70,27 +79,21 @@ const CartSideBar = (props) => {
           />
         </div>
         <div className="list-cart-item">
-          {
-            cart.products.map((item) => (
-              <CartItem
-                key={item.idProduct}
-                item={item}
-                handleDeleteCartItem={handleDeleteCartItem}
-              />
-            ))
-        }
+          {cart.products.map((item) => (
+            <CartItem
+              key={item.idProduct}
+              item={item}
+              handleDeleteCartItem={handleDeleteCartItem}
+            />
+          ))}
+        </div>
+        <div className="footer">
+          <p className="total">{`Total: $ ${totalCart()}`}</p>
         </div>
       </div>
-      {
-        toast.openPopup
-        && (
-        <Toast
-          status={toast.status}
-          message={toast.message}
-          onClose={handleClose}
-        />
-        )
-      }
+      {toast.openPopup && (
+        <Toast status={toast.status} message={toast.message} onClose={handleClose} />
+      )}
     </aside>
   );
 };
