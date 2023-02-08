@@ -48,6 +48,4 @@
 
 .cart-bar .btn-close:hover {
   background-color: var(--color-primary);
-  padding: 5px;
-  margin: 0px;
 }
