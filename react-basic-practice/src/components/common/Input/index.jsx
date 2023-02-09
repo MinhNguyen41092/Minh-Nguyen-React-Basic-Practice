@@ -14,7 +14,7 @@ const Input = (props) => {
     defaultValue,
     handleInputChange,
     errorMessage,
-    handleInput,
+    handleOnInput,
   } = props;
 
   const inputRef = useRef();
@@ -33,7 +33,7 @@ const Input = (props) => {
         name={name}
         className={`input-text ${className}`}
         onChange={handleChange}
-        onInput={handleInput}
+        onInput={handleOnInput}
         placeholder={placeholder}
         value={value}
         pattern={pattern}

@@ -5,21 +5,26 @@ import './index.css';
 const ProductCard = (props) => {
   const { product } = props;
 
-  // Show label if the product is out of stock or discount
+  /**
+   * Show label if the product is out of stock or discount
+   *
+   * @param {*} quantity available of product
+   * @param {*} discountPercent of product
+   *
+   * @returns component label
+   */
   const renderLabel = (quantity, discountPercent) => {
     let label = '';
-    if (quantity === 0) {
-      label = 'Sold out';
-    } else {
-      label = `${discountPercent} %`;
+    if (product.quantity <= 0 || product.discountPercent > 0) {
+      quantity === 0 ? (label = 'Sold out') : (label = `${discountPercent} %`);
+      return <span className="product-label">{label}</span>;
     }
-    return <span className="product-label">{label}</span>;
+    return '';
   };
 
   return (
     <article className={`product-card ${product.id}`}>
-      {(product.quantity <= 0 || product.discountPercent > 0) &&
-        renderLabel(product.quantity, product.discountPercent)}
+      {renderLabel(product.quantity, product.discountPercent)}
       <Link to={`/products/${product.id}`} key={product.id}>
         <img className="img" src={product.image} alt="product" />
         <h4 className="name">{product.name}</h4>

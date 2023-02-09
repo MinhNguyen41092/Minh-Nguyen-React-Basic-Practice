@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
-  const [quantityProduct, setQuantity] = useState(0);
+  const [quantityProductsOrdered, setQuantityProductsOrdered] = useState(0);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
@@ -55,7 +55,17 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
-    setQuantity(Number(value));
+    setQuantityProductsOrdered(Number(value));
+  };
+
+  const setPrice = () => {
+    let price = 0;
+
+    product.discountPercent
+      ? (price = product.price - product.price * (product.discountPercent / 100))
+      : (price = product.price);
+
+    return price.toFixed(2);
   };
 
   const handleAddCart = async () => {
@@ -66,28 +76,18 @@ const ProductDetail = () => {
       );
 
       setLoading(true);
-      if (quantityProduct && quantityProduct < product.quantity) {
+      if (quantityProductsOrdered && quantityProductsOrdered < product.quantity) {
         if (indexProduct >= 0) {
-          cart.products[indexProduct].quantity += quantityProduct;
+          cart.products[indexProduct].quantity += quantityProductsOrdered;
           cartUser = cart;
         } else {
-          const setPrice = () => {
-            let price = 0;
-
-            product.discountPercent
-              ? (price = product.price - product.price * (product.discountPercent / 100))
-              : (price = product.price);
-
-            return price.toFixed(2);
-          };
-
           cartUser = {
             id: userData.userId,
             products: [
               ...cart.products,
               {
                 idProduct: product.id,
-                quantity: quantityProduct,
+                quantity: quantityProductsOrdered,
                 name: product.name,
                 price: setPrice(),
                 discountPercent: product.discountPercent,

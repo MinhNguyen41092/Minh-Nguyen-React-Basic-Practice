@@ -50,7 +50,7 @@ const Quantity = (props) => {
         className="quantity"
         value={counter}
         handleInputChange={setQuantity}
-        handleInput={validateNumber}
+        handleOnInput={validateNumber}
       />
       <Button
         onClick={incrementCount}
