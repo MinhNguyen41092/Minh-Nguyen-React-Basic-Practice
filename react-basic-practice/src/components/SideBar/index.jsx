@@ -1,5 +1,5 @@
 // Import react
-import React from 'react';
+import React, { useState } from 'react';
 
 // Import components
 import Input from '@/components/common/Input';
@@ -19,8 +19,14 @@ const options = [
 
 const Sidebar = (props) => {
   const { onSearch, onSort } = props;
-  const handleSearch = (value) => {
-    onSearch(value.keyword.trim());
+  const [inputValue, setInputValue] = useState({});
+
+  const handleInputValue = (value) => {
+    setInputValue(value.keyword.trim());
+  };
+
+  const handleSearch = () => {
+    onSearch(inputValue);
   };
 
   const handleSort = (value) => {
@@ -34,7 +40,7 @@ const Sidebar = (props) => {
         <Input
           className="input-search"
           placeholder="Search..."
-          handleInputChange={handleSearch}
+          handleInputChange={handleInputValue}
           name="keyword"
         />
         <Button
