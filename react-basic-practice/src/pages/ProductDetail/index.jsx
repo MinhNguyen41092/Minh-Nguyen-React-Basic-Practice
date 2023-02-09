@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
-  const [quantityProduct, setQuantity] = useState(0);
+  const [quantityProductsOrdered, setQuantityProductsOrdered] = useState(0);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
@@ -55,38 +55,39 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
-    setQuantity(value);
+    setQuantityProductsOrdered(Number(value));
+  };
+
+  const setPrice = () => {
+    let price = 0;
+
+    product.discountPercent
+      ? (price = product.price - product.price * (product.discountPercent / 100))
+      : (price = product.price);
+
+    return price.toFixed(2);
   };
 
   const handleAddCart = async () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
 
-      if (quantityProduct && quantityProduct < product.quantity) {
+      setLoading(true);
+      if (quantityProductsOrdered && quantityProductsOrdered < product.quantity) {
         if (indexProduct >= 0) {
-          cart.products[indexProduct].quantity += quantityProduct;
+          cart.products[indexProduct].quantity += quantityProductsOrdered;
           cartUser = cart;
         } else {
-          const setPrice = () => {
-            let price = 0;
-
-            product.discountPercent
-              ? (price = product.price - product.price * (product.discountPercent / 100))
-              : (price = product.price);
-
-            return price.toFixed(2);
-          };
-
           cartUser = {
             id: userData.userId,
             products: [
               ...cart.products,
               {
                 idProduct: product.id,
-                quantity: quantityProduct,
+                quantity: quantityProductsOrdered,
                 name: product.name,
                 price: setPrice(),
                 discountPercent: product.discountPercent,
@@ -101,7 +102,7 @@ const ProductDetail = () => {
         setToast({
           openPopup: true,
           status: 'success',
-          message: 'The item added to your shopping bag',
+          message: 'The item has been added to your shopping bag.',
         });
       } else {
         setToast({
@@ -110,6 +111,7 @@ const ProductDetail = () => {
           message: 'Invalid quantity',
         });
       }
+      setLoading(false);
     } catch {
       setToast({
         openPopup: true,
@@ -139,7 +141,7 @@ const ProductDetail = () => {
                 <Quantity
                   onChangeQuantity={handleSetQuantity}
                   isUnavailableProduct={!product.quantity}
-                  limitQuantity={product.quantity}
+                  maxQuantity={product.quantity}
                 />
                 <Button
                   type="button"

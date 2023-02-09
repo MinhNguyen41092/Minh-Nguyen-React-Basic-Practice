@@ -9,12 +9,12 @@ import Button from '@/components/common/Button';
 import './index.css';
 
 const Quantity = (props) => {
-  const { isUnavailableProduct, onChangeQuantity, limitQuantity } = props;
+  const { isUnavailableProduct, onChangeQuantity, maxQuantity } = props;
   const [counter, setCounter] = useState(1);
 
   const incrementCount = () => {
     // Update state with incremented value
-    if (counter < limitQuantity) {
+    if (counter < maxQuantity) {
       setCounter((preCounter) => preCounter + 1);
     }
   };
@@ -27,7 +27,11 @@ const Quantity = (props) => {
   };
 
   const setQuantity = (value) => {
-    setCounter(Number(value.quantity));
+    setCounter(value.quantity);
+  };
+
+  const validateNumber = (e) => {
+    e.target.value = Math.max(0, e.target.value);
   };
 
   onChangeQuantity(counter);
@@ -40,7 +44,14 @@ const Quantity = (props) => {
         text="-"
         isDisabled={isUnavailableProduct}
       />
-      <Input name="quantity" className="quantity" value={counter} handleInputChange={setQuantity} />
+      <Input
+        type="number"
+        name="quantity"
+        className="quantity"
+        value={counter}
+        handleInputChange={setQuantity}
+        handleOnInput={validateNumber}
+      />
       <Button
         onClick={incrementCount}
         className="btn btn-decrement"
