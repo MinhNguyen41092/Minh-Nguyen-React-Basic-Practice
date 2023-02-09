@@ -11,11 +11,9 @@ const validateInput = (dataInput) => {
     if (value === '') {
       validateError = { ...validateError, [key]: 'This input is required.' };
       error = { ...error, [key]: true };
-      // error = true;
     } else {
       validateError = { ...validateError, [key]: '' };
       error = { ...error, [key]: false };
-      // error = false;
     }
 
     // Check for format and show error
@@ -23,11 +21,9 @@ const validateInput = (dataInput) => {
       if (!REGEXP[key].test(value)) {
         validateError = { ...validateError, [key]: ERROR_MESSAGES[key] };
         error = { ...error, [key]: true };
-        // error = true;
       } else {
         validateError = { ...validateError, [key]: '' };
         error = { ...error, [key]: false };
-        // error = false;
       }
     }
   });

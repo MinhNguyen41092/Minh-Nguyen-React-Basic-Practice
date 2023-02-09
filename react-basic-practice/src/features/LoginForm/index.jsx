@@ -55,9 +55,16 @@ const LoginForm = () => {
 
       // Check validation input
       const errorValid = validateInput(inputValue);
+      let haveError = false;
+
+      !errorValid.error.email && !errorValid.error.password
+        ? (haveError = false)
+        : (haveError = true);
+
+      setErrorMessage(errorValid.validateError);
 
       // Check data user
-      if (!errorValid.error) {
+      if (!haveError) {
         const dataUser = await getUserByEmail(inputValue.email);
         const haveUser = hasData(dataUser, 'password', inputValue.password);
 
@@ -73,8 +80,6 @@ const LoginForm = () => {
         } else {
           setErrorMessage({ form: 'Incorrect email or password.' });
         }
-      } else {
-        setErrorMessage(errorValid.validateError);
       }
     } catch (error) {
       alert(`Login Fail. Please try again ${error}`);
@@ -90,10 +95,7 @@ const LoginForm = () => {
       </header>
       <main className="login main">
         <h2 className="form-login-heading">Login</h2>
-        <FormGroup
-          className="form-login"
-          handleSubmit={handleLogin}
-        >
+        <FormGroup className="form-login" handleSubmit={handleLogin}>
           <Input
             label="Email:"
             inputType="text"
@@ -116,24 +118,11 @@ const LoginForm = () => {
 
           {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
-          {
-            loading
-              ? (
-                <Button
-                  type="submit"
-                  className="btn-login  btn-loading"
-                  text="Loading..."
-                  disabled
-                />
-              )
-              : (
-                <Button
-                  type="submit"
-                  className="btn-login btn-primary"
-                  text="Log In"
-                />
-              )
-            }
+          {loading ? (
+            <Button type="submit" className="btn-login  btn-loading" text="Loading..." disabled />
+          ) : (
+            <Button type="submit" className="btn-login btn-primary" text="Log In" />
+          )}
         </FormGroup>
 
         <span className="form-message">

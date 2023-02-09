@@ -12,7 +12,11 @@
 .list-products {
   margin-left: 36px;
   padding-top: 80px;
-  width: 75%;
+  width: 80%;
+}
+
+.sidebar {
+  max-width: 261px;
 }
 
 .grid-container {

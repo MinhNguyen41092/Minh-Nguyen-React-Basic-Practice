@@ -60,13 +60,13 @@ const SignUpForm = () => {
       const errorValid = validateInput(inputValue);
       let haveError = false;
 
-      errorValid.email || errorValid.password || errorValid.username
-        ? (haveError = true)
-        : (haveError = false);
+      !errorValid.error.email && !errorValid.error.password && !errorValid.error.username
+        ? (haveError = false)
+        : (haveError = true);
 
       setErrorMessage(errorValid.validateError);
 
-      if (haveError) {
+      if (!haveError) {
         // Check email already exists
         const dataUser = await getUserByEmail(inputValue.email);
 
@@ -158,7 +158,8 @@ const SignUpForm = () => {
         </FormGroup>
 
         <span className="form-message">
-          Already have an account?{' '}
+          Already have an account?
+          {' '}
           <Link to={ROUTE.LOGIN} className="open-login-page">
             Log in
           </Link>
