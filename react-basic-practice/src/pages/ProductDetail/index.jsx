@@ -72,7 +72,7 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId)
+        (item) => item.idProduct === Number(productId),
       );
 
       setLoading(true);

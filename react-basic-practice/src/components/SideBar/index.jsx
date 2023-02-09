@@ -10,6 +10,7 @@ import SelectGroup from '@/components/SelectGroup';
 import './index.css';
 
 const options = [
+  { value: 'DEFAULT', label: 'Sort by' },
   { value: 'name asc', label: 'Name (ascending)' },
   { value: 'name desc', label: 'Name (descending )' },
   { value: 'price asc', label: 'Price (ascending)' },
@@ -43,10 +44,7 @@ const Sidebar = (props) => {
           onClick={handleSearch}
         />
       </div>
-      <SelectGroup
-        options={options}
-        handleSelectOptionChange={handleSort}
-      />
+      <SelectGroup options={options} handleSelectOptionChange={handleSort} />
     </div>
   );
 };

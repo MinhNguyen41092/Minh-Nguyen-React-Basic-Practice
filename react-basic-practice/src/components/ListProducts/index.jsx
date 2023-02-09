@@ -18,10 +18,7 @@ const ListProducts = (props) => {
   return (
     <div className="list-products">
       <Grid columns="3" rowGap="large" columnGap="large">
-        {products
-          && products.map((item) => (
-            <ProductCard product={item} />
-          ))}
+        {products && products.map((item) => <ProductCard product={item} key={item.id} />)}
       </Grid>
       <Button
         type="button"
