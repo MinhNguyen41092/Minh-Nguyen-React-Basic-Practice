@@ -14,10 +14,12 @@ const ProductCard = (props) => {
    * @returns component label
    */
   const renderLabel = (quantity, discountPercent) => {
-    let label = '';
     if (product.quantity <= 0 || product.discountPercent > 0) {
-      label = quantity === 0 ? 'sold out' : `${discountPercent} %`;
-      return <span className="product-label">{label}</span>;
+      return (
+        <span className="product-label">
+          {quantity === 0 ? 'Sold out' : `${discountPercent} %`}
+        </span>
+      );
     }
     return '';
   };
