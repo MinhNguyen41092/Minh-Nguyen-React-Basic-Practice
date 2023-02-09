@@ -45,7 +45,7 @@ const Quantity = (props) => {
         isDisabled={isUnavailableProduct}
       />
       <Input
-        type="number"
+        inputType="number"
         name="quantity"
         className="quantity"
         value={counter}
