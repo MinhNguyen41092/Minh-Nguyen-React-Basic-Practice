@@ -1,6 +1,5 @@
 // Import react
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Import component
 import Grid from '@/layouts/Grid';
@@ -21,9 +20,7 @@ const ListProducts = (props) => {
       <Grid columns="3" rowGap="large" columnGap="large">
         {products
           && products.map((item) => (
-            <Link to={`/products/${item.id}`} key={item.id}>
-              <ProductCard product={item} />
-            </Link>
+            <ProductCard product={item} />
           ))}
       </Grid>
       <Button

@@ -5,7 +5,7 @@ const Input = (props) => {
   const {
     label,
     htmlFor,
-    inputType,
+    type,
     name,
     className,
     value,
@@ -14,6 +14,7 @@ const Input = (props) => {
     defaultValue,
     handleInputChange,
     errorMessage,
+    handleOnInput,
   } = props;
 
   const inputRef = useRef();
@@ -26,25 +27,20 @@ const Input = (props) => {
 
   return (
     <div className="input-group">
-      <label htmlFor={htmlFor}>
-        {label}
-      </label>
+      <label htmlFor={htmlFor}>{label}</label>
       <input
-        type={inputType}
+        type={type}
         name={name}
         className={`input-text ${className}`}
         onChange={handleChange}
+        onInput={handleOnInput}
         placeholder={placeholder}
         value={value}
         pattern={pattern}
         defaultValue={defaultValue}
         ref={inputRef}
       />
-      {errorMessage && (
-      <span className="input-error">
-        {errorMessage}
-      </span>
-      )}
+      {errorMessage && <span className="input-error">{errorMessage}</span>}
     </div>
   );
 };

@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const { loading, setLoading } = useLoading();
   const [product, setProduct] = useState({});
-  const [quantityProduct, setQuantity] = useState(0);
+  const [quantityProductsOrdered, setQuantityProductsOrdered] = useState(0);
   const { toast, setToast } = useToast();
   const { cart, setCart } = useCart();
   const { userData } = useAuth();
@@ -55,42 +55,63 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
-    setQuantity(value);
+    setQuantityProductsOrdered(Number(value));
+  };
+
+  const setPrice = () => {
+    let price = 0;
+
+    product.discountPercent
+      ? (price = product.price - product.price * (product.discountPercent / 100))
+      : (price = product.price);
+
+    return price.toFixed(2);
   };
 
   const handleAddCart = async () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
 
-      if (indexProduct >= 0) {
-        cart.products[indexProduct].quantity += quantityProduct;
-        cartUser = cart;
+      setLoading(true);
+      if (quantityProductsOrdered && quantityProductsOrdered < product.quantity) {
+        if (indexProduct >= 0) {
+          cart.products[indexProduct].quantity += quantityProductsOrdered;
+          cartUser = cart;
+        } else {
+          cartUser = {
+            id: userData.userId,
+            products: [
+              ...cart.products,
+              {
+                idProduct: product.id,
+                quantity: quantityProductsOrdered,
+                name: product.name,
+                price: setPrice(),
+                discountPercent: product.discountPercent,
+              },
+            ],
+          };
+        }
+
+        setCart(cartUser);
+        await updateCart(userData.userId, cartUser);
+
+        setToast({
+          openPopup: true,
+          status: 'success',
+          message: 'The item has been added to your shopping bag.',
+        });
       } else {
-        cartUser = {
-          id: userData.userId,
-          products: [
-            ...cart.products,
-            {
-              idProduct: product.id,
-              quantity: quantityProduct,
-              name: product.name,
-              price: product.price,
-            },
-          ],
-        };
+        setToast({
+          openPopup: true,
+          status: 'error',
+          message: 'Invalid quantity',
+        });
       }
-
-      setCart(cartUser);
-      await updateCart(userData.userId, cartUser);
-
-      setToast({
-        openPopup: true,
-        status: 'success',
-        message: 'The item added to your shopping bag',
-      });
+      setLoading(false);
     } catch {
       setToast({
         openPopup: true,
@@ -104,8 +125,6 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
-  const checkUnavailableProduct = () => product.label === 'Sold out';
-
   return (
     <DefaultLayout>
       {loading ? (
@@ -116,19 +135,20 @@ const ProductDetail = () => {
             <img className="image" src={product.image} alt={product.name} />
             <div className="information">
               <span className="name">{product.name}</span>
-              <span className="price">{`$ ${product.price}`}</span>
+              <span className="price">{`$ ${product?.price?.toFixed(2)}`}</span>
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
                   onChangeQuantity={handleSetQuantity}
-                  isUnavailableProduct={checkUnavailableProduct()}
+                  isUnavailableProduct={!product.quantity}
+                  maxQuantity={product.quantity}
                 />
                 <Button
                   type="button"
                   onClick={handleAddCart}
                   className="btn-primary btn-large"
                   text="add to cart"
-                  isDisabled={checkUnavailableProduct()}
+                  isDisabled={!product.quantity}
                 />
               </div>
             </div>
