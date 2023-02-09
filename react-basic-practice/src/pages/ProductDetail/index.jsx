@@ -55,6 +55,7 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
+    console.log(value);
     setQuantityProductsOrdered(Number(value));
   };
 
@@ -139,7 +140,7 @@ const ProductDetail = () => {
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
-                  onChangeQuantity={() => handleSetQuantity}
+                  onChangeQuantity={(value) => handleSetQuantity(value)}
                   isUnavailableProduct={!product.quantity}
                   maxQuantity={product.quantity}
                 />
