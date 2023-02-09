@@ -72,7 +72,7 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
 
       setLoading(true);
@@ -139,7 +139,7 @@ const ProductDetail = () => {
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
-                  onChangeQuantity={handleSetQuantity}
+                  onChangeQuantity={() => handleSetQuantity}
                   isUnavailableProduct={!product.quantity}
                   maxQuantity={product.quantity}
                 />
