@@ -34,8 +34,11 @@
   font-size: var(--fs-large);
   font-weight: var(--fw-medium);
   color: var(--color-price);
-  margin-top: 23px;
-  margin-bottom: 46px;
+}
+
+.product .information .quantity-available {
+  margin: 20px 0px;
+  font-weight: var(--fw-semibold);
 }
 
 .description {

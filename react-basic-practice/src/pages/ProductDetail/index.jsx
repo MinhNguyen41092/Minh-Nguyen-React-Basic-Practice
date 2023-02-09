@@ -137,6 +137,7 @@ const ProductDetail = () => {
             <div className="information">
               <span className="name">{product.name}</span>
               <span className="price">{`$ ${product?.price?.toFixed(2)}`}</span>
+              <span className="quantity-available">{`Quantity : ${product.quantity}`}</span>
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
