@@ -9,9 +9,6 @@ import Toast from '@/components/Toast';
 // Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';
 
-// Import service
-import { getProductById, updateProduct } from '@/services/Products';
-
 // Import context
 import { useCart } from '@/contexts/CartProvider';
 import { useToast } from '@/contexts/ToastProvider';
@@ -27,20 +24,10 @@ const CartSideBar = (props) => {
   const { toast, setToast } = useToast();
   const { userData } = useAuth();
 
-  // const getDataProductDeleted = async (id) => {
-  //   const productSelected = await getProductById(id);
-  //   const updateDataProduct = {
-  //     ...productSelected,
-  //     quantity:
-  //   };
-  // };
-
   const handleDeleteCartItem = async (e) => {
     try {
       const idSelected = Number(e.target.closest('.cart-item').dataset.id);
       const updateCarts = cart.products.filter((cartItem) => cartItem.idProduct !== idSelected);
-
-      const i = cart.products.find((product) => console.log(product.id === idSelected));
 
       const cartUser = {
         id: userData.userId,

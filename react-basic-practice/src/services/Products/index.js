@@ -24,14 +24,3 @@ export const getProductById = async (productId) => {
 
   return res.data;
 };
-
-/**
- * Update product
- * @param {number} productId
- * @param {object} data product
- */
-export const updateProduct = async (productId, data) => {
-  const res = await axios.put(`${PRODUCTS_API}/${productId}`, data);
-
-  return res.data;
-};

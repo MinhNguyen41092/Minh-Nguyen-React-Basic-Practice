@@ -10,7 +10,7 @@ import Toast from '@/components/Toast';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 // Import service
-import { getProductById, updateProduct } from '@/services/Products';
+import { getProductById } from '@/services/Products';
 import { updateCart } from '@/services/Cart';
 
 // Import context
@@ -54,6 +54,13 @@ const ProductDetail = () => {
     return () => clearTimeout(timer);
   }, [toast.openPopup]);
 
+  let quantityAvailable = product.quantity;
+  const checkProductCart = cart?.products?.find((item) => item.idProduct === Number(productId));
+
+  if (checkProductCart) {
+    quantityAvailable = product.quantity - quantityAvailable.quantity;
+  }
+
   const handleSetQuantity = (value) => {
     setQuantityProductsOrdered(Number(value));
   };
@@ -76,7 +83,7 @@ const ProductDetail = () => {
       );
 
       setLoading(true);
-      if (quantityProductsOrdered && quantityProductsOrdered < product.quantity) {
+      if (quantityProductsOrdered && quantityProductsOrdered <= quantityAvailable) {
         if (indexProduct >= 0) {
           cart.products[indexProduct].quantity += quantityProductsOrdered;
           cartUser = cart;
@@ -96,15 +103,9 @@ const ProductDetail = () => {
           };
         }
 
-        const updateDataProduct = {
-          ...product,
-          quantity: product.quantity - quantityProductsOrdered,
-        };
-
         setCart(cartUser);
 
         await updateCart(userData.userId, cartUser);
-        await updateProduct(product.id, updateDataProduct);
 
         setToast({
           openPopup: true,
@@ -148,7 +149,7 @@ const ProductDetail = () => {
               <div className="add-cart">
                 <Quantity
                   onChangeQuantity={handleSetQuantity}
-                  isUnavailableProduct={!product.quantity}
+                  isUnavailableProduct={!quantityAvailable}
                   maxQuantity={product.quantity}
                 />
                 <Button

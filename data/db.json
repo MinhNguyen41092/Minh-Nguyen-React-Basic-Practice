@@ -106,6 +106,13 @@
           "name": "lira earrings",
           "price": "20.00",
           "discountPercent": 0
+        },
+        {
+          "idProduct": 5,
+          "quantity": 2,
+          "name": "plaine necklace",
+          "price": "23.00",
+          "discountPercent": 0
         }
       ]
     },
