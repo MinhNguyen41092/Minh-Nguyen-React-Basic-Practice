@@ -10,7 +10,7 @@ import Toast from '@/components/Toast';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 // Import service
-import { getProductById } from '@/services/Products';
+import { getProductById, updateProduct } from '@/services/Products';
 import { updateCart } from '@/services/Cart';
 
 // Import context
@@ -50,12 +50,11 @@ const ProductDetail = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setToast({ ...toast, openPopup: false });
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [toast.openPopup]);
 
   const handleSetQuantity = (value) => {
-    console.log(value);
     setQuantityProductsOrdered(Number(value));
   };
 
@@ -73,7 +72,7 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId)
+        (item) => item.idProduct === Number(productId),
       );
 
       setLoading(true);
@@ -97,8 +96,15 @@ const ProductDetail = () => {
           };
         }
 
+        const updateDataProduct = {
+          ...product,
+          quantity: product.quantity - quantityProductsOrdered,
+        };
+
         setCart(cartUser);
+
         await updateCart(userData.userId, cartUser);
+        await updateProduct(product.id, updateDataProduct);
 
         setToast({
           openPopup: true,
@@ -141,7 +147,7 @@ const ProductDetail = () => {
               <p className="description">{product.description}</p>
               <div className="add-cart">
                 <Quantity
-                  onChangeQuantity={(value) => handleSetQuantity(value)}
+                  onChangeQuantity={handleSetQuantity}
                   isUnavailableProduct={!product.quantity}
                   maxQuantity={product.quantity}
                 />
