@@ -55,10 +55,10 @@ const ProductDetail = () => {
   }, [toast.openPopup]);
 
   let quantityAvailable = product.quantity;
-  const checkProductCart = cart?.products?.find((item) => item.idProduct === Number(productId));
+  const checkProductCart = cart?.products?.find((item) => item.idProduct === Number(productId), 0);
 
   if (checkProductCart) {
-    quantityAvailable = product.quantity - quantityAvailable.quantity;
+    quantityAvailable = product.quantity - checkProductCart.quantity;
   }
 
   const handleSetQuantity = (value) => {
@@ -79,7 +79,7 @@ const ProductDetail = () => {
     try {
       let cartUser = {};
       const indexProduct = cart?.products?.findIndex(
-        (item) => item.idProduct === Number(productId),
+        (item) => item.idProduct === Number(productId)
       );
 
       setLoading(true);
@@ -157,7 +157,7 @@ const ProductDetail = () => {
                   onClick={handleAddCart}
                   className="btn-primary btn-large"
                   text="add to cart"
-                  isDisabled={!product.quantity}
+                  isDisabled={!quantityAvailable}
                 />
               </div>
             </div>

@@ -113,6 +113,13 @@
           "name": "plaine necklace",
           "price": "23.00",
           "discountPercent": 0
+        },
+        {
+          "idProduct": 2,
+          "quantity": 2,
+          "name": "hal earrings",
+          "price": "20.00",
+          "discountPercent": 20
         }
       ]
     },

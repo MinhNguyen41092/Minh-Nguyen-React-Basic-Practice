@@ -55,16 +55,16 @@ const LoginForm = () => {
 
       // Check validation input
       const errorValid = validateInput(inputValue);
-      let haveError = false;
+      let haveErrorValidLogin = false;
 
-      !errorValid.error.email && !errorValid.error.password
-        ? (haveError = false)
-        : (haveError = true);
+      haveErrorValidLogin = errorValid.error.email
+        || errorValid.error.password
+        || errorValid.error.username;
 
       setErrorMessage(errorValid.validateError);
 
       // Check data user
-      if (!haveError) {
+      if (!haveErrorValidLogin) {
         const dataUser = await getUserByEmail(inputValue.email);
         const haveUser = hasData(dataUser, 'password', inputValue.password);
 
@@ -126,8 +126,7 @@ const LoginForm = () => {
         </FormGroup>
 
         <span className="form-message">
-          Already have an account?
-          {' '}
+          Already have an account?{' '}
           <Link to={ROUTE.SIGNUP} className="open-sign-up-page">
             Sign up
           </Link>
