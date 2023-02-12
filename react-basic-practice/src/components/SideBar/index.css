@@ -1,4 +1,6 @@
+
 .sidebar.title {
+  margin-top: 96px;
   font-size: var(--fs-large-plus);
   font-weight: var(--fw-medium);
 }
