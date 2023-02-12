@@ -41,7 +41,9 @@ const Sidebar = (props) => {
           className="input-search"
           placeholder="Search..."
           handleInputChange={handleInputValue}
+          handleInputKeyDown={handleSearch}
           name="keyword"
+          eventKeyDown="Enter"
         />
         <Button
           type="button"

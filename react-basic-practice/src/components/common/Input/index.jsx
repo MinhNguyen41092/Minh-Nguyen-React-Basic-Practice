@@ -15,6 +15,8 @@ const Input = (props) => {
     handleInputChange,
     errorMessage,
     handleOnInput,
+    handleInputKeyDown,
+    eventKeyDown,
   } = props;
 
   const inputRef = useRef();
@@ -23,6 +25,12 @@ const Input = (props) => {
     const inputValue = { [e.target.name]: inputRef.current.value };
 
     handleInputChange(inputValue);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === eventKeyDown) {
+      handleInputKeyDown(event.target.value);
+    }
   };
 
   return (
@@ -39,6 +47,7 @@ const Input = (props) => {
         pattern={pattern}
         defaultValue={defaultValue}
         ref={inputRef}
+        onKeyDown={handleKeyDown}
       />
       {errorMessage && <span className="input-error">{errorMessage}</span>}
     </div>
