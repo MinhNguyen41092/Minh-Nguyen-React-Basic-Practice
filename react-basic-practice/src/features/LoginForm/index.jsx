@@ -119,14 +119,15 @@ const LoginForm = () => {
           {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
           {loading ? (
-            <Button type="submit" className="btn-login  btn-loading" text="Loading..." disabled />
+            <Button className="btn-login btn-loading" text="Loading..." disabled />
           ) : (
             <Button type="submit" className="btn-login btn-primary" text="Log In" />
           )}
         </FormGroup>
 
         <span className="form-message">
-          Already have an account?{' '}
+          Already have an account?
+          {' '}
           <Link to={ROUTE.SIGNUP} className="open-sign-up-page">
             Sign up
           </Link>

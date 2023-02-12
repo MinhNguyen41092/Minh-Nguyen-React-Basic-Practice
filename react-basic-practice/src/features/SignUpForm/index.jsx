@@ -151,7 +151,7 @@ const SignUpForm = () => {
           {errorMessage.form && <p className="error-message">{errorMessage.form}</p>}
 
           {loading ? (
-            <Button type="submit" className="btn-sign-up btn-loading" text="Loading..." disabled />
+            <Button className="btn-sign-up btn-loading" text="Loading..." disabled />
           ) : (
             <Button type="submit" className="btn-sign-up btn-primary" text="Sign Up" />
           )}
