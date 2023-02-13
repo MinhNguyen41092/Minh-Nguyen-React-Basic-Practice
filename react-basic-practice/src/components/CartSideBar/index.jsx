@@ -2,9 +2,10 @@
 import React from 'react';
 
 // Import component
-import Button from '../common/Button';
-import CartItem from '../CartItem';
-import Toast from '../Toast';
+import Button from '@/components/common/Button';
+import CartItem from '@/components/CartItem';
+import Toast from '@/components/Toast';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 // Import image
 import closeButton from '@/assets/images/iconButton/btn-close.png';
@@ -17,19 +18,20 @@ import { useAuth } from '@/contexts/AuthProvider';
 
 // Import file css
 import './index.css';
+import { useLoading } from '@/contexts/LoadingProvider';
 
 const CartSideBar = (props) => {
   const { onCloseCart } = props;
   const { cart, setCart } = useCart();
   const { toast, setToast } = useToast();
+  const { loading, setLoading } = useLoading();
   const { userData } = useAuth();
 
   const handleDeleteCartItem = async (e) => {
     try {
-      const idSelected = e.target.closest('.cart-item').dataset.id;
-      const updateCarts = cart.products.filter(
-        (cartItem) => cartItem.idProduct !== Number(idSelected)
-      );
+      setLoading(true);
+      const idSelected = Number(e.target.closest('.cart-item').dataset.id);
+      const updateCarts = cart.products.filter((cartItem) => cartItem.idProduct !== idSelected);
 
       const cartUser = {
         id: userData.userId,
@@ -50,6 +52,8 @@ const CartSideBar = (props) => {
         status: 'error',
         message: 'Remove from cart failed, please try again',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,6 +72,7 @@ const CartSideBar = (props) => {
 
   return (
     <aside className="cart-bar">
+      {loading && <LoadingSpinner />}
       <div className="main">
         <div className="header">
           <h2 className="title">Shopping bag</h2>

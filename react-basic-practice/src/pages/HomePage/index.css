@@ -3,7 +3,6 @@
 }
 
 .main-content {
-  padding-top: 96px;
   padding-bottom: 252px;
   display: flex;
   justify-content: space-between;
@@ -11,8 +10,12 @@
 
 .list-products {
   margin-left: 36px;
-  padding-top: 80px;
-  width: 75%;
+  padding-top: 178px;
+  width: 80%;
+}
+
+.sidebar {
+  max-width: 261px;
 }
 
 .grid-container {

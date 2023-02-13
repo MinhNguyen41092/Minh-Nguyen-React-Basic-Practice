@@ -14,9 +14,6 @@ const SelectGroup = (props) => {
       value={valueSelected}
       defaultValue="DEFAULT"
     >
-      <option value="DEFAULT" disabled selected hidden>
-        Sort by
-      </option>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}

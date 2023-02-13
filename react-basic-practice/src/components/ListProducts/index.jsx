@@ -1,10 +1,10 @@
 // Import react
-import React from 'react';
+import React, { useState } from 'react';
 
 // Import component
 import Grid from '@/layouts/Grid';
-import ProductCard from '../ProductCard';
-import Button from '../common/Button';
+import ProductCard from '@/components/ProductCard';
+import Button from '@/components/common/Button';
 
 import './index.css';
 
@@ -18,10 +18,7 @@ const ListProducts = (props) => {
   return (
     <div className="list-products">
       <Grid columns="3" rowGap="large" columnGap="large">
-        {products
-          && products.map((item) => (
-            <ProductCard product={item} />
-          ))}
+        {products && products.map((item) => <ProductCard product={item} key={item.id} />)}
       </Grid>
       <Button
         type="button"

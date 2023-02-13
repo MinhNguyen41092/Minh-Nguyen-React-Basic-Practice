@@ -16,7 +16,7 @@ import { useAuth } from '@/contexts/AuthProvider';
 import ROUTE from '@/constants/route';
 
 // Import service
-import { getListProducts } from '../../services/Products';
+import { getListProducts } from '@/services/Products';
 
 // Import file css
 import './index.css';
@@ -55,6 +55,8 @@ const HomePage = () => {
   }, [keyword, fieldSort, order, pageNumber]);
 
   const handleSearch = (value) => {
+    setProducts([]);
+    setPageNumber(1);
     setKeyword(value);
   };
 
@@ -78,15 +80,12 @@ const HomePage = () => {
   return (
     <DefaultLayout>
       <Sidebar onSearch={handleSearch} onSort={handleSort} valueSelected={valueSelected} />
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <ListProducts
-          products={products}
-          isDisabledLoadMoreBtn={isDisabled}
-          setPageNumber={handleLoadMore}
-        />
-      )}
+      {loading && <LoadingSpinner />}
+      <ListProducts
+        products={products}
+        isDisabledLoadMoreBtn={isDisabled}
+        setPageNumber={handleLoadMore}
+      />
     </DefaultLayout>
   );
 };

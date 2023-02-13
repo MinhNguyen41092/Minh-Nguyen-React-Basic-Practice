@@ -1,9 +1,9 @@
 // Import react
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Import component
-import Button from '../common/Button';
-import Input from '../common/Input';
+import Input from '@/components/common/Input';
+import Button from '@/components/common/Button';
 
 // Import file css
 import './index.css';
@@ -11,6 +11,10 @@ import './index.css';
 const Quantity = (props) => {
   const { isUnavailableProduct, onChangeQuantity, maxQuantity } = props;
   const [counter, setCounter] = useState(1);
+
+  useEffect(() => {
+    onChangeQuantity(counter);
+  }, [counter]);
 
   const incrementCount = () => {
     // Update state with incremented value
@@ -27,14 +31,12 @@ const Quantity = (props) => {
   };
 
   const setQuantity = (value) => {
-    setCounter(value.quantity);
+    setCounter(Number(value.quantity));
   };
 
   const validateNumber = (e) => {
     e.target.value = Math.max(0, e.target.value);
   };
-
-  onChangeQuantity(counter);
 
   return (
     <div className="quantity-group">
@@ -45,7 +47,7 @@ const Quantity = (props) => {
         isDisabled={isUnavailableProduct}
       />
       <Input
-        type="number"
+        inputType="number"
         name="quantity"
         className="quantity"
         value={counter}

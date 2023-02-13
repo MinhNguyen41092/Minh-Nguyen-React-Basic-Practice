@@ -50,9 +50,16 @@ const ProductDetail = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setToast({ ...toast, openPopup: false });
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [toast.openPopup]);
+
+  let quantityAvailable = product.quantity;
+  const checkProductCart = cart?.products?.find((item) => item.idProduct === Number(productId), 0);
+
+  if (checkProductCart) {
+    quantityAvailable = product.quantity - checkProductCart.quantity;
+  }
 
   const handleSetQuantity = (value) => {
     setQuantityProductsOrdered(Number(value));
@@ -76,7 +83,7 @@ const ProductDetail = () => {
       );
 
       setLoading(true);
-      if (quantityProductsOrdered && quantityProductsOrdered < product.quantity) {
+      if (quantityProductsOrdered && quantityProductsOrdered <= quantityAvailable) {
         if (indexProduct >= 0) {
           cart.products[indexProduct].quantity += quantityProductsOrdered;
           cartUser = cart;
@@ -97,6 +104,7 @@ const ProductDetail = () => {
         }
 
         setCart(cartUser);
+
         await updateCart(userData.userId, cartUser);
 
         setToast({
@@ -125,40 +133,52 @@ const ProductDetail = () => {
     setToast({ ...toast, openPopup: false });
   };
 
+  const renderLabel = (quantity, discountPercent) => {
+    if (product.quantity <= 0 || product.discountPercent > 0) {
+      return (
+        <span className="product-label">
+          {quantity === 0 ? 'Sold out' : `- ${discountPercent} %`}
+        </span>
+      );
+    }
+    return '';
+  };
+
   return (
     <DefaultLayout>
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <div className="product-main">
-          <div className="product">
-            <img className="image" src={product.image} alt={product.name} />
-            <div className="information">
-              <span className="name">{product.name}</span>
-              <span className="price">{`$ ${product?.price?.toFixed(2)}`}</span>
-              <p className="description">{product.description}</p>
-              <div className="add-cart">
-                <Quantity
-                  onChangeQuantity={handleSetQuantity}
-                  isUnavailableProduct={!product.quantity}
-                  maxQuantity={product.quantity}
-                />
-                <Button
-                  type="button"
-                  onClick={handleAddCart}
-                  className="btn-primary btn-large"
-                  text="add to cart"
-                  isDisabled={!product.quantity}
-                />
-              </div>
+      {loading && <LoadingSpinner />}
+      <div className="product-main">
+        <div className="product">
+          <div className="img-wrapper">
+            {renderLabel(product.quantity, product.discountPercent)}
+            <img className="img-product" src={product.image} alt="product" />
+          </div>
+          <div className="information">
+            <span className="name">{product.name}</span>
+            <span className="price">{`$ ${product?.price?.toFixed(2)}`}</span>
+            <span className="quantity-available">{`Quantity : ${product.quantity}`}</span>
+            <p className="description">{product.description}</p>
+            <div className="add-cart">
+              <Quantity
+                onChangeQuantity={handleSetQuantity}
+                isUnavailableProduct={!quantityAvailable}
+                maxQuantity={product.quantity}
+              />
+              <Button
+                type="button"
+                onClick={handleAddCart}
+                className="btn-primary btn-large"
+                text="add to cart"
+                isDisabled={!quantityAvailable}
+              />
             </div>
           </div>
-          <div className="product-description">
-            <p className="title">Description</p>
-            <p className="description">{product.description}</p>
-          </div>
         </div>
-      )}
+        <div className="product-description">
+          <p className="title">Description</p>
+          <p className="description">{product.description}</p>
+        </div>
+      </div>
       {toast.openPopup && (
         <Toast status={toast.status} message={toast.message} onClose={handleClose} />
       )}

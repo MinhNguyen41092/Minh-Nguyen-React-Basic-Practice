@@ -1,5 +1,5 @@
 // Import react
-import React from 'react';
+import React, { useState } from 'react';
 
 // Import components
 import Input from '@/components/common/Input';
@@ -10,6 +10,7 @@ import SelectGroup from '@/components/SelectGroup';
 import './index.css';
 
 const options = [
+  { value: 'DEFAULT', label: 'Sort by' },
   { value: 'name asc', label: 'Name (ascending)' },
   { value: 'name desc', label: 'Name (descending )' },
   { value: 'price asc', label: 'Price (ascending)' },
@@ -18,8 +19,14 @@ const options = [
 
 const Sidebar = (props) => {
   const { onSearch, onSort } = props;
-  const handleSearch = (value) => {
-    onSearch(value.keyword.trim());
+  const [inputValue, setInputValue] = useState({});
+
+  const handleInputValue = (value) => {
+    setInputValue(value.keyword.trim());
+  };
+
+  const handleSearch = () => {
+    onSearch(inputValue);
   };
 
   const handleSort = (value) => {
@@ -33,8 +40,10 @@ const Sidebar = (props) => {
         <Input
           className="input-search"
           placeholder="Search..."
-          handleInputChange={handleSearch}
+          handleInputChange={handleInputValue}
+          handleInputKeyDown={handleSearch}
           name="keyword"
+          eventKeyDown="Enter"
         />
         <Button
           type="button"
@@ -43,10 +52,7 @@ const Sidebar = (props) => {
           onClick={handleSearch}
         />
       </div>
-      <SelectGroup
-        options={options}
-        handleSelectOptionChange={handleSort}
-      />
+      <SelectGroup options={options} handleSelectOptionChange={handleSort} />
     </div>
   );
 };

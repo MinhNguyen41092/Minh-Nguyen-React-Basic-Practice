@@ -5,7 +5,7 @@ const Input = (props) => {
   const {
     label,
     htmlFor,
-    type,
+    inputType,
     name,
     className,
     value,
@@ -15,21 +15,27 @@ const Input = (props) => {
     handleInputChange,
     errorMessage,
     handleOnInput,
+    handleInputKeyDown,
+    eventKeyDown,
   } = props;
 
-  const inputRef = useRef();
-
   const handleChange = (e) => {
-    const inputValue = { [e.target.name]: inputRef.current.value };
+    const inputValue = { [e.target.name]: e.target.value };
 
     handleInputChange(inputValue);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === eventKeyDown) {
+      handleInputKeyDown(event.target.value);
+    }
   };
 
   return (
     <div className="input-group">
       <label htmlFor={htmlFor}>{label}</label>
       <input
-        type={type}
+        type={inputType}
         name={name}
         className={`input-text ${className}`}
         onChange={handleChange}
@@ -38,7 +44,7 @@ const Input = (props) => {
         value={value}
         pattern={pattern}
         defaultValue={defaultValue}
-        ref={inputRef}
+        onKeyDown={handleKeyDown}
       />
       {errorMessage && <span className="input-error">{errorMessage}</span>}
     </div>

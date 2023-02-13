@@ -3,6 +3,11 @@
   text-align: center;
 }
 
+.login .input-group {
+  width: 330px;
+  margin-bottom: 0px;
+}
+
 .form-login-heading {
   margin-bottom: 20px;
 }
@@ -26,7 +31,7 @@
 .error-message {
   color: var(--color-secondary);
   text-align: left;
-  padding-left: 155px;
+  padding-left: 140px;
 }
 
 .btn-login {
