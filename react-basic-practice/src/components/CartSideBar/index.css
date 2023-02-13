@@ -50,8 +50,3 @@
 .cart-bar .btn-close:hover {
   background-color: var(--color-primary);
 }
-
-.cart-bar .spinner-container {
-  position: fixed;
-  margin: 300px 800px;
-}
