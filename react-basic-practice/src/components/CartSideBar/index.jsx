@@ -78,7 +78,7 @@ const CartSideBar = (props) => {
           <h2 className="title">Shopping bag</h2>
           <Button
             onClick={onCloseCart}
-            type="button"
+            typeButton="button"
             className="btn btn-close"
             icon={closeButton}
           />

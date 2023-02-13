@@ -165,7 +165,7 @@ const ProductDetail = () => {
                 maxQuantity={product.quantity}
               />
               <Button
-                type="button"
+                typeButton="button"
                 onClick={handleAddCart}
                 className="btn-primary btn-large"
                 text="add to cart"

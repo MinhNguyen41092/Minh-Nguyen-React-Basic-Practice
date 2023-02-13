@@ -40,14 +40,14 @@ const UserCard = (props) => {
           <p className="user-name">{userData.username}</p>
           <p className="user-email">{userData.email}</p>
           <Button
-            type="button"
+            typeButton="button"
             className="btn-logout"
             text="Logout"
             onClick={handleLogout}
           />
           <Button
             onClick={onCloseUserCard}
-            type="button"
+            typeButton="button"
             className="btn btn-close"
             icon={closeButton}
           />

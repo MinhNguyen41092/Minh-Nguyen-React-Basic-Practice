@@ -1,6 +1,6 @@
-const hasData = (data, fieldCheck, dataCheck) => {
-  const checkHasData = data.some((dataElement) => dataElement[fieldCheck] === dataCheck);
-  return checkHasData;
+const checkDataExist = (data, fieldCheck, dataCheck) => {
+  const checkHaveData = data.some((dataElement) => dataElement[fieldCheck] === dataCheck);
+  return checkHaveData;
 };
 
-export default hasData;
+export default checkDataExist;

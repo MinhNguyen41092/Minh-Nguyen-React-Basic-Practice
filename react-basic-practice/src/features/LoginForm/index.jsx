@@ -19,8 +19,8 @@ import { useAuth } from '@/contexts/AuthProvider';
 import { getUserByEmail } from '@/services/Users';
 
 // Import helpers
-import validateInput from '@/helpers/validate';
-import hasData from '@/helpers/data';
+import validateInputForm from '@/helpers/validate';
+import checkDataExist from '@/helpers/data';
 
 // Import file css
 import './index.css';
@@ -54,14 +54,14 @@ const LoginForm = () => {
       setLoading(true);
 
       // Check validation input
-      const errorValid = validateInput(inputValue);
+      const errorValid = validateInputForm(inputValue);
 
       setErrorMessage(errorValid.validateError);
 
       // Check data user
       if (!errorValid.haveErrorValid) {
         const dataUser = await getUserByEmail(inputValue.email);
-        const haveUser = hasData(dataUser, 'password', inputValue.password);
+        const haveUser = checkDataExist(dataUser, 'password', inputValue.password);
 
         if (haveUser) {
           const user = {
@@ -116,7 +116,7 @@ const LoginForm = () => {
           {loading ? (
             <Button className="btn-login btn-loading" text="Loading..." disabled />
           ) : (
-            <Button type="submit" className="btn-login btn-primary" text="Log In" />
+            <Button typeButton="submit" className="btn-login btn-primary" text="Log In" />
           )}
         </FormGroup>
 

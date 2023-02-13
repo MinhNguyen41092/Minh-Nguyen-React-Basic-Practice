@@ -3,18 +3,18 @@ import './index.css';
 
 const Button = (props) => {
   const {
-    type, onClick, className, text, icon, isDisabled,
+    typeButton, onClick, className, text, icon, isDisabled,
   } = props;
 
   return (
     <button
-      type={type}
+      type={typeButton}
       onClick={onClick}
       className={`btn ${className}`}
       value="button"
       disabled={isDisabled}
     >
-      { text || <img className="icon" src={icon} alt="icon" />}
+      {text || <img className="icon" src={icon} alt="icon" />}
     </button>
   );
 };

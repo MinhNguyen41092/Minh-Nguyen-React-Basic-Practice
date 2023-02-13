@@ -2,7 +2,7 @@ import REGEXP from '../constants/regexp';
 import ERROR_MESSAGES from '../constants/errorMsg';
 
 /* Check validate */
-const validateInput = (dataInput) => {
+const validateInputForm = (dataInput) => {
   let validateError = {};
   let error = {};
 
@@ -38,4 +38,4 @@ const validateInput = (dataInput) => {
   };
 };
 
-export default validateInput;
+export default validateInputForm;

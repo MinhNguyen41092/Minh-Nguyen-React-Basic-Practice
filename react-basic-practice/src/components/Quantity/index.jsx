@@ -41,6 +41,7 @@ const Quantity = (props) => {
   return (
     <div className="quantity-group">
       <Button
+        typeButton="button"
         onClick={decrementCount}
         className="btn btn-decrement"
         text="-"
@@ -55,6 +56,7 @@ const Quantity = (props) => {
         handleOnInput={validateNumber}
       />
       <Button
+        typeButton="button"
         onClick={incrementCount}
         className="btn btn-decrement"
         text="+"
