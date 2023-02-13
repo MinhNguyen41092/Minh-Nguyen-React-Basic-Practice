@@ -99,15 +99,7 @@
   "cart": [
     {
       "id": 1,
-      "products": [
-        {
-          "idProduct": 2,
-          "quantity": 1,
-          "name": "hal earrings",
-          "price": "20.00",
-          "discountPercent": 20
-        }
-      ]
+      "products": []
     },
     {
       "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",

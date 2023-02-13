@@ -80,15 +80,12 @@ const HomePage = () => {
   return (
     <DefaultLayout>
       <Sidebar onSearch={handleSearch} onSort={handleSort} valueSelected={valueSelected} />
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <ListProducts
-          products={products}
-          isDisabledLoadMoreBtn={isDisabled}
-          setPageNumber={handleLoadMore}
-        />
-      )}
+      {loading && <LoadingSpinner />}
+      <ListProducts
+        products={products}
+        isDisabledLoadMoreBtn={isDisabled}
+        setPageNumber={handleLoadMore}
+      />
     </DefaultLayout>
   );
 };

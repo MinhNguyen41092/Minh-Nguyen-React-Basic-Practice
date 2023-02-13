@@ -72,33 +72,30 @@ const CartSideBar = (props) => {
 
   return (
     <aside className="cart-bar">
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <div className="main">
-          <div className="header">
-            <h2 className="title">Shopping bag</h2>
-            <Button
-              onClick={onCloseCart}
-              type="button"
-              className="btn btn-close"
-              icon={closeButton}
-            />
-          </div>
-          <div className="list-cart-item">
-            {cart.products.map((item) => (
-              <CartItem
-                key={item.idProduct}
-                item={item}
-                handleDeleteCartItem={handleDeleteCartItem}
-              />
-            ))}
-          </div>
-          <div className="footer">
-            <p className="total">{`Total: $ ${totalCart()}`}</p>
-          </div>
+      {loading && <LoadingSpinner />}
+      <div className="main">
+        <div className="header">
+          <h2 className="title">Shopping bag</h2>
+          <Button
+            onClick={onCloseCart}
+            type="button"
+            className="btn btn-close"
+            icon={closeButton}
+          />
         </div>
-      )}
+        <div className="list-cart-item">
+          {cart.products.map((item) => (
+            <CartItem
+              key={item.idProduct}
+              item={item}
+              handleDeleteCartItem={handleDeleteCartItem}
+            />
+          ))}
+        </div>
+        <div className="footer">
+          <p className="total">{`Total: $ ${totalCart()}`}</p>
+        </div>
+      </div>
       {toast.openPopup && (
         <Toast status={toast.status} message={toast.message} onClose={handleClose} />
       )}
