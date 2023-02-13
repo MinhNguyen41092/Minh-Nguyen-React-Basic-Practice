@@ -55,16 +55,11 @@ const LoginForm = () => {
 
       // Check validation input
       const errorValid = validateInput(inputValue);
-      let haveErrorValidLogin = false;
-
-      haveErrorValidLogin = errorValid.error.email
-        || errorValid.error.password
-        || errorValid.error.username;
 
       setErrorMessage(errorValid.validateError);
 
       // Check data user
-      if (!haveErrorValidLogin) {
+      if (!errorValid.haveErrorValid) {
         const dataUser = await getUserByEmail(inputValue.email);
         const haveUser = hasData(dataUser, 'password', inputValue.password);
 

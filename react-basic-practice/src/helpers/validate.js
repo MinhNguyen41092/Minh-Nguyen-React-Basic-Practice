@@ -28,9 +28,13 @@ const validateInput = (dataInput) => {
     }
   });
 
+  let haveErrorValid = false;
+
+  haveErrorValid = error.email || error.password || error.username;
+
   return {
     validateError,
-    error,
+    haveErrorValid,
   };
 };
 

@@ -58,15 +58,10 @@ const SignUpForm = () => {
 
       // Check validation input
       const errorValid = validateInput(inputValue);
-      let haveErrorValidSignUp = false;
-
-      haveErrorValidSignUp = errorValid.error.email
-        || errorValid.error.password
-        || errorValid.error.username;
 
       setErrorMessage(errorValid.validateError);
 
-      if (!haveErrorValidSignUp) {
+      if (!errorValid.haveErrorValid) {
         // Check email already exists
         const dataUser = await getUserByEmail(inputValue.email);
 

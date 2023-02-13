@@ -11,6 +11,12 @@
       "username": "Mai Huynh",
       "email": "minhng271@gmail.com",
       "password": "1234abcd"
+    },
+    {
+      "id": "3aba877e-601c-400b-b642-050c2e35c9c8",
+      "username": "",
+      "email": "",
+      "password": ""
     }
   ],
   "products": [
@@ -139,6 +145,10 @@
           "price": 20
         }
       ]
+    },
+    {
+      "id": "3aba877e-601c-400b-b642-050c2e35c9c8",
+      "products": []
     }
   ]
 }
