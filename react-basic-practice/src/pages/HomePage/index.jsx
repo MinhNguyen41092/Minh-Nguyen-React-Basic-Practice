@@ -55,6 +55,8 @@ const HomePage = () => {
   }, [keyword, fieldSort, order, pageNumber]);
 
   const handleSearch = (value) => {
+    setProducts([]);
+    setPageNumber(1);
     setKeyword(value);
   };
 
