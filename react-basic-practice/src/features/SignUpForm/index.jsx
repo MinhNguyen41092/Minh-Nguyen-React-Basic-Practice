@@ -14,7 +14,7 @@ import { createUser, getUserByEmail } from '@/services/Users';
 import { createNewCart } from '@/services/Cart';
 
 // Import helpers
-import validateInput from '@/helpers/validate';
+import validateInputForm from '@/helpers/validate';
 
 // Import context
 import { useLoading } from '@/contexts/LoadingProvider';
@@ -57,7 +57,7 @@ const SignUpForm = () => {
       setLoading(true);
 
       // Check validation input
-      const errorValid = validateInput(inputValue);
+      const errorValid = validateInputForm(inputValue);
 
       setErrorMessage(errorValid.validateError);
 
@@ -148,7 +148,7 @@ const SignUpForm = () => {
           {loading ? (
             <Button className="btn-sign-up btn-loading" text="Loading..." disabled />
           ) : (
-            <Button type="submit" className="btn-sign-up btn-primary" text="Sign Up" />
+            <Button typeButton="submit" className="btn-sign-up btn-primary" text="Sign Up" />
           )}
         </FormGroup>
 

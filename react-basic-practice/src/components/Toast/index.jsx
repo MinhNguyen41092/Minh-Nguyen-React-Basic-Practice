@@ -16,7 +16,7 @@ const Toast = (props) => {
         </div>
         <Button
           onClick={onClose}
-          type="button"
+          typeButton="button"
           className="btn btn-close"
           text="X"
         />

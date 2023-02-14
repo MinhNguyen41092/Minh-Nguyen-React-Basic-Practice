@@ -36,7 +36,7 @@ const Footer = () => (
         />
         <Button
           className="btn-arrow"
-          type="button"
+          typeButton="button"
           icon={arrowButton}
 
         />

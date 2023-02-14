@@ -56,10 +56,10 @@ const Header = () => {
       <Logo />
       <div className="user">
         <div className="cart">
-          <Button type="button" className="btn-cart" icon={cartButton} onClick={handleOpenCart} />
+          <Button typeButton="button" className="btn-cart" icon={cartButton} onClick={handleOpenCart} />
           <span className="quantity-cart">{cart.products?.length}</span>
         </div>
-        <Button type="button" className="btn-user" icon={userIcon} onClick={handleOpenUserCard} />
+        <Button typeButton="button" className="btn-user" icon={userIcon} onClick={handleOpenUserCard} />
       </div>
       {isOpen && <CartSideBar onCloseCart={handleCloseCart} />}
       {userCard && <UserCard onCloseUserCard={handleCloseUserCard} />}

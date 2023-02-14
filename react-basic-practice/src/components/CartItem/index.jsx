@@ -23,7 +23,7 @@ const CartItem = (props) => {
       <p className="price">{`$ ${item.price}`}</p>
       <Button
         onClick={handleDeleteCartItem}
-        type="button"
+        typeButton="button"
         className="btn btn-delete"
         icon={closeButton}
       />

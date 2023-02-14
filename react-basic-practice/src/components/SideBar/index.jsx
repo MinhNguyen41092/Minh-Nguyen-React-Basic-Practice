@@ -46,7 +46,7 @@ const Sidebar = (props) => {
           eventKeyDown="Enter"
         />
         <Button
-          type="button"
+          typeButton="button"
           className="btn-search"
           icon="./src/assets/images/iconButton/btn-search.png"
           onClick={handleSearch}

@@ -21,7 +21,7 @@ const ListProducts = (props) => {
         {products && products.map((item) => <ProductCard product={item} key={item.id} />)}
       </Grid>
       <Button
-        type="button"
+        typeButton="button"
         onClick={handleLoadMore}
         className="btn-primary btn-large"
         text="load more"
