@@ -14,10 +14,6 @@ const validateInputForm = (dataInput) => {
     } else {
       validateError = { ...validateError, [key]: '' };
       error = { ...error, [key]: false };
-    }
-
-    // Check for format and show error
-    if (value !== '') {
       if (!REGEXP[key].test(value)) {
         validateError = { ...validateError, [key]: ERROR_MESSAGES[key] };
         error = { ...error, [key]: true };
@@ -28,9 +24,7 @@ const validateInputForm = (dataInput) => {
     }
   });
 
-  let haveErrorValid = false;
-
-  haveErrorValid = error.email || error.password || error.username;
+  const haveErrorValid = error.email || error.password || error.username;
 
   return {
     validateError,
