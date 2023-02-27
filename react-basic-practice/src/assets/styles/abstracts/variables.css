@@ -1,0 +1,32 @@
+:root {
+  /* Color */
+  --color-primary: #707070;
+  --color-secondary: #c00000;
+  --color-tertiary: #e6e2e2;
+  --color-success: #1ada8a;
+
+  --color-white: #ffffff;
+  --color-black: #222222;
+
+  --color-quantity-button: #EFEFEF;
+  --color-loading: #0aa2d4;
+  --color-price: #A18A68;
+  --color-line: #D8D8D8;
+  --color-overlay: #0000004d;
+
+  /* Font weight */
+  --fw-regular: 300;
+  --fw-normal: 400;
+  --fw-medium:500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Font size */
+  --fs-regular: 16px;
+  --fs-super-small: 12px;
+  --fs-small: 14px;
+  --fs-large: 20px;
+  --fs-large-more: 26px;
+  --fs-large-plus: 33px;
+  --fs-exLarge: 40px;
+}

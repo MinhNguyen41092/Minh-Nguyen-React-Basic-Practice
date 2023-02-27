@@ -1,0 +1,12 @@
+.list-products {
+  text-align: center;
+}
+
+.list-products button {
+  margin-top: 30px;
+}
+
+.list-products .btn-loading {
+  background-color: var(--color-loading);
+  color: var(--color-white);
+}

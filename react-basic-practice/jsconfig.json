@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src", 
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/components/common/*": [
+        "components/common/*"
+      ],
+      "@/assets/*": [ 
+        "assets/*",
+      ],
+      "@/features/*": [ 
+        "features/*",
+      ],
+      "@/layouts/*": [ 
+        "layouts/*",
+      ],
+      "@/contexts/*": [ 
+        "contexts/*",
+      ],
+      "@/services/*": [ 
+        "services/*",
+      ],
+      "@/constants/*": [ 
+        "constants/*",
+      ],
+      "@/helpers/*": [ 
+        "helpers/*",
+      ],
+      "@/pages/*": [ 
+        "pages/*",
+      ],
+    },
+    "incremental": true,
+  },
+  "include": [
+    "src",
+    "**/*.js",
+    "**/*.jsx",
+  ]
+}

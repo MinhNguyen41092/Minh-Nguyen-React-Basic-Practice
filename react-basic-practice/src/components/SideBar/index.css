@@ -1,0 +1,28 @@
+
+.sidebar.title {
+  margin-top: 96px;
+  font-size: var(--fs-large-plus);
+  font-weight: var(--fw-medium);
+}
+
+.sidebar .input-group {
+  padding: 0px;
+  max-width: 241px;
+}
+
+.search {
+  display: flex;
+  margin-top: 40px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.input-search {
+  border: none;
+  padding: 0px;
+}
+
+.btn-search {
+  padding: 0px;
+  background-color: var(--color-white);
+  width: 20px;
+}

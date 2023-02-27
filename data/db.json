@@ -1,0 +1,166 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Minh Nguyen",
+      "email": "minh@gmail.com",
+      "password": "1234abcd"
+    },
+    {
+      "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
+      "username": "Mai Huynh",
+      "email": "minhng271@gmail.com",
+      "password": "1234abcd"
+    },
+    {
+      "id": "545d3db5-5472-4a8a-90f2-8372db9f43fe",
+      "username": "Minh Nguyen",
+      "email": "minhng21@gmail.com",
+      "password": "1245khoi"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "lira earrings",
+      "price": 20,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 20,
+      "discountPercent": 0
+    },
+    {
+      "id": 2,
+      "name": "hal earrings",
+      "price": 25,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 2,
+      "discountPercent": 20
+    },
+    {
+      "id": 3,
+      "name": "kaede hair pin set of 3",
+      "price": 21,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 1,
+      "discountPercent": 0
+    },
+    {
+      "id": 4,
+      "name": "hair pin set of 3",
+      "price": 22,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 0,
+      "discountPercent": 0
+    },
+    {
+      "id": 5,
+      "name": "plaine necklace",
+      "price": 23,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 2,
+      "discountPercent": 0
+    },
+    {
+      "id": 6,
+      "name": "yuki hair pin set of 3",
+      "price": 29,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 2,
+      "discountPercent": 0
+    },
+    {
+      "id": 7,
+      "name": "yuki hair pin set of 3",
+      "price": 26,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 2,
+      "discountPercent": 0
+    },
+    {
+      "id": 8,
+      "name": "bin lucky",
+      "price": 25,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 20,
+      "discountPercent": 0
+    },
+    {
+      "id": 9,
+      "name": "air black",
+      "price": 27,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. ",
+      "image": "https://res.cloudinary.com/dkmkpyi0t/image/upload/v1672279122/Lira_Earrings_wp6hdu.png",
+      "quantity": 10,
+      "discountPercent": 0
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "products": [
+        {
+          "idProduct": 1,
+          "quantity": 1,
+          "name": "lira earrings",
+          "price": "20.00",
+          "discountPercent": 0
+        },
+        {
+          "idProduct": 2,
+          "quantity": 1,
+          "name": "hal earrings",
+          "price": "20.00",
+          "discountPercent": 20
+        }
+      ]
+    },
+    {
+      "id": "df4ed166-7a73-4c6b-aabc-237e4a4d57eb",
+      "products": [
+        {
+          "idProduct": 6,
+          "quantity": 1,
+          "name": "yuki hair pin set of 3",
+          "price": 29
+        },
+        {
+          "idProduct": 1,
+          "quantity": 1,
+          "name": "lira earrings",
+          "price": 20
+        }
+      ]
+    },
+    {
+      "id": "3aba877e-601c-400b-b642-050c2e35c9c8",
+      "products": []
+    },
+    {
+      "id": "545d3db5-5472-4a8a-90f2-8372db9f43fe",
+      "products": [
+        {
+          "idProduct": 6,
+          "quantity": 2,
+          "name": "yuki hair pin set of 3",
+          "price": "29.00",
+          "discountPercent": 0
+        },
+        {
+          "idProduct": 2,
+          "quantity": 1,
+          "name": "hal earrings",
+          "price": "20.00",
+          "discountPercent": 20
+        }
+      ]
+    }
+  ]
+}

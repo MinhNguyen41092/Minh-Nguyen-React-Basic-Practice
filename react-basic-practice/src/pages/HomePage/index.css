@@ -1,0 +1,23 @@
+:focus {
+  outline: none;
+}
+
+.main-content {
+  padding-bottom: 252px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-products {
+  margin-left: 36px;
+  padding-top: 178px;
+  width: 80%;
+}
+
+.sidebar {
+  max-width: 261px;
+}
+
+.grid-container {
+  justify-items: end;
+}

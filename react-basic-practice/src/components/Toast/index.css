@@ -1,0 +1,44 @@
+.toast {
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.notification.success {
+  background-color: var(--color-success);
+}
+
+.notification.error {
+  background-color: var(--color-secondary);
+}
+
+.notification.warning {
+  background-color: var(--color-secondary);
+}
+
+.notification .message {
+  color: var(--color-white);
+  margin: 0px 10px;
+}
+.notification .message .status {
+  font-weight: var(--fw-bold);
+  text-transform: capitalize;
+}
+
+.notification .message .content {
+  margin: 5px 0px;
+  font-size: var(--fs-small);
+}
+
+.btn.btn-close {
+  border: none;
+  color: var(--color-white);
+  background-color: initial;
+}
